@@ -1,7 +1,8 @@
 var express = require('express');
-var bodyParser = require('body-parser');
 var formidable = require("formidable");
 var app = express();
+
+app.set('port', (process.env.PORT || 5000));
 
 /* root of Tutor */
 app.get('/', function(req, res) {
@@ -23,4 +24,6 @@ app.post('/subscribe/', function(req, res) {
 });
 
 
-app.listen(8080);
+app.listen(app.get('port'), function () {
+	console.log("http://localhost:" + app.get('port'));
+});
