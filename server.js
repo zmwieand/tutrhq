@@ -16,7 +16,7 @@ app.post('/subscribe/', function(req, res) {
 	var form = formidable.IncomingForm();
 	form.parse(req, function(err, fields, files) {
 		var email = fields.email;
-		// make sure the email is valid and doesn't already exist
+		// make sure the email is well formed and doesn't already exist
 		// if it does flash an error message
 		console.log(email);
 	});
@@ -27,3 +27,16 @@ app.post('/subscribe/', function(req, res) {
 app.listen(app.get('port'), function () {
 	console.log("http://localhost:" + app.get('port'));
 });
+
+
+/* using SendGrid's Node.js Library */
+
+// var sendgrid = require("sendgrid")("SENDGRID_APIKEY");
+// var email = new sendgrid.Email();
+
+// email.addTo("test@sendgrid.com");
+// email.setFrom("you@youremail.com");
+// email.setSubject("Sending with SendGrid is Fun");
+// email.setHtml("and easy to do anywhere, even with Node.js");
+
+// sendgrid.send(email);
