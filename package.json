@@ -1,0 +1,31 @@
+{
+  "name": "Tutor",
+  "version": "1.0.0",
+  "description": "This is the info and subcription site",
+  "main": "server.js",
+  "dependencies": {
+    "body-parser": "~1.15.1",
+    "express": "~4.13.4",
+    "formidable": "~1.0.17",
+    "node": "~0.0.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "nodejs server.js",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/zmwieand/tutrhq.git"
+  },
+  "keywords": [
+    "node",
+    "express",
+    "formidable"
+  ],
+  "author": "ZMW",
+  "license": "UB",
+  "bugs": {
+    "url": "https://github.com/zmwieand/tutrhq/issues"
+  }
+}
