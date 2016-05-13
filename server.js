@@ -23,9 +23,17 @@ app.post('/subscribe/', function(req, res) {
 	res.sendFile(__dirname + '/html/success.html');
 });
 
+app.post('/tutor_to/', function(req, res){
+	var form = formidable.IncomingForm();
+	form.parse(req, function(err, fields, files){
+		var school = fields.school;
+		console.log(school);
+	});
+	res.end("thanks for letting us know");
+});
 
 app.listen(app.get('port'), function () {
-	console.log("http://localhost:" + app.get('port'));
+	console.log("server.js is running on http://localhost:" + app.get('port'));
 });
 
 

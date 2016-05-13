@@ -8,27 +8,29 @@
 <body>
 <center>
 <h1 style="font-size: 56px">Welcome to Tutor</h1>
-<h2>Now-Ledge at your finger tips!</h2>
-
-<br>
+<h3>Education on Demand</h3>
+<!-- <br> -->
 
 <form action="/subscribe/" method="post">
 	<input type="email" name="email" Placeholder="Email" required autofocus>
 	<input type="submit" value="Submit">
-	<br>
-	<br>
-
-	<div>
-		<label>Where should we bring Tutor?</label>
-		<select name="school">
-			<option default>School/University</option>
-			<option value="UB">University at Buffalo</option>
-			<option value="UB">Buff State</option>
-			<option value="UB">D'Youville</option>
-			<option value="UB">Niagara University</option>
-		</select>
-	</div>
 </form>
+
+<br>
+
+<form action="/tutor_to/" method="post">
+	<label>Bring Tutor to </label>
+	<select name="school">
+		<option default>School/University</option>
+		<option value="UB">University at Buffalo</option>
+		<option value="ECC">Erie Community College</option>
+		<option value="BS">Buffalo State College</option>
+		<option value="DYC">D'Youville College</option>
+		<option value="NU">Niagara University</option>
+	</select>
+	<input type="submit">
+</form>
+
 </center>
 </body>
 
