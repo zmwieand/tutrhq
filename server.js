@@ -1,11 +1,15 @@
 var express = require('express');
 var formidable = require("formidable");
 var MongoClient = require('mongodb').MongoClient;
+var http = require('http');
 var app = express();
 var _db;
 
 /* Use and environment variable for the port */
 app.set('port', (process.env.PORT || 5000));
+
+/* Needed this to link in the stylesheet */
+app.use(express.static(__dirname + '/style'));
 
 /* Setup the database */
 MongoClient.connect("mongodb://localhost:27017/tutordb", function(err, db) {
