@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+  <html>
+    <head>
+        <!--Import Google Icon Font-->
+        <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <!--Import materialize.css-->
+        <link type="text/css" rel="stylesheet" href="materialize/css/materialize.min.css"  media="screen,projection"/>
+
+        <!--Let browser know website is optimized for mobile-->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+        <style> 
+            #map {
+                width: 100%;
+                height: 400px; 
+                background-color: grey;
+            }
+        </style>
+        
+    </head>
+
+    <body>
+
+        <!-- Side Nav -->
+        <ul id="slide-out" class="side-nav">
+            <li><div class="userView teal darken-3">
+              <!-- <img class="background teal darken-3"> -->
+              <center><a href="#!user"><img class="circle white" src="account.png"></a>
+              <a href="#!name" ><span class="white-text name">John Doe</span></a>
+              <a href="#!email"><span class="white-text email">jdandturk@gmail.com</span></a></center>
+            </div></li>
+            <li><a class="header">Request a Tutor</a></li>
+            <a class="waves-effect waves-light red btn modal-trigger" href="#tutors-modal">ENG 101</a>
+            <a class="waves-effect waves-light blue btn modal-trigger" href="#request-modal">MTH 141</a>
+            <a class="waves-effect waves-light green btn modal-trigger" href="#account-modal">CHEM 107</a>
+            <a class="waves-effect waves-light orange btn modal-trigger" href="#tutors-modal">UGC 112</a>
+            
+            <li><div class="divider"></div></li>
+            <li><a href="#!"><i class="material-icons">info</i>Account Information</a></li>
+            <!-- <li><a class="waves-effect" href="#!">Third Link With Waves</a></li> -->
+        </ul>
+
+        <!-- Account Modal-->
+        <div id="account-modal" class="modal" style="width: 500px;">
+        <div class="userView teal darken-3">
+            <center><ul style="margin: 0px; padding: 5px;">
+            <li><img src="account.png" class="circle grey darken-1" style="width: 128px;"></li>
+            <li><span class="name white-text">John Doe</span></li>
+            <li><span class="email white-text">jdandturk@gmail.com</span></li>
+            </ul></center>
+        </div>
+        <div>
+            <ul>
+                <li><div class="row"><div class="col s12"><h6>Request a Tutor</h6></div></div></li>
+                <li><div class="row">
+                    <div class="col s6 push-s6">
+                        <a href="#request-modal" class="waves-effect waves-light btn blue modal-trigger" style="width: 100%;">MTH 141</a>
+                    </div>
+                    <div class="col s6 pull-s6">
+                        <a href="#" class="waves-effect waves-light btn red" style="width: 100%;">ENG 101</a>
+                    </div>
+                </div></li>
+                <li><div class="row">
+                    <div class="col s6 push-s6">
+                        <a href="#" class="waves-effect waves-light btn orange" style="width: 100%;">UGC 112</a>
+                    </div>
+                    <div class="col s6 pull-s6">
+                        <a href="#" class="waves-effect waves-light btn green" style="width: 100%;">CHEM 107</a>
+                    </div>
+                </div></li>
+            </ul>        
+        </div>
+            
+        <div class="modal-footer">
+            <ul>
+                <li><div class="divider"></div></li>
+                <li><i class="material-icons">info</i>Account Information</li>
+            </ul>
+        </div>
+        </div>
+
+        <!-- Request Modal -->
+        <div id="request-modal" class="modal" style="width: 500px;">
+            <center><div class="modal-content">
+                <div class="preloader-wrapper big active">
+                    <div class="spinner-layer spinner-blue-only">
+                      <div class="circle-clipper left">
+                        <div class="circle"></div>
+                      </div><div class="gap-patch">
+                        <div class="circle"></div>
+                      </div><div class="circle-clipper right">
+                        <div class="circle"></div>
+                      </div>
+                    </div>
+                </div>
+                <p>Requesting a Tutor</p>
+            </div></center>
+        </div>
+
+        <!-- Tutors Modal-->
+        <div id="tutors-modal" class="modal" style="width: 600px;">
+            <div class="modal-content">
+            <h4>Tutors in your area</h4>
+            <ul class="collection">
+              <li class="collection-item avatar">
+                <img src="account.png" alt="" class="circle grey lighten-1">
+                <span class="title">Jin Yang</span>
+                <p>I eat the fish</p>
+                <a href="#!" class="secondary-content"><h5>4.9</h5></a>
+              </li>
+              <li class="collection-item avatar">
+                <img src="account.png" alt="" class="circle grey lighten-1">
+                <span class="title">Russ Hanneman</span>
+                <p>Radio on Internet</p>
+                <a href="#!" class="secondary-content"><h5>4.7</h5></a>
+              </li>
+              <li class="collection-item avatar">
+                <img src="account.png" alt="" class="circle grey lighten-1">
+                <span class="title">Jon Snow</span>
+                <p>Winter is Coming</p>
+                <a href="#!" class="secondary-content"><h5>4.1</h5></a>
+              </li>
+              <li class="collection-item avatar">
+                <img src="account.png" alt="" class="circle grey lighten-1">
+                <span class="title">Erlich Bachman</span>
+                <p>I own 10% of Pied Piper</p>
+                <a href="#!" class="secondary-content"><h5>2.0</h5></a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Nav Bar -->
+        <div class="navbar-fixed">
+            <nav>
+              <div class="nav-wrapper teal darken-3">
+                <a href="#" data-activates="slide-out" class="button"><i class="material-icons">menu</i></a>
+                <!-- <a href="#" class="brand-logo center">Logo</a> -->
+
+                <!-- TODO(zmwieand): center the logo? -->
+                <!-- <a href="#!" class="brand-logo">Logo</a> -->
+
+                <ul class="right hide-on-med-and-down">
+                </ul>
+              </div>
+            </nav>
+        </div>
+
+        <!-- Map View -->
+        <div id="map">here is some text</div>
+        <script>
+      function initMap() {
+        var mapDiv = document.getElementById('map');
+        var map = new google.maps.Map(mapDiv, {
+            center: {lat: 44.540, lng: -78.546},
+            zoom: 8
+        });
+      }
+    </script>
+    <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCEx2RLGH-_HFMIkFFYAwbFefyJPCAGcEo&callback=initMap">
+    </script>
+        
+
+        <!--Import jQuery before materialize.js-->
+        <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+        <script type="text/javascript" src="materialize/js/materialize.min.js"></script>
+        <script>$(".button").sideNav({menuWidth: 400});</script>
+        <script>$(".modal-trigger").leanModal();</script>
+    </body>
+</html>
+
