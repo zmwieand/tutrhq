@@ -1,0 +1,49 @@
+
+.container {
+  padding-top: 0%;
+}
+
+
+
+
+@media (max-width: 603px) {
+
+.container {
+  padding-top: 8%;
+
+}
+}
+
+.nav-wrapper {
+  padding-top: 0%;
+}
+
+.card-content {
+  height: 337px;
+}
+
+#tutrtext {
+  font-size: 500%;
+  font-family: Roboto;
+
+}
+
+
+#tagline {
+  font-size: 100%;
+  color: black;
+
+}
+
+#college {
+
+  text-decoration: underline;
+  text-decoration-color: green;
+}
+
+#header
+{
+
+  max-width: 100%;
+  max-height: 100;
+}

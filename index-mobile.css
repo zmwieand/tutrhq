@@ -1,0 +1,39 @@
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+main {
+  flex: 1 0 auto;
+}
+
+#logo {
+  font-family: "Roboto";
+  color: black;
+
+}
+
+#text {
+  font-color: black;
+}
+
+.button {
+    background-color: #009933 ; /* Green */
+    border: none;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 0px;
+    width: 175px;
+    height: 40px;
+}
+
+#button2 {
+    background-color: white;
+
+
+
+}
