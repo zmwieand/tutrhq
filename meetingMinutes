@@ -1,0 +1,112 @@
+date: August 30, 2016
+meeting_type: "group"
+attendance: [tmweppne, wesleycs, zmwieand, daviddob, brijeshr]
+absent: [NONE]
+excused_absences: [NONE]
+task_progress: [
+  {ubit: <tmweppne>, progress: NONE},
+  {ubit: <wesleycs>, progress: NONE},
+  {ubit: <zmwieand>, progress: NONE},
+  {ubit: <daviddob>, progress: NONE},
+  {ubit: <brijeshr>, progress: NONE},
+  ]
+issues: [NONE]
+Notes:  | 
+	| Decided on web-app based product
+	| Had decided on using google keep for meeting minutes
+	| Decided to use node for the backend framework
+	| Decided on minimalist interface
+	| Discussed prototype
+	| Set up git ripo
+	| Added everyone to ripo
+	| Decided on materialize css
+	| Bought tutrhq.com
+____________________________________________________________________________________________
+
+date: August 31, 2016
+meeting_type: "group"
+attendance: [tmweppne, wesleycs, zmwieand, daviddob, brijeshr]
+absent: [NONE]
+excused_absences: [NONE]
+task_progress: [
+  {ubit: <tmweppne>, progress: NONE},
+  {ubit: <wesleycs>, progress: NONE},
+  {ubit: <zmwieand>, progress: NONE},
+  {ubit: <daviddob>, progress: NONE},
+  {ubit: <brijeshr>, progress: NONE},
+  ]
+issues: [NONE]
+Notes:  | 
+	| Flushed out design for Student and Tutor UI design
+	| Assigned tasks to each member for TUTR mk1
+	|	-Dave: Server setup, Tutor UI design
+	|	-Brijesh: Tutor UI design
+	|	-Zach: Student UI design
+	|	-Tim: Sign Up UI design
+	|	-Wes: Login UI design 
+______________________________________________________________________________________________
+
+
+date: September 5, 2016
+meeting_type: "group"
+attendance: [tmweppne, wesleycs, zmwieand, daviddob, brijeshr]
+absent: [NONE]
+excused_absences: [NONE]
+task_progress: [
+  {ubit: <tmweppne>, progress: created outline of Sign Up page},
+  {ubit: <wesleycs>, progress: created outline of Log In page},
+  {ubit: <zmwieand>, progress: created rock solid Student UI},
+  {ubit: <daviddob>, progress: Set up server},
+  {ubit: <brijeshr>, progress: NONE},
+  ]
+issues: [Wasn't able to fully set up server because we were missing a VGA chord]
+Notes:  | 
+	| Made last change to UI design
+	| Talked to Jesse about demoing in his cse115 class spring semester 2017
+_______________________________________________________________________________________________
+
+
+date: September 12, 2016
+meeting_type: "TA"
+attendance: [tmweppne, wesleycs, zmwieand, daviddob, brijeshr,ak229]
+absent: [NONE]
+excused_absences: [NONE]
+task_progress: [
+  {ubit: <tmweppne>, progress: NONE},
+  {ubit: <wesleycs>, progress: NONE},
+  {ubit: <zmwieand>, progress: NONE},
+  {ubit: <daviddob>, progress: NONE},
+  {ubit: <brijeshr>, progress: NONE},
+  ]
+issues: [ # Post any issues here. Issues that cannot be addressed by the group should especially be included
+  {ubit: <ubit2>, issue: Needs to contact customer to clarify requirements that have not yet been dicussed.},
+  {ubit: <ubit6>, issue: After discussing with the TA it turns out that this problem is NP-Complete.}
+  ]
+Notes:  | # Anything covered in the meeting that doesn't fit elsewhere.
+	| Added Abhishek to Slack cannel 
+	| Discussed video portion of the project
+	| Added Abhishek to ripo
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
