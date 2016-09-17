@@ -1,0 +1,50 @@
+date: August 30, 2016
+meeting_type: "group"
+attendance: [tmweppne, wesleycs, zmwieand, daviddob, brijeshr]
+absent: [NONE]
+excused_absences: [NONE]
+task_progress: [
+  {ubit: <tmweppne>, progress: NONE},
+  {ubit: <wesleycs>, progress: NONE},
+  {ubit: <zmwieand>, progress: NONE},
+  {ubit: <daviddob>, progress: NONE},
+  {ubit: <brijeshr>, progress: NONE},
+  ]
+issues: [NONE]
+Notes:  | 
+	| Decided on web-app based product
+	| Had decided on using google keep for meeting minutes
+	| Decided to use node for the backend framework
+	| Decided on minimalist interface
+	| Discussed prototype
+	| Set up git ripo
+	| Added everyone to ripo
+	| Decided on materialize css
+	| Bought tutrhq.com
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

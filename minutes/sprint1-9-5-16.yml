@@ -1,0 +1,16 @@
+date: September 5, 2016
+meeting_type: "group"
+attendance: [tmweppne, wesleycs, zmwieand, daviddob, brijeshr]
+absent: [NONE]
+excused_absences: [NONE]
+task_progress: [
+  {ubit: <tmweppne>, progress: created outline of Sign Up page},
+  {ubit: <wesleycs>, progress: created outline of Log In page},
+  {ubit: <zmwieand>, progress: created rock solid Student UI},
+  {ubit: <daviddob>, progress: Set up server},
+  {ubit: <brijeshr>, progress: NONE},
+  ]
+issues: [Wasn't able to fully set up server because we were missing a VGA chord]
+Notes:  | 
+	| Made last change to UI design
+	| Talked to Jesse about demoing in his cse115 class spring semester 2017

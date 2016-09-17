@@ -1,0 +1,20 @@
+date: September 12, 2016
+meeting_type: "TA"
+attendance: [tmweppne, wesleycs, zmwieand, daviddob, brijeshr,ak229]
+absent: [NONE]
+excused_absences: [NONE]
+task_progress: [
+  {ubit: <tmweppne>, progress: NONE},
+  {ubit: <wesleycs>, progress: NONE},
+  {ubit: <zmwieand>, progress: NONE},
+  {ubit: <daviddob>, progress: NONE},
+  {ubit: <brijeshr>, progress: NONE},
+  ]
+issues: [ # Post any issues here. Issues that cannot be addressed by the group should especially be included
+  {ubit: <ubit2>, issue: Needs to contact customer to clarify requirements that have not yet been dicussed.},
+  {ubit: <ubit6>, issue: After discussing with the TA it turns out that this problem is NP-Complete.}
+  ]
+Notes:  | # Anything covered in the meeting that doesn't fit elsewhere.
+	| Added Abhishek to Slack cannel 
+	| Discussed video portion of the project
+	| Added Abhishek to repo
