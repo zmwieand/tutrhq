@@ -1,0 +1,19 @@
+date: September 26th, 2016
+meeting_type: TA
+attendance: [tmweppne, wesleycs, zmwieand, daviddob,brijeshr]
+absent: [NONE]
+excused_absences: [NONE]
+task_progress: [
+  {ubit: <tmweppne>, progress: NONE},
+  {ubit: <wesleycs>, progress: Finished ionic research  Task: push notification on log in},
+  {ubit: <zmwieand>, progress: wrote front end for reporting a prolem, Task: registration},
+  {ubit: <daviddob>, progress: finished settig up server and web server config, Taks: OAuth/Auth0 research},
+  {ubit: <brijeshr>, progress: set up node server and express},
+  ]
+issues: [NONE]
+Notes:  |Going to use the toggle for tutor mode
+	|WTForms for registration?
+	|Database for peoples reported problems
+	|Ionic is a go
+	|We need to do git tutorial
+	
