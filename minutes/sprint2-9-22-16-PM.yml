@@ -1,0 +1,16 @@
+date: September 22nd, 2016
+meeting_type: "group"
+attendance: [tmweppne, wesleycs, zmwieand, daviddob,brijeshr]
+absent: [<wesleycs>]
+excused_absences: [{ubit: <wesleycs>, reason: Had to work. This was a last minute meeting that was not planned till an hour or so before.}]
+task_progress: [
+  {ubit: <tmweppne>, progress: NONE},
+  {ubit: <wesleycs>, progress: NONE},
+  {ubit: <zmwieand>, progress: NONE},
+  {ubit: <daviddob>, progress: Finished deploying the server},
+  {ubit: <brijeshr>, progress: NONE},
+  ]
+issues: [NONE]
+Notes:  |Server has been configured and all backend developers have been given access
+        |Meeting was immediatly following the previous one therefore not much "Progress" to be tracked.
+        |Decided collectively Ionic would be a good way to move forward.
