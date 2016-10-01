@@ -1,0 +1,19 @@
+date: September 19th, 2016
+meeting_type: TA
+attendance: [tmweppne, wesleycs, zmwieand, daviddob,brijeshr]
+absent: [NONE]
+excused_absences: [NONE]
+task_progress: [
+  {ubit: <tmweppne>, progress: Assigned task: Touch up front end, Ionic research, GIT tutorial, Research PayPalAPI},
+  {ubit: <wesleycs>, progress: Assigned Task: Finish up frontend, Ionic research, Help with database stuff, Survey customer base and incorperate into frontend, GIT tutorial},
+  {ubit: <zmwieand>, progress: Assigned Task: Mongo DB setup,Backend,Ionic research},
+  {ubit: <daviddob>, progress: Assigned Task: Server configs, User authentication, set up OAuth, Ionic research},
+  {ubit: <brijeshr>, progress: Assign task: Backend,Mongo DB setup, Get database ready, Account info, Ionic research},
+  ]
+issues: [NONE]
+Notes:  | 
+	|MTH 142 Rob Bush?
+	|Mongo DB and Node
+	|Ionic pitch pushed to friday
+	|look up API for push notifications through web app
+	|Automated booking for confrence rooms for tutoring???

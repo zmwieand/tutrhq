@@ -1,0 +1,20 @@
+date: September 22nd, 2016
+meeting_type: "instructor"
+attendance: [tmweppne, wesleycs, zmwieand, daviddob,brijeshr]
+absent: [NONE]
+excused_absences: [NONE]
+task_progress: [
+  {ubit: <tmweppne>, progress: NONE},
+  {ubit: <wesleycs>, progress: Ionic Research in progress, still looking into some pros/cons},
+  {ubit: <zmwieand>, progress: Currently refactoring front end for use with new framework},
+  {ubit: <daviddob>, progress: Preparing configuration for deployment tonight},
+  {ubit: <brijeshr>, progress: NONE},
+  ]
+issues: [NONE]
+Notes:  |Talked to Jesse about setting up a business bank account, deployment and monitization 
+	|Talked to jesse about additional features like using the "Exponential Moving Average" & maybe textbook swaping...
+		-Fast changes in quality are weighed more hevily than gradual changes
+	|Meeting tonight at 8 with dave to set up server config
+	|We want to keep track of info about student and tutor, and past transactions 
+
+
