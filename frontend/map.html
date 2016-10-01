@@ -19,6 +19,11 @@
                 width: 100%;
                 height: 600px;
             }
+
+            .modal-view {
+                max-width: 500px;
+                min-width: 100px;
+            }
         </style>
         
     </head>
@@ -26,12 +31,18 @@
     <body>
 
         <!-- Side Nav -->
-        <ul id="slide-out" class="side-nav fixed">
+        <ul id="slide-out" class="side-nav">
             <li><div class="userView teal darken-3">
               <!-- <img class="background teal darken-3"> -->
               <center><a href="#!user"><img class="circle white" src="style/img/account.png"></a>
               <a href="#!name" ><span class="white-text name">John Doe</span></a>
-              <a href="#!email"><span class="white-text email">jdandturk@gmail.com</span></a></center>
+              <a href="#!email"><span class="white-text email">jdandturk@gmail.com</span></a>
+              <div class="switch">
+                <label>
+                  <input id="toggle" type="checkbox" onclick="tutrToggle()">
+                  <span class="lever"></span>
+                </label>
+            </div></center>
             </div></li>
             <!-- <li><a class="header">Request a Tutor</a></li>
             <a class="waves-effect waves-light red btn modal-trigger" href="#tutors-modal">ENG 101</a>
@@ -40,16 +51,17 @@
             <a class="waves-effect waves-light orange btn modal-trigger" href="#rating-modal">UGC 112</a>
              -->
             <!-- <li><div class="divider"></div></li> -->
-            <li><a href="#!"><i class="material-icons">info</i>Account Information</a></li>
+            <li><a href="#account-info" class="modal-trigger"><i class="material-icons">info</i>Account Information</a></li>
+            <li><a href="#courses-modal" class="modal-trigger"><i class="material-icons">assignment</i>Courses</a></li>
             <li><a href="#!"><i class="material-icons">credit_card</i>Payment Options</a></li>
-            <li><a href="#!"><i class="material-icons">restore</i>History</a></li>
-            <li><a href="#!"><i class="material-icons">warning</i>Report a Problem</a></li>
+            <li><a href="#timer-modal" class="modal-trigger"><i class="material-icons">restore</i>History</a></li>
+            <li><a href="#problem-modal" class="modal-trigger"><i class="material-icons">warning</i>Report a Problem</a></li>
 
             <!-- <li><a class="waves-effect" href="#!">Third Link With Waves</a></li> -->
         </ul>
 
         <!-- Account Modal-->
-        <div id="account-modal" class="modal" style="width: 500px;">
+        <div id="account-modal" class="modal modal-view">
         
         <div id="account" class="modal-content">
             <div class="row">
@@ -137,6 +149,49 @@
             </div>
         </div>
 
+        <!-- Account Information Modal -->
+        <div id="account-info" class="modal modal-view">
+            <div class="modal-content">
+                <h4>Account Information</h4>
+                <form action="#" method="post">
+                    <div class="row">
+                        <div class="col s12 input-field">
+                            <input id="email" type="email" required>
+                            <label for="email">Email Address</label>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col s12 input-field">
+                            <input id="first-name" type="text" required>
+                            <label for="first-name">First Name</label>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col s12 input-field">
+                            <input id="last-name" type="text" required>
+                            <label for="last-name">Last Name</label>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col s12 input-field">
+                            <input id="phone-number" type="tel" required>
+                            <label for="phone-number">Phone Number</label>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col s12 input-field right-align">
+                            <button class="btn grey">Edit</button>
+                            <input class="btn green" id="email" type="submit" value="Submit">
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
         <!-- Request Modal -->
        <!--  <div id="request-modal" class="modal" style="width: 500px;">
             <div id="request" class="modal-content">
@@ -161,7 +216,7 @@
         </div>
  -->
         <!-- Tutors Modal-->
-        <div id="tutors-modal" class="modal" style="width: 600px;">
+        <div id="tutors-modal" class="modal modal-view">
             <div id="tutors" class="modal-content">
             <h4>Tutors in your area</h4>
             <ul class="collection">
@@ -194,7 +249,7 @@
         </div>
 
         <!-- Rating Modal -->
-        <div id="rating-modal" class="modal" style="width: 500px;">
+        <div id="rating-modal" class="modal modal-view">
             <div class="modal-content">
                 <center><h4>$17.38</h4></center>
                 <br>
@@ -224,6 +279,127 @@
             <div class="modal-footer"><a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Submit</a></div>
         </div>
 
+
+        <!-- Report a Problem Modal -->
+        <div id="problem-modal" class="modal modal-view">
+            <div class="modal-content">
+                <h4>What's wrong?!</h4>
+                <br>
+                <form>
+                    <div class="input-field">
+                        <input id="subject" type="text" required>
+                        <label for="subject">Subject</label>
+                    </div>
+
+                    <div class="input-field">
+                        <textarea id="description" class="materialize-textarea" type="textarea" required></textarea>
+                        <label for="description">Description</label>
+                    </div>
+
+                    <div class="input-field right-align">
+                        <input type="submit" value="Submit!" class="btn blue">
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Timer Modal -->
+        <div id="timer-modal" class="modal bottom-sheet">
+            <div class="modal-content">
+                <center><h1>17:38</h1></center>
+                <div class="row">
+                    <div class="col s12 center-align">
+                        <button class="btn green">Start</button>
+                        <button class="btn red">Stop</button>
+                        <button class="btn grey">Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Courses Modal -->
+        <div id="courses-modal" class="modal modal-view">
+            <div class="modal-content">
+                <ul class="collection">
+                    <li class="collection-item">English 101<a href="#"><span class="badge"><i class="material-icons">cancel</i></span></a></li>
+                    <li class="collection-item">English 101<a href="#"><span class="badge"><i class="material-icons">cancel</i></span></a></li>
+                    <li class="collection-item">English 101<a href="#"><span class="badge"><i class="material-icons">cancel</i></span></a></li>
+                    <li class="collection-item">English 101<a href="#"><span class="badge"><i class="material-icons">cancel</i></span></a></li>
+                </ul>
+
+                <button class="btn-floating green"><i class="material-icons">add</i></button>
+            </div>
+        </div>
+
+        <!-- Tutor Options Modal -->
+        <div id="tutor-options-modal" class="modal modal-view">
+            <div class="modal-content">
+                <h4>Whichs course would you like to Tutor?</h4>
+                <ul class="collection">
+                    <a class="collection-item" href="#">English 101</a>
+                    <a class="collection-item" href="#">English 101</a>
+                    <a class="collection-item" href="#">English 101</a>
+                    <a class="collection-item" href="#">English 101</a>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Notification Modal -->
+        <div id="notification-modal" class="modal bottom-sheet">
+        
+            <div class="modal-content">
+                <div class="row">
+                    <div class="col s12 m4">
+                        <!-- <div class="userView"> -->
+                          <!-- <img class="background teal darken-3"> -->
+                          <center><ul>
+                          <li><a href="#!user"><img class="circle grey" src="style/img/account.png" style="width: 100px;"></a></li>
+                          <li><p><span class="name">John Doe</span></p></li>
+                          <li><p>3.6</p></li>
+                          <li></li>
+                          <!-- <a href="#!email"><span class="white-text email">jdandturk@gmail.com</span></a> -->
+                          </ul></center>
+                        <!-- </div> -->
+                    </div>
+                    <div class="col s12 m4">
+                        <div >
+                            <h5>Location</h5>
+                            <p>there is a map ...</p>
+                            <br>
+                            <h5>Description</h5>
+                            <p>what the hell are integrals?</p>
+                        </div>
+                    </div>
+
+                    <div class="col s12 m4 center-align">
+                        <button href="#timer-modal" class="btn-floating btn-large green modal-trigger modal-close"><i class="material-icons">done</i></button>
+                        <button href="#cancel-modal" class="btn-floating btn-large red modal-trigger modal-close"><i class="material-icons">cancel</i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Cancel Modal-->
+        <div id="cancel-modal" class="modal modal-view">
+            <div class="modal-content">
+                <h4>Why can't you make it?</h4>
+                <form action="#" method="post">
+                    <div class="row">
+                        <div class="col s12 input-field">
+                            <textarea id="cancel-desc" class="materialize-textarea" required></textarea>
+                            <label for="cancel-desc">Tell us why</label>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col s12 input-field right-align">
+                            <input class="btn green" type="submit" value="Send">
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
         <!-- Nav Bar -->
         <div class="navbar-fixed">
             <nav>
@@ -235,17 +411,23 @@
                 <!-- <a href="#!" class="brand-logo">Logo</a> -->
 
                 <ul class="right hide-on-med-and-down">
+                    <li><a href="#notification-modal" class="btn modal-trigger">notify</a></li>
                 </ul>
               </div>
             </nav>
         </div>
 
         <!-- Map View -->
-        <div id="map"></div>
+        <div class="row" >
+            <div class="col s12" style="border-right: 0px;">
+                <div id="map"></div>
+                <a href="#notification-modal" class="btn modal-trigger">notify</a>
+            </div>
+        </div>
         
         <script>
         var map;
-        var myLatLng = {lat: -25.363, lng: 131.044};
+        var myLatLng = {lat:42.9977999,lng:-78.7882364};
 
       function initMap() {
 
@@ -279,18 +461,22 @@
 
             window.setTimeout(function() {
                 $('#account-modal').closeModal(function() {});
-                var tutorLocation = {lat: -25.359, lng: 131.048};
+                var tutorLocation = {lat: 42.999999,lng: -78.78891};
                 var center = findCenter(tutorLocation["lat"], tutorLocation["lng"],
                                         myLatLng["lat"], myLatLng["lng"]);
 
                 window.setTimeout(function() {
                     map.setZoom(16);
                     map.setCenter(center);
+                    var tutorMarker;
                     window.setTimeout(function() {
-                        new google.maps.Marker({
+                        tutorMarker = new google.maps.Marker({
                             position: tutorLocation,
                             map: map,
                             animation: google.maps.Animation.DROP
+                        });
+                        tutorMarker.addListener('click', function() {
+                            $('#rating-modal').openModal(function(){});
                         });
                         Materialize.toast("Jian Yang is on his way!", 4000);
                     }, 1000);
@@ -309,6 +495,14 @@
 
         <script>$(".button").sideNav();</script>
         <script>$(".modal-trigger").leanModal();</script>
+        <script type="text/javascript">$('#description').trigger('autoresize')</script>
+        <script type="text/javascript">
+            function tutrToggle() {
+                if ($('#toggle').is(":checked")) {
+                    $('#tutor-options-modal').openModal();
+                }
+            }
+        </script>
 
         <script>
             $("#tutors").hide();
