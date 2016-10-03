@@ -1,23 +1,34 @@
-button{
-      border: none;
+
+
+
+html{
       background-color: #FFFFFF;
 }
-/*body{
-      background-color: #9e9e9e;
-}*/
+body{
+      background-color: #f3f3f3;
+}
+/*
 ul{
       background-color: #009933;
 }
+
 a{
       background-color: #009933;
 }
+
 nav{
       background-color: #009933;
 }
+*/
+
 i{
-      color: #009933;
+      color: #FFFFFF;
 
 }
+.others{
+      color: #009933;
+}
+
 /* label focus color */
   .input-field input[type=text]:focus + label {
     color: #009933;

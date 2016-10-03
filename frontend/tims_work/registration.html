@@ -5,7 +5,7 @@
             <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
             <!--Import materialize.css-->
             <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
-            <link type="text/css" rel="stylesheet" href="index.css"/>
+            <link type="text/css" rel="stylesheet" href="registration.css"/>
 
 
             <!--Let browser know website is optimized for mobile-->
@@ -13,33 +13,39 @@
       </head>
 
       <body>
-            <nav>
-                  <div class="nav-wrapper">
-                        <a href="#" class="brand-logo center">
-                              <img class="responsive-img" src="file:///home/tmweppne/cse442/materialize/tutrLogo.png">
-                        </a>
-                        <ul id="nav-mobile" class="left hide-on-med-and-down">
-                              <li><a href="sass.html">Login</a></li>
+            <div class="navbar-fixed">
+               <nav>
+                 <div class="nav-wrapper white z-depth-1">
+                       <a id="logo"href="#" class="brand-logo left">&nbsp;<img src="tutrlogo.png" style="height: 50px; top-margin: 4px;"></a>
+                       <ul id="nav-mobile" class="left" style="padding-left: 30px;">
 
-                        <!--      <li><a href="badges.html">Components</a></li>
-                        <li><a href="collapsible.html">JavaScript</a></li>
-                  -->
-                        </ul>
+                             <li><a id="text" style="color:black; font-size:40px;">&nbsp;&nbsp;&nbsp;tutr</a>
+                        </li>
+
+                      </ul>
+                     <ul id="nav-mobile" class="right"></ul>
+                     <ul id="nav-mobile" class="right">
+                           <a href="##" class="waves-effect waves-light btn z-depth-1" style="background-color:#009933 ;"> HOME</a>
+</ul>
+
                   </div>
-            </nav>
-
-            <div class="container center-align">
-                  <div class="card-panel center-align">
-
+               </nav>
+            </div>
+            <div class = "section" </div>
+            <div class = "section" </div>
+            <div class="container">
+                  <div class="container" >
+                  <div class="card-panel"style="padding-left:175px; padding-right:0%;" >
+<!--                        <div class="card-panel">-->
 <!--++++++++++++++-->
 <!--  USER NAME   -->
 <!--++++++++++++++-->
                   <div class="row">
 <!--                        <form class="col s12">    -->
-                                    <div class="input-field col s6">
-                                          <input placeholder="ChiefEvangelistOfficer" id="first_name" type="text" class="validate">
+                                    <div class="input-field col s8">
+                                          <input placeholder="Elrich Bachman" id="first_name" type="text" class="validate">
                                           <label for="first_name">
-                                                <span class="black-text">Username</span>
+                                                <span class="black-text">Full Name</span>
                                           </label>
                                     </div>
 <!--                        </form>  -->
@@ -50,7 +56,7 @@
                   <div class="row">
                         <form class="col s12">
                               <div class="row">
-                                    <div class="input-field col s6">
+                                    <div class="input-field col s8">
                                           <input placeholder="Password" id="password" type="text" class="validate">
                                           <label for="password">
                                                 <span class="black-text">Password</span>
@@ -66,7 +72,7 @@
                   <div class="row">
                         <form class="col s12">
                               <div class="row">
-                                    <div class="input-field col s6">
+                                    <div class="input-field col s8">
                                           <input placeholder="Password" id="password" type="text" class="validate">
                                           <label for="confirm password">
                                                 <span class="black-text">Confirm Password</span>
@@ -83,7 +89,7 @@
                   <div class="row">
                         <form class="col s12">
                               <div class="row">
-                                    <div class="input-field col s6">
+                                    <div class="input-field col s8">
                                           <input placeholder="erlichBachman@piedpiper.com" id="email"type="text" class="validate">
                                           <label for="email">
                                                 <span class="black-text">Email</span>
@@ -97,31 +103,44 @@
 <!--++++++++++++++++++++++++-->
 <!-- Classes drop down box  -->
 <!--++++++++++++++++++++++++-->
+<!--
                   <div class="row">
-                        <div class="input-field col s6">
+                        <div class="input-field col s8">
                               <select multiple>
                                     <option value="" disabled selected>Choose Your Class</option>
-                                    <option value="1">CSE 115</option>
-                                    <option value="2">MTH 142</option>
-                                    <option value="3">ENG 101</option>
-                                    <option value="4">UGC 112</option>
+                                    <option value="1" class="others">CSE 115</option>
+                                    <option value="2" class="others">MTH 142</option>
+                                    <option value="3" class="others">ENG 101</option>
+                                    <option value="4" class="others">UGC 112</option>
                               </select>
                               <label>Select Your Classes</label>
                         </div>
                   </div>
+-->
 <!--+++++++++++++++++-->
 <!-- Submit Button   -->
 <!--+++++++++++++++++-->
+<!--
                   <button class="" type="submit" name="action">
                         <i class="material-icons md-48 center">send</i>
                   </button>
+-->
+<!--                  <button class="" type="submit" name="action">  -->
+                  <div class = "#"style="padding-left:80px; ">
+                        <a class="waves-effect waves-light btn " style = "background-color:#009933;"><i class="material-icons right"></i>next</a>
+                  </div>
+<!--                  </button>  -->
+
+      </div>
+
+</div>
+</div>
 <!--+++++++++++++++++++++++++++++++++++-->
 <!--Import jQuery before materialize.js-->
 <!--+++++++++++++++++++++++++++++++++++-->
                   <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
                   <script type="text/javascript" src="js/materialize.min.js"></script>
                   <script> $('select').material_select(); </script>
-            </div>
-      </div>
+
 </body>
 </html>
