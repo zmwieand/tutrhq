@@ -1,0 +1,21 @@
+date: October 3rd, 2016
+meeting_type: TA
+attendance: [tmweppne, wesleycs, zmwieand, daviddob,brijeshr]
+absent: [NONE]
+excused_absences: [NONE]
+task_progress: [
+  {ubit: <tmweppne>, progress: User stories},
+  {ubit: <wesleycs>, progress: working with Ionic },
+  {ubit: <zmwieand>, progress: finished report an issue},
+  {ubit: <daviddob>, progress: finished researching Auth0},
+  {ubit: <brijeshr>, progress: pushed Node to repo},
+  ]
+issues: [NONE]
+Notes:  |templating 
+	|page for class registration ->Tim
+	|zach continue with redoing frontend
+	|how to port auth0 to mongo
+	|redo tim & wes frontend with jade
+
+
+
