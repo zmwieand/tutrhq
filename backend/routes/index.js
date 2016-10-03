@@ -5,7 +5,7 @@ var router = express.Router();
 
 var github = require('octonode');
 var client = github.client('49538b5fc87b92772b10c1cff9e8c09e9a6ab99d');
-var ghrepo = client.repo('zmwieand/CSE116');
+var ghrepo = client.repo('zmwieand/tutrhq');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -25,7 +25,11 @@ router.post('/report', function (req, res, next) {
     ghrepo.issue({
         "title": title,
         "body": description,
-        "assignee": "zmwieand",
+        "assignees": ["zmwieand",
+                      "daviddob",
+                      "Tmweppner",
+                      "wesleycs",
+                      "brijeshrakholia"],
         "labels" : ["user-report"]
     }, function() {});
 
