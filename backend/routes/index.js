@@ -14,7 +14,7 @@ router.get('/', function(req, res, next) {
 
 /* GET form to report a problem */
 router.get('/report', function (req, res, next) {
-    res.render("problem")
+    res.render("problem");
 });
 
 /* POST form to report a problem */
@@ -33,7 +33,7 @@ router.post('/report', function (req, res, next) {
         "labels" : ["user-report"]
     }, function() {});
 
-    res.render('index', {title: 'Issue Posted'});
+    res.redirect('/');
 });
 
 module.exports = router;
