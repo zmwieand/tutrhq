@@ -1,8 +1,25 @@
-form(action="", method="post")
-    label Email Address
-    input(type="email", id="email_address", name="email_address")
+block content
 
-    label Password
-    input(type="password", id="password", name="password")
+  div(class="navbar-fixed")
+    nav
+      div(class="nav-wrapper white z-depth-1")
+        a(id="logo" href="#" class="brand-logo left"): img(src="/img/tutrlogo.png" style="height: 50px; margin-top: 7px; margin-left:10px;")
+        ul(id="nav-mobile" class="left" style="padding-left: 30px;")
+          li: a(id="text" style="color:black; font-size:40px;") &ensp; tutr
 
-    input(type="submit", value="Login!")
+  main
+    center
+      div(class="section")
+
+      div(class="container")
+        div(class="z-depth-1 white lighten-4 row" style="display: inline-block; padding: 32px 48px 0px 48px; border: 1px solid #EEE;")
+        img(src="/img/tutrlogo.png" style="height: 100px; top-margin: 4px;")
+
+        form(class="col s12" method="post")
+          div(class="row")
+            div(class="col s12")
+
+        div(class="row")
+          div(class="input-field col s12")
+            input(class="validate" type="email" id="email")
+            label(for="email") Enter your .edu email address
