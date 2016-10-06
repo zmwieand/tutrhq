@@ -27,6 +27,11 @@ block content
                 | History
 
         li
+            a(href="#become-tutor", class="modal-trigger")
+                i(class="material-icons") new_releases
+                | Become a Tutor
+
+        li
             a(href="#report-modal", class="modal-trigger")
                 i(class="material-icons") warning
                 | Report a Problem
@@ -50,6 +55,7 @@ block content
 
     include modals/account_information
     include modals/courses
+    include modals/become-tutor
     include modals/report_problem
     include modals/delete
 
