@@ -1,7 +1,7 @@
 $(document).ready(function(){
   $("#tutors").hide();
   $("#request").hide();
-  $("button").click(function() {
+  $(".eng").click(function() {
     $("#account").hide();
     $("#request").show();
     $("#loading-message").text("Finding Tutor's in your area ...");
