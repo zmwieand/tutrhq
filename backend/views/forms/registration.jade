@@ -1,20 +1,33 @@
-form(action="/users/register", method="post")
-    label Email Address
-    input(type="email", name="email_address", id="email_address" required)
+block content
 
-    label Password
-    input(type="password", name="password", id="password" required)
+  div(class="navbar-fixed")
+    nav
+      div(class="nav-wrapper white z-depth-1")
+        a(id="logo" href="/" class="brand-logo left"): img(src="/img/tutrlogo.png" style="height: 45px; margin-top: 7px; margin-left:10px;")
+        ul(id="nav-mobile" class="left" style="padding-left: 30px;")
+          li: a(id="text" style="color:black; font-size:40px;") &ensp; tutr
 
-    label Confirm Password
-    input(type="password", name="confirm_password", id="confirm_password" required)
+div(class="section")
 
-    label First Name
-    input(type="text", name="first_name", id="first_name" required)
+div(class="container")
 
-    label Last Name
-    input(type="text", name="last_name", id="last_name" required)
+  form(action="/users/register", method="post")
+      label Email Address
+      input(type="email", name="email_address", id="email_address" required)
 
-    label Phone Number
-    input(type="tel", name="phone_number", id="phone_number" required)
+      label Password
+      input(type="password", name="password", id="password" required)
 
-    input(type="submit", value="Next!")
+      label Confirm Password
+      input(type="password", name="confirm_password", id="confirm_password" required)
+
+      label First Name
+      input(type="text", name="first_name", id="first_name" required)
+
+      label Last Name
+      input(type="text", name="last_name", id="last_name" required)
+
+      label Phone Number
+      input(type="tel", name="phone_number", id="phone_number" required)
+
+      input(type="submit", value="Next!")
