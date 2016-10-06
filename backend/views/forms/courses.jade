@@ -1,0 +1,15 @@
+form(action="add_course" method="post" id="courses_form")
+    each course in user.courses
+        div.row
+            div(class="col s11")
+                select.browser-default 
+                    option #{course}
+            div(class="col s1")
+                span
+                    a(class="btn red")
+                        i.material-icons close
+
+div.row
+    div(class="col s12 center-align")
+        a(class="btn-floating btn-large green")
+            i.material-icons add
