@@ -1,6 +1,13 @@
 div(id="delete-modal", class="modal")
     div(class="modal-content center align")
         h4 Whoa there!
+        p Once you delete your account, there is no getting it back.
+            br
+            | Make sure you wish to do this. 
         form(action="/users/remove", method="post")
-            a(class="btn grey modal-close") Cancel
-            input(type="submit", class="btn red",  value="Yep, delete it")
+            div.row
+                div(class="col s6 right-align")
+                    a(class="btn grey modal-close") Cancel
+            
+                div(class="col s6 left-align")
+                    input(type="submit", class="btn red",  value="Delete it")

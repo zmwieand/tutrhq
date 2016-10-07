@@ -4,10 +4,9 @@ div.modal(id="account-modal")
             div(class="col s12")
                 h5 Request a Tutor
 
-        each course in user.courses
-            div.row
-                div(class="col s12")
-                    button(class="waves-effect waves-light btn red eng") #{course}
+        ul.collection
+            each course in user.courses
+                a(class="collection-item eng") #{course}
 
         include ../forms/request
 

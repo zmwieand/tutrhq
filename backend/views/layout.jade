@@ -3,6 +3,7 @@ html
   head
     title= title
     link(rel='stylesheet', href="http://fonts.googleapis.com/icon?family=Material+Icons")
+    link(rel='newest stylesheet', href='stylesheets/rating.css')
     link(rel='stylesheet', href='/stylesheets/materialize.css')
     link(rel='stylesheet', href='/stylesheets/desktop-css.css')
     <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
@@ -16,8 +17,9 @@ html
 
     script(type="text/javascript", src="modal-transition.js")
 
-    script(type="text/javascript")
-         $('.button').sideNav();
+    script(type="text/javascript", src="jquery.star.rating.js")
 
     script(type="text/javascript")
+        $('.button').sideNav();
         $(".modal-trigger").leanModal();
+        $('.rating').addRating();

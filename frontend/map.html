@@ -19,11 +19,6 @@
                 width: 100%;
                 height: 600px;
             }
-
-            .modal-view {
-                max-width: 500px;
-                min-width: 100px;
-            }
         </style>
         
     </head>
@@ -62,7 +57,7 @@
         </ul>
 
         <!-- Account Modal-->
-        <div id="account-modal" class="modal modal-view">
+        <div id="account-modal" class="modal">
         
         <div id="account" class="modal-content">
             <div class="row">
@@ -151,7 +146,7 @@
         </div>
 
         <!-- Account Information Modal -->
-        <div id="account-info" class="modal modal-view">
+        <div id="account-info" class="modal">
             <div class="modal-content">
                 <h4>Account Information</h4>
                 <form action="#" method="post">
@@ -217,7 +212,7 @@
         </div>
  -->
         <!-- Tutors Modal-->
-        <div id="tutors-modal" class="modal modal-view">
+        <div id="tutors-modal" class="modal">
             <div id="tutors" class="modal-content">
             <h4>Tutors in your area</h4>
             <ul class="collection">
@@ -249,40 +244,27 @@
           </div>
         </div>
 
-        <!-- Rating Modal -->
-        <div id="rating-modal" class="modal modal-view">
-            <div class="modal-content">
-                <center><h4>$17.38</h4></center>
-                <br>
-                <!-- use radio inputs -->
-                <center><div class="rating">
-                    <!-- <span>&#9734;</span>
-                    <span>&#9734;</span>
-                    <span>&#9734;</span>
-                    <span>&#9734;</span>
-                    <span>&#9734;</span> -->
-                    <form class="rating" action="#">
-        <!-- <legend>Please Rate:</legend> -->
-        <input type="radio" id="star5" name="rating" value="5" /><label for="star5"></label>
-        <input type="radio" id="star4" name="rating" value="4" /><label for="star4"></label>
-        <input type="radio" id="star3" name="rating" value="3" /><label for="star3"></label>
-        <input type="radio" id="star2" name="rating" value="2" /><label for="star2"></label>
-        <input type="radio" id="star1" name="rating" value="1" /><label for="star1"></label>
-    </form><!-- 
-                    <input type="radio" id="star1half" name="rating" value="1 and a half" /><label class="half" for="star1half" title="Meh - 1.5 stars"></label>
-                    <input type="radio" id="star1half" name="rating" value="1 and a half" /><label class="half" for="star1half" title="Meh - 1.5 stars"></label>
-                    <input type="radio" id="star1half" name="rating" value="1 and a half" /><label class="half" for="star1half" title="Meh - 1.5 stars"></label>
-                    <input type="radio" id="star1half" name="rating" value="1 and a half" /><label class="half" for="star1half" title="Meh - 1.5 stars"></label>
-                    <input type="radio" id="star1half" name="rating" value="1 and a half" /><label class="half" for="star1half" title="Meh - 1.5 stars"></label> -->
-                </div></center>
-                
-            </div>
-            <div class="modal-footer"><a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Submit</a></div>
+        <!-- Rating Modal-->
+        <div id="rating-modal" class="modal">
+            <div class="modal-content center-align">
+                <h4>$17.38</h4>
+                <form method="post" action="#">
+                    <div class="row">
+                        <div class="col s12">
+                            <div class="rating"></div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col s12 right-align">
+                            <input type="submit" value="Submit!" class="btn green">
+                        </div>
+                    </div>
+                </form>
+            </div>            
         </div>
 
-
         <!-- Report a Problem Modal -->
-        <div id="problem-modal" class="modal modal-view">
+        <div id="problem-modal" class="modal">
             <div class="modal-content">
                 <h4>What's wrong?!</h4>
                 <br>
@@ -293,12 +275,14 @@
                     </div>
 
                     <div class="input-field">
-                        <textarea id="description" class="materialize-textarea" type="textarea" required></textarea>
+                        <textarea id="description" class="materialize-textarea" type="textarea" length="500" required></textarea>
                         <label for="description">Description</label>
                     </div>
 
+                    <br>
+
                     <div class="input-field right-align">
-                        <input type="submit" value="Submit!" class="btn blue">
+                        <input type="submit" value="Submit!" class="btn green">
                     </div>
                 </form>
             </div>
@@ -319,7 +303,7 @@
         </div>
 
         <!-- Courses Modal -->
-        <div id="courses-modal" class="modal modal-view">
+        <div id="courses-modal" class="modal">
             <div class="modal-content">
                 <ul class="collection">
                     <li class="collection-item">English 101<a href="#"><span class="badge"><i class="material-icons">cancel</i></span></a></li>
@@ -381,7 +365,7 @@
         </div>
 
         <!-- Cancel Modal-->
-        <div id="cancel-modal" class="modal modal-view">
+        <div id="cancel-modal" class="modal">
             <div class="modal-content">
                 <h4>Why can't you make it?</h4>
                 <form action="#" method="post">
@@ -402,7 +386,7 @@
         </div>
 
         <!-- Delete Accound Modal -->
-      <div id="delete-modal" class="modal modal-view">
+      <div id="delete-modal" class="modal">
         <div class="modal-content">
           <center>
           <h4>Whoa, there!</h4>
@@ -508,7 +492,9 @@
         <!--Import jQuery before materialize.js-->
         <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
         <script type="text/javascript" src="style/js/materialize.min.js"></script>
+        <script src="style/js/jquery.star.rating.js"></script>
 
+        <script type="text/javascript">$('.rating').addRating();</script>
         <script>$(".button").sideNav();</script>
         <script>$(".modal-trigger").leanModal();</script>
         <script type="text/javascript">$('#description').trigger('autoresize')</script>

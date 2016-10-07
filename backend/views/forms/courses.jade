@@ -1,0 +1,19 @@
+form(action="/users/add_courses" method="post" id="courses_form")
+    div.wrapper
+        each course in user.courses
+            div.row
+                div(class="col s10")
+                    select.browser-default(name="course")
+                        option(value=course) #{course}
+                div(class="col s2")
+                    a(class="btn red remove_course_button")
+                        i.material-icons close
+
+    div.row
+        div(class="col s12")
+            a(class="btn green" id="add_course_button")
+                i.material-icons add
+
+    div.row
+        div(class="col s12 right-align")
+            input(type="submit" value="Submit" class="btn blue")

@@ -1,14 +1,24 @@
 form(action="/users/update", method="post")
-    label Email Address
-    input(type="email" id="email_address", name="email_address", value=user.email_address,  required)
+    div.row
+        div(class="col s12 input-field")
+            label Email Address
+            input(type="email" id="email_address", name="email_address", value=user.email_address,  required)
 
-    label First Name
-    input(type="text" id="first_name", name="first_name", value=user.first_name, required)
-    
-    label Last Name
-    input(type="text" id="last_name", name="last_name", value=user.last_name, required)
-    
-    label Phone Number
-    input(type="tel" id="phone_number", name="phone_number", value=user.phone_number, required)
-    
-    input(type="submit", value="Submit")
+    div.row
+        div(class="col s12 input-field")
+            label First Name
+            input(type="text" id="first_name", name="first_name", value=user.first_name, required)
+   
+    div.row
+        div(class="col s12 input-field") 
+            label Last Name
+            input(type="text" id="last_name", name="last_name", value=user.last_name, required)
+   
+    div.row
+        div(class="col s12 input-field") 
+            label Phone Number
+            input(type="tel" id="phone_number", name="phone_number", value=user.phone_number, required)
+   
+    div.row
+        div(class="col s12 input-field right-align") 
+            input(type="submit", value="Submit" class="btn blue")
