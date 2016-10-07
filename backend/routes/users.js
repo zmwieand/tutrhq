@@ -59,6 +59,7 @@ router.post('/register', function(req, res, next) {
 });
 
 router.post('/update', function(req, res, next) {
+    console.log(req.body);
 	// check email does not exist if changed
 	for (var n in UPDATEABLE_FIELDS) {
 		var field = UPDATEABLE_FIELDS[n];
@@ -84,7 +85,9 @@ router.post('/remove', function(req, res, next) {
 });
 
 router.post('/add_courses', function(req, res, next) {
-	res.send("Add Courses");
+    console.log(req.body)
+    user['courses'] = req.body['course'];
+	res.redirect("/users");
 });
 
 router.post('/remove_course', function(req, res, next) {
