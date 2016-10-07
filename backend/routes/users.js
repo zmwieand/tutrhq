@@ -69,16 +69,6 @@ router.post('/update', function(req, res, next) {
 	res.redirect("/users");
 });
 
-// TODO(zmwieand): remove this
-router.get('/update', function(req, res, next) {
-	res.render('update');
-});
-
-// TODO(zmwieand): remove this
-router.get('/get', function(req, res, next) {
-	res.send(user);
-});
-
 router.post('/remove', function(req, res, next) {
 	// remove user from db
 	res.redirect('/');
@@ -88,10 +78,6 @@ router.post('/add_courses', function(req, res, next) {
     console.log(req.body)
     user['courses'] = req.body['course'];
 	res.redirect("/users");
-});
-
-router.post('/remove_course', function(req, res, next) {
-	res.send("Remove Courses");
 });
 
 module.exports = router;
