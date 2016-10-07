@@ -15,7 +15,7 @@ $(document).ready(function(){
   var new_course = '<div class="row">' +
                         '<div class="col s10">' +
                             '<select class="browser-default" name="course">' +
-                                '<option disabled>Select the course</option>' +
+                                '<option disabled selected>Select your course</option>' +
                                 '<option value="CSE 115">CSE 115</option>' +
                                 '<option value="MTH 141">MTH 141</option>' +
                                 '<option value-"UGC 112">UGC 112</option>' +
