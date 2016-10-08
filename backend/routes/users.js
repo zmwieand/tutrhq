@@ -26,15 +26,6 @@ var tutors = [
 	 "rating": 0.0},
 ];
 
-// var user = {
-// 	"email_address" : "something@somewhere.com",
-// 	"first_name" : "Steve",
-// 	"last_name" : "Something",
-// 	"phone_number" : "123-123-4567",
-// 	"courses" : ["CSE 115", "MTH 141"],
-// 	"role" : "student"
-// };
-
 var UPDATEABLE_FIELDS = ["email_address", "first_name",
 						 "last_name", "phone_number"];
 
@@ -88,7 +79,7 @@ router.post('/register', function(req, res, next) {
 });
 
 router.post('/update', ensureLoggedIn, function(req, res, next) {
-    //console.log(req.body);
+
     User.findByEmail(req.user._json.email, function (err, user) {
     	if (user) {
     		if (req.body['nickname']) user.nickname = req.body['nickname'];
@@ -101,9 +92,11 @@ router.post('/update', ensureLoggedIn, function(req, res, next) {
     	});
     	res.redirect("/users");
     });
+
 });
 
 router.post('/remove', ensureLoggedIn, function(req, res, next) {
+	
 	User.findByEmail(req.user._json.email, function(err, user) {
 		if (user) {
 			user.remove(function(err){
@@ -113,6 +106,11 @@ router.post('/remove', ensureLoggedIn, function(req, res, next) {
 		}
 		res.redirect('/');
 	});
+
+});
+
+router.post('/rating', ensureLoggedIn, function(req, res, next) {
+	res.redirect('/users');
 });
 
 router.post('/add_courses', ensureLoggedIn, function(req, res, next) {
@@ -125,7 +123,6 @@ router.post('/add_courses', ensureLoggedIn, function(req, res, next) {
     		} else {
     			user.courses = [];
     		}
-    		
     	}
     	user.save(function(err) {
 			if (err) throw err;

@@ -18,17 +18,6 @@ var userSchema = new Schema({
   transactions: []
 });
 
-// the schema is useless so far
-// we need to create a model using it
-
-
-/*   
-    ==> create -- done
-    ==> find -- done
-    ==> remove
-    ==> update
-*/
-
 userSchema.statics.findByEmail = function(email_address, cb) {
   this.findOne({ email_address: email_address }, function(err, user) {
     if (err) return cb(err);
