@@ -104,8 +104,15 @@ router.post('/update', ensureLoggedIn, function(req, res, next) {
 });
 
 router.post('/remove', ensureLoggedIn, function(req, res, next) {
-	// remove user from db
-	res.redirect('/');
+	User.findByEmail(req.user._json.email, function(err, user) {
+		if (user) {
+			user.remove(function(err){
+				if (err) return err;
+				console.log(req.user._json.email + "is removed from the tutr database.");
+			});
+		}
+		res.redirect('/');
+	});
 });
 
 router.post('/add_courses', ensureLoggedIn, function(req, res, next) {
