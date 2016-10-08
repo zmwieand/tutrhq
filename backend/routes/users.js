@@ -53,24 +53,24 @@ router.get('/', ensureLoggedIn, function(req, res, next) {
 		var newUser = new User({
 	      	first_name: out.given_name,
 	      	last_name: out.family_name,
+	      	nickname: "",
 		    email_address: out.email,
-		    contact: "fuck off, teach yourself.",
+		    contact: "",
 		    courses: [],
 		    pic: out.picture,
 		    role: "student",
 		    rating: 0.0,
 		    major: "computer science",
-		    hourly_rate: 30.00,
+		    hourly_rate: 0.0,
 		    transactions: []
 	 	});
 	 	newUser.save(function(err) {
 			if (err) throw err;
-			res.render('map', {"user": newUser, "tutors": tutors});
 		});
+		res.render('map', {"user": newUser, "tutors": tutors});
 	}
   
   });
-  //res.render('map', {"user": user, "tutors": tutors});
 });
 
 router.get('/register', function(req, res, next) {
@@ -88,14 +88,19 @@ router.post('/register', function(req, res, next) {
 });
 
 router.post('/update', ensureLoggedIn, function(req, res, next) {
-    console.log(req.body);
-	// check email does not exist if changed
-	for (var n in UPDATEABLE_FIELDS) {
-		var field = UPDATEABLE_FIELDS[n];
-		user[field] = req.body[field];
-	}
-	// update into db
-	res.redirect("/users");
+    //console.log(req.body);
+    User.findByEmail(req.user._json.email, function (err, user) {
+    	if (user) {
+    		if (req.body['nickname']) user.nickname = req.body['nickname'];
+    		if (req.body['major']) user.major = req.body['major'];
+    		if (req.body['pic']) user.pic = req.body['pic'];
+    		if (req.body['contact']) user.contact = req.body['contact'];
+    	}	
+    	user.save(function(err) {
+    		if (err) return err;
+    	});
+    	res.redirect("/users");
+    });
 });
 
 router.post('/remove', ensureLoggedIn, function(req, res, next) {
@@ -104,14 +109,23 @@ router.post('/remove', ensureLoggedIn, function(req, res, next) {
 });
 
 router.post('/add_courses', ensureLoggedIn, function(req, res, next) {
-    console.log(req.body)
-    user['courses'] = req.body['course'];
-	res.redirect("/users");
+    
+    User.findByEmail(req.user._json.email, function (err, user) {
+    	if (user) {
+    		console.log(req.body['course']);
+    		if (req.body['course']) {
+    			user.courses = req.body['course'];	
+    		} else {
+    			user.courses = [];
+    		}
+    		
+    	}
+    	user.save(function(err) {
+			if (err) throw err;
+		});
+    	res.redirect('/users');
+    });
+	
 });
-
-// /* GET user profile. */
-// router.get('/', ensureLoggedIn, function(req, res, next) {
-//   res.render('user', { user: req.user });
-// });
 
 module.exports = router;
