@@ -26,13 +26,6 @@ var tutors = [
 	 "rating": 0.0},
 ];
 
-var UPDATEABLE_FIELDS = ["email_address", "first_name",
-						 "last_name", "phone_number"];
-
-var REGISTRATION_FIELDS = ["email_address", "password",
-						   "confirm_password", "first_name",
-						   "last_name", "phone_number"];
-
 /* GET users listing. */
 router.get('/', ensureLoggedIn, function(req, res, next) {
  
@@ -69,12 +62,6 @@ router.get('/register', function(req, res, next) {
 });
 
 router.post('/register', function(req, res, next) {
-	// check email doesnt exist with another user
-	// check passwords match
-	for (n in REGISTRATION_FIELDS) {
-		var field = REGISTRATION_FIELDS[n];
-	}
-	// insert into db
 	res.send(req.body);
 });
 
