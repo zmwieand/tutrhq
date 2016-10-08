@@ -2,6 +2,7 @@ var express = require('express');
 var passport = require('passport');
 var ensureLoggedIn = require('connect-ensure-login').ensureLoggedIn();
 var router = express.Router();
+var User = require('../models/user');
 
 var tutors = [
 	{"first_name": "Jian",
@@ -25,14 +26,14 @@ var tutors = [
 	 "rating": 0.0},
 ];
 
-var user = {
-	"email_address" : "something@somewhere.com",
-	"first_name" : "Steve",
-	"last_name" : "Something",
-	"phone_number" : "123-123-4567",
-	"courses" : ["CSE 115", "MTH 141"],
-	"role" : "student"
-};
+// var user = {
+// 	"email_address" : "something@somewhere.com",
+// 	"first_name" : "Steve",
+// 	"last_name" : "Something",
+// 	"phone_number" : "123-123-4567",
+// 	"courses" : ["CSE 115", "MTH 141"],
+// 	"role" : "student"
+// };
 
 var UPDATEABLE_FIELDS = ["email_address", "first_name",
 						 "last_name", "phone_number"];
@@ -43,7 +44,37 @@ var REGISTRATION_FIELDS = ["email_address", "password",
 
 /* GET users listing. */
 router.get('/', ensureLoggedIn, function(req, res, next) {
-  res.render('map', {"user": user, "tutors": tutors});
+ 
+  User.findByEmail(req.user._json.email, function(err, user) {
+  	var out = req.user._json;
+	if (user === null) {
+		user = new User({
+		    name: {
+		      first: out.given_name,
+		      last: out.family_name
+		    },
+		    email: out.email,
+		    contact: "fuck off, teach yourself.",
+		    classes: [],
+		    pic: out.picture,
+		    role: "student",
+		    rating: 0.0,
+		    major: "computer science",
+		    hourly_rate: 30.00,
+		    transactions: []
+	 	});
+
+		  // save the user
+		user.save(function(err) {
+			if (err) throw err;
+			console.log('User created!');
+		});
+		//res.render('map', {"user": user, "tutors": tutors});
+  	}
+  	res.render('map', {"user": user, "tutors": tutors});
+  
+  });
+  //res.render('map', {"user": user, "tutors": tutors});
 });
 
 router.get('/register', function(req, res, next) {

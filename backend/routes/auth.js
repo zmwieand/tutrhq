@@ -11,7 +11,7 @@ var env = {
 
 router.get('/login', function(req, res){
     res.render('login', { env: env });
-  });
+});
 
 router.get('/logout', function(req, res){
   req.logout();

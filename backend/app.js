@@ -9,7 +9,9 @@ var dotenv = require('dotenv');
 var passport = require('passport');
 var Auth0Strategy = require('passport-auth0');
 
-
+// db stuff
+var mongoose = require('mongoose');
+mongoose.connect('mongodb://tutr:tutrhq1738@ds053176.mlab.com:53176/tutrhq');
 
 dotenv.load();
 
