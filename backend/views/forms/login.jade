@@ -16,32 +16,14 @@ block content
       img(src="/img/tutrlogo.png" style="height: 100px; top-margin: 4px;")
 
     div(class="section")
-    button(onclick="signinGoogle()") Log In with Google
     br
-    form(action="", method="post")
-      div(class="left" style="color:grey; margin-left:50px;") Enter your .edu email
-
-      div(class="center")
-        input(type="email", id="email_address", name="email_address" style="width:350px; background-color:#f3f3f3; border-bottom: #f3f3f3;")
-
-    form(action="", method="post")
-      div(class="left" style="color:grey; margin-left:50px;") Enter your password
-
-      div(class="center")
-        input(type="password", id="password", name="password" style="width:350px; background-color:#f3f3f3; border-bottom: #f3f3f3; margin-bottom:15px;")
-
-        label(style="float:right; ")
-          a(class="pink-text" href="#!" style="padding-right:50px;") forgot password?
-      div(class="section")
-      div(class="section")
-
-      div(class="center")
-        input(type="submit", name="btn_login" class="col s12 l12 btn btn-large waves effect" style="background-color:#009933"
-        value="                             Login!                            ")
+    div(class="center")
+        button(onclick="signinGoogle()" name="btn_login" class="col s12 l12 btn btn-large waves effect" style="background-color:#009933") Sign in with Google!
 
         div(class="section")
         div(class="section")
           a(class="center" href="/users/register/") Don't have an account? Sign Up!
+
 
   div(class="section")
   div(class="section")
