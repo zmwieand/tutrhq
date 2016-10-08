@@ -3,18 +3,12 @@
 ### Description
 Welcome to the source code of tutr! 
 
-### Installation
-
-``` 
-$ sudo apt-get install npm
-$ sudo apt-get install nodejs
-$ npm install express
-$ npm install formidable
+### How to start `tutr`
 
 ```
 
-### How to start `tutr`
-```;
+$ sudo apt-get install npm
+$ sudo apt-get install nodejs
 $ cd app
 $ npm install
 $ npm start
