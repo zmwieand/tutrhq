@@ -60,7 +60,7 @@ router.get('/', ensureLoggedIn, function(req, res, next) {
 		    pic: out.picture,
 		    role: "student",
 		    rating: 0.0,
-		    major: "computer science",
+		    major: "",
 		    hourly_rate: 0.0,
 		    transactions: []
 	 	});
