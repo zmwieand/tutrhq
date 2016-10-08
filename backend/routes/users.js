@@ -1,14 +1,7 @@
 var express = require('express');
+var passport = require('passport');
+var ensureLoggedIn = require('connect-ensure-login').ensureLoggedIn();
 var router = express.Router();
-
-var user = {
-	"email_address" : "something@somewhere.com",
-	"first_name" : "Steve",
-	"last_name" : "Something",
-	"phone_number" : "123-123-4567",
-	"courses" : ["CSE 115", "MTH 141"],
-	"role" : "student"
-};
 
 var tutors = [
 	{"first_name": "Jian",
@@ -32,6 +25,15 @@ var tutors = [
 	 "rating": 0.0},
 ];
 
+var user = {
+	"email_address" : "something@somewhere.com",
+	"first_name" : "Steve",
+	"last_name" : "Something",
+	"phone_number" : "123-123-4567",
+	"courses" : ["CSE 115", "MTH 141"],
+	"role" : "student"
+};
+
 var UPDATEABLE_FIELDS = ["email_address", "first_name",
 						 "last_name", "phone_number"];
 
@@ -40,7 +42,7 @@ var REGISTRATION_FIELDS = ["email_address", "password",
 						   "last_name", "phone_number"];
 
 /* GET users listing. */
-router.get('/', function(req, res, next) {
+router.get('/', ensureLoggedIn, function(req, res, next) {
   res.render('map', {"user": user, "tutors": tutors});
 });
 
@@ -58,7 +60,7 @@ router.post('/register', function(req, res, next) {
 	res.send(req.body);
 });
 
-router.post('/update', function(req, res, next) {
+router.post('/update', ensureLoggedIn, function(req, res, next) {
     console.log(req.body);
 	// check email does not exist if changed
 	for (var n in UPDATEABLE_FIELDS) {
@@ -69,15 +71,20 @@ router.post('/update', function(req, res, next) {
 	res.redirect("/users");
 });
 
-router.post('/remove', function(req, res, next) {
+router.post('/remove', ensureLoggedIn, function(req, res, next) {
 	// remove user from db
 	res.redirect('/');
 });
 
-router.post('/add_courses', function(req, res, next) {
+router.post('/add_courses', ensureLoggedIn, function(req, res, next) {
     console.log(req.body)
     user['courses'] = req.body['course'];
 	res.redirect("/users");
 });
+
+// /* GET user profile. */
+// router.get('/', ensureLoggedIn, function(req, res, next) {
+//   res.render('user', { user: req.user });
+// });
 
 module.exports = router;

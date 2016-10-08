@@ -16,7 +16,8 @@ block content
       img(src="/img/tutrlogo.png" style="height: 100px; top-margin: 4px;")
 
     div(class="section")
-
+    button(onclick="signinGoogle()") Log In with Google
+    br
     form(action="", method="post")
       div(class="left" style="color:grey; margin-left:50px;") Enter your .edu email
 
@@ -47,3 +48,25 @@ block content
   div(class="section")
   div(class="page-footer" style="height:60px; background-color:white;")
     h4(style="color:#dadada;") &nbsp; tutr
+
+  script.
+    var auth0 = new Auth0({
+        domain:      '#{env.AUTH0_DOMAIN}',
+        clientID:    '#{env.AUTH0_CLIENT_ID}',
+        callbackURL: '#{env.AUTH0_CALLBACK_URL}',
+      });
+
+    function signinGoogle() {
+      auth0.signin({
+        connection: 'google-oauth2',
+      });
+    }
+
+    function signinDb() {
+      auth0.signin({
+        connection: 'Username-Password-Authentication',
+        username: document.getElementById('email_address').value,
+        password: document.getElementById('password').value,
+      });
+    }
+
