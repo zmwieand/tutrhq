@@ -26,7 +26,6 @@ var tutors = [
 	 "rating": 0.0},
 ];
 
-/* GET users listing. */
 router.get('/', ensureLoggedIn, function(req, res, next) {
  
   User.findByEmail(req.user._json.email, function(err, user) {
@@ -55,14 +54,6 @@ router.get('/', ensureLoggedIn, function(req, res, next) {
 	}
   
   });
-});
-
-router.get('/register', function(req, res, next) {
-	res.render('register');
-});
-
-router.post('/register', function(req, res, next) {
-	res.send(req.body);
 });
 
 router.post('/update', ensureLoggedIn, function(req, res, next) {
@@ -117,6 +108,14 @@ router.post('/add_courses', ensureLoggedIn, function(req, res, next) {
     	res.redirect('/users');
     });
 	
+});
+
+router.get('/register', function(req, res, next) {
+	res.render('register');
+});
+
+router.post('/register', function(req, res, next) {
+	res.send(req.body);
 });
 
 module.exports = router;
