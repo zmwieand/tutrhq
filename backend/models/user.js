@@ -4,13 +4,11 @@ var Schema = mongoose.Schema;
 
 // create a schema
 var userSchema = new Schema({
-  name: {
-      first: String, 
-      last: String
-  },
-  email: { type: String, required: true, unique: true },
+  first_name: String,
+  last_name: String,
+  email_address: { type: String, required: true, unique: true },
   contact: String,
-  classes: [],
+  courses: [],
   pic: String,
   role: String,
   rating: Number,
@@ -30,10 +28,11 @@ var userSchema = new Schema({
     ==> update
 */
 
-userSchema.statics.findByEmail = function(email_address) {
+userSchema.statics.findByEmail = function(email_address, cb) {
   this.findOne({ email: email_address }, function(err, user) {
-    if (err) return err;
-    return user;
+    if (err) return cb(err);
+    if (user) return cb(null, user);
+    return cb();
   });
 };
 

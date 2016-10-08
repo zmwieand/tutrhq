@@ -47,15 +47,15 @@ router.get('/', ensureLoggedIn, function(req, res, next) {
  
   User.findByEmail(req.user._json.email, function(err, user) {
   	var out = req.user._json;
-	if (user === null) {
-		user = new User({
-		    name: {
-		      first: out.given_name,
-		      last: out.family_name
-		    },
-		    email: out.email,
+	if (user) {
+		res.render('map', {"user": user, "tutors": tutors});
+	} else {
+		var newUser = new User({
+	      	first_name: out.given_name,
+	      	last_name: out.family_name,
+		    email_address: out.email,
 		    contact: "fuck off, teach yourself.",
-		    classes: [],
+		    courses: [],
 		    pic: out.picture,
 		    role: "student",
 		    rating: 0.0,
@@ -63,15 +63,11 @@ router.get('/', ensureLoggedIn, function(req, res, next) {
 		    hourly_rate: 30.00,
 		    transactions: []
 	 	});
-
-		  // save the user
-		user.save(function(err) {
+	 	newUser.save(function(err) {
 			if (err) throw err;
-			console.log('User created!');
+			res.render('map', {"user": newUser, "tutors": tutors});
 		});
-		//res.render('map', {"user": user, "tutors": tutors});
-  	}
-  	res.render('map', {"user": user, "tutors": tutors});
+	}
   
   });
   //res.render('map', {"user": user, "tutors": tutors});
