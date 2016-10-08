@@ -1,4 +1,4 @@
-# `[tutrhq]`(http://tutrhq.com) sources
+# [`tutrhq`](http://tutrhq.com) sources
 
 ### Description
 Welcome to the source code of tutr! 
