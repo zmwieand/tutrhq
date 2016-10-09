@@ -1,0 +1,15 @@
+date: October 7th, 2016
+meeting_type: Group
+attendance: [tmweppne, wesleycs, zmwieand, daviddob,brijeshr]
+absent: [NONE]
+excused_absences: [NONE]
+task_progress: [
+  {ubit: <tmweppne>, progress: finished registration transfer to jade},
+  {ubit: <wesleycs>, progress: finished login and home page transfer to jade},
+  {ubit: <zmwieand>, progress: added in all end points for updating information, redid all frontend task: on reg include what courses people have},
+  {ubit: <daviddob>, progress: doing Auth0},
+  {ubit: <brijeshr>, progress: Setting up Mongo},
+  ]
+issues: [NONE]
+Notes:  |NONE
+	
