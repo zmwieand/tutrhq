@@ -15,11 +15,10 @@ mongoose.connect('mongodb://tutr:tutrhq1738@ds053176.mlab.com:53176/tutrhq');
 
 dotenv.load();
 
+// initializing routes
 var routes = require('./routes/index');
 var users = require('./routes/users');
 var auth = require('./routes/auth');
-
-
 
 // This will configure Passport to use Auth0
 var strategy = new Auth0Strategy({
@@ -65,6 +64,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(express.static(path.join(__dirname, 'public')));
 
+// accessing routes
 app.use('/', routes);
 app.use('/users', users);
 app.use('/auth', auth);
@@ -99,6 +99,5 @@ app.use(function(err, req, res, next) {
     error: {}
   });
 });
-
 
 module.exports = app;

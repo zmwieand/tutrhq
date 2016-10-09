@@ -6,8 +6,6 @@ var github = require('octonode');
 var client = github.client('49538b5fc87b92772b10c1cff9e8c09e9a6ab99d');
 var ghrepo = client.repo('zmwieand/tutrhq');
 
-
-
 var env = {
   AUTH0_CLIENT_ID: process.env.AUTH0_CLIENT_ID,
   AUTH0_DOMAIN: process.env.AUTH0_DOMAIN,
@@ -50,4 +48,5 @@ router.get('/callback',
   function(req, res) {
     res.redirect(req.session.returnTo || '/users');
 });
+
 module.exports = router;

@@ -1,4 +1,3 @@
-// grab the things we need
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
@@ -26,12 +25,6 @@ userSchema.statics.findByEmail = function(email_address, cb) {
   });
 };
 
-
 var User = mongoose.model('User', userSchema);
 
-
-// make this available to our users in our Node applications
 module.exports = User;
-
-
-

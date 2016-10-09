@@ -27,77 +27,66 @@ var tutors = [
 ];
 
 router.get('/', ensureLoggedIn, function(req, res, next) {
- 
   User.findByEmail(req.user._json.email, function(err, user) {
   	var out = req.user._json;
-	if (user) {
-		res.render('map', {"user": user, "tutors": tutors});
-	} else {
-		var newUser = new User({
+		if (user) {
+			res.render('map', {"user": user, "tutors": tutors});
+		} else {
+			var newUser = new User({
 	      	first_name: out.given_name,
 	      	last_name: out.family_name,
 	      	nickname: "",
-		    email_address: out.email,
-		    contact: "",
-		    courses: [],
-		    pic: out.picture,
-		    role: "student",
-		    rating: 0.0,
-		    major: "",
-		    hourly_rate: 0.0,
-		    transactions: []
-	 	});
-	 	newUser.save(function(err) {
-			if (err) throw err;
-		});
-		res.render('map', {"user": newUser, "tutors": tutors});
-	}
-  
+			    email_address: out.email,
+			    contact: "",
+			    courses: [],
+			    pic: out.picture,
+			    role: "student",
+			    rating: 0.0,
+			    major: "",
+			    hourly_rate: 0.0,
+			    transactions: []
+		 	});
+		 	newUser.save(function(err) {
+				if (err) throw err;
+			});
+			res.render('map', {"user": newUser, "tutors": tutors});
+		}
   });
 });
 
 router.post('/update', ensureLoggedIn, function(req, res, next) {
-
     User.findByEmail(req.user._json.email, function (err, user) {
     	if (user) {
     		if (req.body['nickname']) user.nickname = req.body['nickname'];
     		if (req.body['major']) user.major = req.body['major'];
     		if (req.body['pic']) user.pic = req.body['pic'];
     		if (req.body['contact']) user.contact = req.body['contact'];
-    	}	
+    	}
     	user.save(function(err) {
     		if (err) return err;
     	});
     	res.redirect("/users");
     });
-
 });
 
 router.post('/remove', ensureLoggedIn, function(req, res, next) {
-	
 	User.findByEmail(req.user._json.email, function(err, user) {
 		if (user) {
 			user.remove(function(err){
 				if (err) return err;
-				console.log(req.user._json.email + "is removed from the tutr database.");
+				console.log(req.user._json.email + " is removed from the tutr database.");
 			});
 		}
 		res.redirect('/');
 	});
-
-});
-
-router.post('/rating', ensureLoggedIn, function(req, res, next) {
-	res.redirect('/users');
 });
 
 router.post('/add_courses', ensureLoggedIn, function(req, res, next) {
-    
     User.findByEmail(req.user._json.email, function (err, user) {
     	if (user) {
     		console.log(req.body['course']);
     		if (req.body['course']) {
-    			user.courses = req.body['course'];	
+    			user.courses = req.body['course'];
     		} else {
     			user.courses = [];
     		}
@@ -107,7 +96,11 @@ router.post('/add_courses', ensureLoggedIn, function(req, res, next) {
 		});
     	res.redirect('/users');
     });
-	
+
+});
+
+router.post('/rating', ensureLoggedIn, function(req, res, next) {
+	res.redirect('/users');
 });
 
 router.get('/register', function(req, res, next) {
