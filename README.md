@@ -5,7 +5,7 @@ Welcome to the source code of tutr!
 
 ### How to start `tutr`
 
-```bash
+```
 
 $ sudo apt-get install npm
 $ sudo apt-get install nodejs
