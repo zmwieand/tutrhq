@@ -19,18 +19,9 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express'});
 });
 
-
 /* GET form to report a problem */
 router.get('/report', function (req, res, next) {
     res.render("problem");
-});
-
-router.get('/callback',
-  passport.authenticate('auth0', {
-    failureRedirect: '/url-if-something-fails',
-  }),
-  function(req, res) {
-    res.redirect(req.session.returnTo || '/users');
 });
 
 /* POST form to report a problem */
@@ -52,5 +43,11 @@ router.post('/report', function (req, res, next) {
     res.redirect('/');
 });
 
-
+router.get('/callback',
+  passport.authenticate('auth0', {
+    failureRedirect: '/authfailure',
+  }),
+  function(req, res) {
+    res.redirect(req.session.returnTo || '/users');
+});
 module.exports = router;
