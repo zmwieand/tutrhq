@@ -4,12 +4,12 @@ div(id="timer-modal" class="modal bottom-sheet")
 
         div.row
             div(class="col s4 right-align")
-                a(class="btn green start-btn")
+                a(id="start-btn" class="btn green")
                     i.material-icons play_arrow
             div(class="col s4")
-                a(href="#rating-modal" class="btn red stop-btn modal-close modal-trigger")
+                a(href="#rating-modal" id="stop-btn" class="btn red modal-close modal-trigger")
                     i.material-icons stop
             div(class="col s4 left-align")
-                a(href="#cancel-modal" class="btn grey modal-trigger modal-close")
+                a(href="#cancel-modal" id="cancel-btn" class="btn grey modal-trigger modal-close")
                     i.material-icons close
 

@@ -47,10 +47,24 @@ $(document).ready(function(){
     }
   });
 
+  // notification buttons
   $('.fixed-action-btn').hide();
-
+  
   $('#accept-btn').click(function(){
     $('.fixed-action-btn').show();
+  });
+  
+  // timer buttons
+  $('#start-btn').click(function(){
+    $('#stop-btn').attr('disabled', false);
+    $('#cancel-btn').attr('disabled', true);
+    $('#start-btn').attr('disabled', true);
+  });
+  
+  $('#stop-btn').attr('disabled', true);
+
+  $('#stop-btn').click(function(){
+    $('.fixed-action-btn').hide();
   });
 
 });
