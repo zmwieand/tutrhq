@@ -3,10 +3,13 @@ div(id="timer-modal" class="modal bottom-sheet")
         h2 17:38
 
         div.row
+            div(class="col s4 right-align")
+                a(class="btn green start-btn")
+                    i.material-icons play_arrow
             div(class="col s4")
-                a(class="btn green start-btn") Start
-            div(class="col s4")
-                a(href="#rating-modal" class="btn red stop-btn modal-close modal-trigger") Stop
-            div(class="col s4")
-                a(href="#cancel-modal" class="btn grey modal-trigger modal-close") Cancel
+                a(href="#rating-modal" class="btn red stop-btn modal-close modal-trigger")
+                    i.material-icons stop
+            div(class="col s4 left-align")
+                a(href="#cancel-modal" class="btn grey modal-trigger modal-close")
+                    i.material-icons close
 
