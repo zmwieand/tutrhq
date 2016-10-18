@@ -46,4 +46,11 @@ $(document).ready(function(){
         Materialize.toast("You are now an available Tutor!", 5000)
     }
   });
+
+  $('.fixed-action-btn').hide();
+
+  $('#accept-btn').click(function(){
+    $('.fixed-action-btn').show();
+  });
+
 });
