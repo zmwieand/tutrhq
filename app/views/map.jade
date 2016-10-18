@@ -2,9 +2,12 @@ extend layout
 
 block content
     ul(id="slide-out", class="side-nav")
-        li.div(class="userView teal darken-3 center-align")
-            a.span(class="white-text name") #{user.first_name + " " +user.last_name}
-            a.span(class="white-text email") #{user.email_address}
+        li
+            div(class="userView teal darken-3 center-align")
+                center
+                    img(class="circle" src="#{user.pic}")
+                a.span(class="white-text name") #{user.first_name + " " +user.last_name}
+                a.span(class="white-text email") #{user.email_address}
 
         li
             a(href="#account-info", class="modal-trigger")
