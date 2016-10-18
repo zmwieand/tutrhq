@@ -9,6 +9,12 @@ block content
                 a.span(class="white-text name") #{user.first_name + " " +user.last_name}
                 a.span(class="white-text email") #{user.email_address}
 
+                if user.role == 'tutor'
+                    div.switch
+                        label
+                            input(type="checkbox" id="tutor-switch")
+                            span.lever
+
         li
             a(href="#account-info", class="modal-trigger")
                 i(class="material-icons") info
@@ -69,7 +75,9 @@ block content
     include modals/main
     include modals/rating
     include modals/notification
-    include modals/timer
+
+    if user.role == 'tutor'
+        include modals/timer
 
     script(type="text/javascript", src="map.js")
     script(async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC0qiL1nz_rW0vB-AlBjqQw6RbyS_N0wwI&callback=initMap")

@@ -40,4 +40,10 @@ $(document).ready(function(){
     // This is a cheap hack
     $(this).parents('div')[1].remove();
   });
+
+  $('#tutor-switch').on('click', function(){
+    if ($(this).is(":checked")){
+        Materialize.toast("You are now an available Tutor!", 5000)
+    }
+  });
 });
