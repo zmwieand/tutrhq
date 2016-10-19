@@ -31,7 +31,7 @@ block content
                 | Payment Options
 
         li
-            a(href="#!", class="modal-trigger")
+            a(href="#history-modal", class="modal-trigger")
                 i(class="material-icons") restore
                 | History
 
@@ -59,6 +59,7 @@ block content
         div(class="nav-wrapper black")
             a(href="#", data-activates="slide-out", class="button")
                 i(class="material-icons") menu
+
     div(id="map", class="grey", style="width: 100%; height: 600px;")
     a(href="#notification-modal" class="modal-trigger btn blue") Notify
     
@@ -75,6 +76,7 @@ block content
     include modals/main
     include modals/rating
     include modals/notification
+    include modals/history
 
     if user.role == 'tutor'
         include modals/timer
