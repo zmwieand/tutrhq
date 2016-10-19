@@ -9,10 +9,10 @@ div(class="modal modal-fixed-footer" id="history-modal")
                     th Price
 
             tbody
-                for item in user.transactions
+                each item in user.transactions
                     tr
-                        td item.name
-                        td item.price
+                        td #{item.name}
+                        td $#{item.price}
 
     div.modal-footer
         a(class="modal-action modal-close waves-effect waves-green btn-flat") Close
