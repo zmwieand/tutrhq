@@ -55,7 +55,7 @@ $(document).ready(function(){
             url: "http://localhost:3000/users/tutor_offline",
             type: 'GET',
             success: function(res) {
-                Materialize.toast("You are now offline")
+                Materialize.toast("You are now offline", 5000)
             }
         });
     }
