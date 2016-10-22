@@ -1,0 +1,306 @@
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+#main {
+    height: 100%;
+    width: 100%;
+    flex: 1 0 auto;
+}
+
+#html {
+    width: 100%;
+    height: 100%;
+    width: auto;
+}
+
+#video {
+    height: 55%;
+    background-color: black;
+    z-index: -1;
+    margin-top: -2.5%;
+}
+
+#logo {
+    width: 50px;
+    margin-left: 1%;
+    margin-top: .5%;
+}
+
+#tutr {
+    color: black;
+    font-size: 40px;
+    padding-left: 33%;
+}
+
+#signup {
+    color: #009933;
+}
+
+#login {
+    background-color: #009933;
+}
+
+#video-text {
+    width: auto;
+    height: 85%;
+    margin-bottom: 50px;
+    padding-bottom: 0%;
+}
+
+#headerdesk {
+    color: white;
+    padding-top: 200px;
+    padding-left: 40%;
+    font-weight: 300;
+    margin-bottom: -30px;
+}
+
+#headerdesk2 {
+    padding-left: 40%;
+    color: white;
+    font-weight: 300;
+    "
+
+}
+
+#watchvideo {
+    margin-left: 65%;
+}
+
+#playbutton {
+    visibility: hidden;
+    z-index: -1;
+}
+
+#searchdesktop {
+    z-index: -1;
+    height: 400px;
+    width: auto;
+    background-color: white;
+}
+
+#jump {
+    background-color: #009933;
+    position: relative;
+    z-index: 2;
+    margin-top: -2%;
+    margin-left: 50%;
+    font-size: 30px;
+}
+
+#joinin {
+    font-weight: 300;
+    padding-top: 6%;
+    font-size: 75px;
+}
+
+#searchmobile {
+    visibility: hidden;
+    z-index: 1;
+}
+
+#search1 {
+    width: 95%;
+    padding-left: 5%;
+}
+
+#search2 {
+    height: 60px;
+    background-color: #f3f3f3;
+    bottom-border: none;
+}
+
+#search3 {
+    height: 60px;
+    width: 85%;
+    font-size: 45px;
+    text-align: left;
+    background-color: #f3f3f3;
+    border-bottom: none;
+}
+
+#search4 {
+    font-size: 40px;
+}
+
+#content {
+    width: 100%;
+    height: 100%;
+}
+
+#panels {
+    margin-top: -10%;
+}
+
+#row1 {
+    background-color: #1976d2;
+    padding-bottom: 5%;
+    margin-bottom: 0%;
+    padding-top: 5%;
+    width: auto;
+}
+
+#row2 {
+    background-color: #2196f3;
+    margin-bottom: 0%;
+    padding-bottom: 5%;
+    padding-top: 5%;
+    width: auto;
+}
+
+#row3 {
+    background-color: #42a5f5;
+    padding-bottom: 5%;
+    margin-bottom: 0%;
+    padding-top: 15%;
+    width: auto;
+}
+
+#row4 {
+    background-color: #58B8E8;
+    padding-bottom: 5%;
+    margin-bottom: 0%;
+    padding-top: 15%;
+    width: auto;
+}
+
+#loginbottom {
+    margin-top: 10%;
+}
+
+#text {
+    font-weight: 200;
+    color: white;
+}
+
+#rowz {
+    background-image: url("../img/tutrfinal.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-color: #58B8E8;
+    padding-bottom: 35%;
+    margin-bottom: 0%;
+    padding-top: 15%;
+}
+
+.page-footer {
+    height: 60px;
+    background-color: white
+}
+
+#foot {
+    color: #dadada;
+}
+
+@media screen and (max-width: 768px) {
+    #logo {
+        width: 33%;
+        padding-top: .65%;
+        margin-left: -1%;
+    }
+    #tutr {
+        color: black;
+        font-size: 35px;
+        padding-left: 22%;
+    }
+    #headerdesk {
+        display: none;
+    }
+    #headerdesk2 {
+        display: none;
+    }
+    #watchvideo {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    #logo {
+        width: 33%;
+        padding-top: .65%;
+        margin-left: 0%;
+    }
+    #nav-mobile {
+        padding-left: 5%;
+    }
+    #tutr {
+        color: black;
+        font-size: 35px;
+        padding-left: 22%;
+    }
+    #video {
+        height: 60%;
+        background-color: black;
+        z-index: -1;
+    }
+    #video-text {
+        margin-bottom: 35px;
+    }
+    #headerdesk {
+        display: none;
+    }
+    #headerdesk2 {
+        display: none;
+    }
+    #watchvideo {
+        display: none;
+    }
+    #playbutton {
+        visibility: visible;
+        color: white;
+        font-size: 40px;
+        z-index: -1;
+        padding-top: 33%;
+        padding-left: 45%;
+    }
+    #jump {
+        display: none;
+    }
+    #searchdesktop {
+        visibility: hidden;
+    }
+    #searchmobile {
+        visibility: visible;
+        z-index: 0;
+        background-color: white;
+        height: 60%;
+        margin-top: -100%;
+        padding-top: 15%;
+    }
+    #taglinemobile1 {
+        font-weight: 300;
+        margin-top: 0%;
+    }
+    #taglinemobile2 {
+        font-weight: 300;
+    }
+    #spacemobile {
+        padding-bottom: 12%;
+    }
+    #search1 {
+        width: 95%;
+        padding-left: 5%;
+    }
+    #search2 {
+        height: 60px;
+        background-color: #f3f3f3;
+        bottom-border: none;
+    }
+    #search3 {
+        height: 60px;
+        width: 85%;
+        font-size: 20px;
+        text-align: left;
+        background-color: #f3f3f3;
+        border-bottom: none;
+    }
+    #search4 {
+        font-size: 35px;
+    }
+    #panels {
+        margin-top: 5%;
+    }
+}
