@@ -135,4 +135,11 @@ router.get('/tutor_offline', ensureLoggedIn, function(req, res, next) {
         }
     });
 });
+
+router.post('/rate', function(req, res, next) {
+    var rating = req.body['rating'];
+    console.log('Rating: ' + rating);
+    res.redirect('/users');
+});
+
 module.exports = router;

@@ -65,6 +65,12 @@ $(document).ready(function(){
   $('.fixed-action-btn').hide();
   
   $('#accept-btn').click(function(){
+    $.ajax({
+      url: "http://localhost:3000/match/accept",
+      type: 'GET',
+      success: function(res) {
+      }
+    });
     $('.fixed-action-btn').show();
   });
 
@@ -95,7 +101,15 @@ $(document).ready(function(){
   }
   
   // timer buttons
-  $('#start-btn').click(function(){
+  $('#start-btn').click(function() {
+    $.ajax({
+      url: "http://localhost:3000/match/start",
+      type: 'GET',
+      success: function(res) {
+          Materialize.toast("Session Started", 5000)
+      }
+    });
+
     timer();
     $('#stop-btn').attr('disabled', false);
     $('#cancel-btn').attr('disabled', true);
@@ -104,11 +118,17 @@ $(document).ready(function(){
   
   $('#stop-btn').attr('disabled', true);
 
-  $('#stop-btn').click(function(){
+  $('#stop-btn').click(function() {
+    $.ajax({
+      url: "http://localhost:3000/match/stop",
+      type: 'GET',
+      success: function(res) {
+          Materialize.toast("Session over", 5000)
+      }
+    });
     clearTimeout(t);
     $('.fixed-action-btn').hide();
 
   });
-
 
 });
