@@ -13,16 +13,29 @@
     <feature name="Geolocation">
         <param name="android-package" value="org.apache.cordova.geolocation.Geolocation" />
     </feature>
+    <feature name="SplashScreen">
+        <param name="android-package" value="org.apache.cordova.splashscreen.SplashScreen" />
+        <param name="onload" value="true" />
+    </feature>
     <name>tutrhq</name>
+    <icon src="www/img/logo.png" />
+    <splash src="www/img/Default@2x~universal~anyany.png" />
     <description>
-        A sample Apache Cordova application that responds to the deviceready event.
+        TutrHq Mobile Application FrontEnd.
     </description>
-    <author email="dev@cordova.apache.org" href="http://cordova.io">
-        Apache Cordova Team
+    <author email="tutrhq@gmail.com" href="http://tutrhq.com">
+        TutrHq Support Team
     </author>
     <content src="index.html" />
     <access origin="*" />
-    <allow-navigation href="http://www.tutrhq.com" />
+    <allow-navigation href="http://*.tutrhq.com/*" />
+    <allow-navigation href="https://*.tutrhq.com/*" />
+    <allow-navigation href="http://*.buffalo.edu/*" />
+    <allow-navigation href="https://*.buffalo.edu/*" />
+    <allow-navigation href="http://*.auth0.com/*" />
+    <allow-navigation href="https://*.auth0.com/*" />
+    <allow-navigation href="http://*.google.com/*" />
+    <allow-navigation href="https://*.google.com/*" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
     <allow-intent href="tel:*" />
@@ -31,4 +44,10 @@
     <allow-intent href="geo:*" />
     <allow-intent href="market:*" />
     <preference name="loglevel" value="DEBUG" />
+    <preference name="AutoHideSplashScreen" value="true" />
+    <preference name="SplashScreenDelay" value="5000" />
+    <preference name="FadeSplashScreenDuration" value="750" />
+    <preference name="ShowSplashScreenSpinner" value="false" />
+    <preference name="SplashMaintainAspectRatio" value="true" />
+    <preference name="SplashShowOnlyFirstTime" value="true" />
 </widget>

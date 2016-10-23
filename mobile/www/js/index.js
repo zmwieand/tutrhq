@@ -41,8 +41,6 @@ var app = {
         bkpLink.setAttribute("href", targetUrl);
         bkpLink.text = targetUrl;
         window.location.replace(targetUrl);
-        //window.location="http://www.google.com"; 
-        //app.receivedEvent('deviceready');
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {

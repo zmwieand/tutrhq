@@ -18,6 +18,9 @@
         },
         "cordova-plugin-geolocation": {
             "PACKAGE_NAME": "com.tutrhq.mobile"
+        },
+        "cordova-plugin-splashscreen": {
+            "PACKAGE_NAME": "com.tutrhq.mobile"
         }
     },
     "dependent_plugins": {
