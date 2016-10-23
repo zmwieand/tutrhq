@@ -40,4 +40,75 @@ $(document).ready(function(){
     // This is a cheap hack
     $(this).parents('div')[1].remove();
   });
+
+  $('#tutor-switch').on('click', function(){
+    if ($(this).is(":checked")) {
+        $.ajax({
+            url: "http://localhost:3000/users/tutor_online",
+            type: 'GET',
+            success: function(res) {
+                Materialize.toast("You are now an available Tutor!", 5000)
+            }
+        });
+    } else {
+        $.ajax({
+            url: "http://localhost:3000/users/tutor_offline",
+            type: 'GET',
+            success: function(res) {
+                Materialize.toast("You are now offline", 5000)
+            }
+        });
+    }
+  });
+
+  // notification buttons
+  $('.fixed-action-btn').hide();
+  
+  $('#accept-btn').click(function(){
+    $('.fixed-action-btn').show();
+  });
+
+  // timer
+  var seconds = 0;
+  var minutes = 0;
+  var hours = 0;
+  var t;
+
+  function add() {
+    seconds++;
+    if (seconds > 60) {
+        seconds = 0;
+        minutes++;
+        if (minutes > 60) {
+            minutes = 0;
+            hours++;
+        }
+    }
+
+    $('#tutor-timer')[0].textContent = (hours ? (hours > 9 ? hours : "0" + hours) : "00") + ":" + (minutes ? (minutes > 9 ? minutes : "0" + minutes) : "00") + ":" + (seconds > 9 ? seconds : "0" + seconds);
+
+    timer();
+  }
+
+  function timer() {
+    t = setTimeout(add, 1000);
+  }
+  
+  // timer buttons
+  $('#start-btn').click(function(){
+    timer();
+    $('#stop-btn').attr('disabled', false);
+    $('#cancel-btn').attr('disabled', true);
+    $('#start-btn').attr('disabled', true);
+  });
+  
+  $('#stop-btn').attr('disabled', true);
+
+  $('#stop-btn').click(function(){
+    clearTimeout(t);
+    $('.fixed-action-btn').hide();
+
+  });
+
+
 });

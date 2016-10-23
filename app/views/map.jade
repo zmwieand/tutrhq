@@ -2,9 +2,18 @@ extend layout
 
 block content
     ul(id="slide-out", class="side-nav")
-        li.div(class="userView teal darken-3 center-align")
-            a.span(class="white-text name") #{user.first_name + " " +user.last_name}
-            a.span(class="white-text email") #{user.email_address}
+        li
+            div(class="userView teal darken-3 center-align")
+                center
+                    img(class="circle" src="#{user.pic}")
+                a.span(class="white-text name") #{user.first_name + " " +user.last_name}
+                a.span(class="white-text email") #{user.email_address}
+
+                if user.role == 'tutor'
+                    div.switch
+                        label
+                            input(type="checkbox" id="tutor-switch")
+                            span.lever
 
         li
             a(href="#account-info", class="modal-trigger")
@@ -22,7 +31,7 @@ block content
                 | Payment Options
 
         li
-            a(href="#!", class="modal-trigger")
+            a(href="#history-modal", class="modal-trigger")
                 i(class="material-icons") restore
                 | History
 
@@ -46,12 +55,15 @@ block content
                 i(class="material-icons") delete
                 | Delete Account
 
-    nav
-        div(class="nav-wrapper black")
-            a(href="#", data-activates="slide-out", class="button")
-                i(class="material-icons") menu
+
+    include fragments/nav
+
     div(id="map", class="grey", style="width: 100%; height: 600px;")
-        p This will be the map
+    a(href="#notification-modal" class="modal-trigger btn blue") Notify
+    
+    div(class="fixed-action-btn" style="bottom: 45px; right: 24px;")
+        a(href="#timer-modal" class="btn-floating btn-large green modal-trigger")
+            i.material-icons schedule
 
     include modals/account_information
     include modals/courses
@@ -61,6 +73,12 @@ block content
 
     include modals/main
     include modals/rating
+    include modals/notification
+    include modals/history
+
+    if user.role == 'tutor'
+        include modals/timer
+        include modals/cancel
 
     script(type="text/javascript", src="map.js")
     script(async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC0qiL1nz_rW0vB-AlBjqQw6RbyS_N0wwI&callback=initMap")
