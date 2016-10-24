@@ -107,8 +107,32 @@ router.get('/register', function(req, res, next) {
 	res.render('register');
 });
 
+// This should probably be removed
 router.post('/register', function(req, res, next) {
 	res.send(req.body);
 });
 
+router.get('/tutor_online', ensureLoggedIn, function(req, res, next) {
+    User.findByEmail(req.user._json.email, function (err, user) {
+        if (user && user.role == "tutor") {
+               res.redirect('/users');
+        } else {
+            res.render('error', {
+                message: "You shouldn't be here. Please fuck off."
+            });
+        }
+    });
+});
+
+router.get('/tutor_offline', ensureLoggedIn, function(req, res, next) {
+    User.findByEmail(req.user._json.email, function (err, user) {
+        if (user && user.role == "tutor") {
+               res.redirect('/users');
+        } else {
+            res.render('error', {
+                message: "You shouldn't be here. Please fuck off."
+            });
+        }
+    });
+});
 module.exports = router;

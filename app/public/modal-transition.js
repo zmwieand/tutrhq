@@ -42,8 +42,22 @@ $(document).ready(function(){
   });
 
   $('#tutor-switch').on('click', function(){
-    if ($(this).is(":checked")){
-        Materialize.toast("You are now an available Tutor!", 5000)
+    if ($(this).is(":checked")) {
+        $.ajax({
+            url: "http://localhost:3000/users/tutor_online",
+            type: 'GET',
+            success: function(res) {
+                Materialize.toast("You are now an available Tutor!", 5000)
+            }
+        });
+    } else {
+        $.ajax({
+            url: "http://localhost:3000/users/tutor_offline",
+            type: 'GET',
+            success: function(res) {
+                Materialize.toast("You are now offline", 5000)
+            }
+        });
     }
   });
 
