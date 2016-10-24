@@ -1,20 +1,19 @@
-# tutrhq
+# [`tutrhq`](http://tutrhq.com) sources
 
 ### Description
-This is the backend repository for Tutor. It will render the different HTML pages and keep track of all of our email subscriptions.
+Welcome to the source code of tutr! 
 
-### Installation Steps:
-- `sudo apt-get install npm`
-- `sudo apt-get install nodejs`
-- `npm install express` [for routing]
-- `npm install formidable` [for getting form data]
+### How to start `tutr`
 
-### To Run :
-- `nodejs server.js`
+```bash
 
-### TODO:
-- Make the html pages not look shitty
-- Use `MongoDB` or some other database to store all of the emails
-- Check that the email sent to us is well-formed and does not already exist in the database
-- Send users a verification email using `SendGrid`?
+$ sudo apt-get install npm
+$ sudo apt-get install nodejs
+$ cd app
+$ npm install
+$ npm start
+  
+```
+You should have a running instance at `http://localhost:3000`
+
 

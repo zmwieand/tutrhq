@@ -1,0 +1,86 @@
+extend layout
+
+block content
+    ul(id="slide-out", class="side-nav")
+        li
+            div(class="userView teal darken-3 center-align")
+                center
+                    img(class="circle" src="#{user.pic}")
+                a.span(class="white-text name") #{user.first_name + " " +user.last_name}
+                a.span(class="white-text email") #{user.email_address}
+
+                if user.role == 'tutor'
+                    div.switch
+                        label
+                            input(type="checkbox" id="tutor-switch")
+                            span.lever
+
+        li
+            a(href="#account-info", class="modal-trigger")
+                i(class="material-icons") info
+                | Account Information
+
+        li
+            a(href="#courses-modal", class="modal-trigger")
+                i(class="material-icons") assignment
+                | Courses
+
+        li
+            a(href="#!", class="modal-trigger")
+                i(class="material-icons") credit_card
+                | Payment Options
+
+        li
+            a(href="#history-modal", class="modal-trigger")
+                i(class="material-icons") restore
+                | History
+
+        li
+            a(href="#become-tutor", class="modal-trigger")
+                i(class="material-icons") new_releases
+                | Become a Tutor
+
+        li
+            a(href="#report-modal", class="modal-trigger")
+                i(class="material-icons") warning
+                | Report a Problem
+
+        li
+            a(href="/auth/logout")
+                i(class="material-icons") phonelink_erase
+                | Logout
+
+        li
+            a(href="#delete-modal", class="modal-trigger")
+                i(class="material-icons") delete
+                | Delete Account
+
+
+    include fragments/nav
+
+    div(id="map", class="grey", style="width: 100%; height: 600px;")
+    a(href="#notification-modal" class="modal-trigger btn blue") Notify
+    
+    if user.role == 'tutor'
+        div(class="fixed-action-btn" style="bottom: 45px; right: 24px;")
+            a(href="#timer-modal" class="btn-floating btn-large green modal-trigger")
+                i.material-icons schedule
+
+    include modals/account_information
+    include modals/courses
+    include modals/become-tutor
+    include modals/report_problem
+    include modals/delete
+
+    include modals/main
+    include modals/rating
+    include modals/notification
+    include modals/history
+
+    if user.role == 'tutor'
+        include modals/timer
+        include modals/cancel
+
+    script(type="text/javascript", src="map.js")
+    script(async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC0qiL1nz_rW0vB-AlBjqQw6RbyS_N0wwI&callback=initMap")
+    

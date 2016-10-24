@@ -1,0 +1,16 @@
+[Unit]
+Description=tutrhq.com node application service
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/node /home/tutr/tutrhq.com/backend/bin/www
+Restart=always
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=tutr_node
+User=tutr
+Group=tutr
+Environment=NODE_ENV=production PORT=3000
+
+[Install]
+WantedBy=default.target  

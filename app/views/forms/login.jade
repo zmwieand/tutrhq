@@ -1,0 +1,54 @@
+block content
+
+  div(class="navbar-fixed")
+    nav
+      div(class="nav-wrapper white z-depth-1")
+        a(id="logo" href="/" class="brand-logo left"): img(src="/img/tutrlogo.png" style="height: 45px; margin-top: 7px; margin-left:10px;")
+        ul(id="nav-mobile" class="left" style="padding-left: 30px;")
+          li: a(id="text" style="color:black; font-size:40px;") &ensp; tutr
+
+
+  div(class="section")
+
+  div(class="container z-depth-2" style="width:450px; height:470px;")
+    div(class="section")
+    div(class="center")
+      img(src="/img/tutrlogo.png" style="height: 100px; top-margin: 4px;")
+
+    div(class="section")
+    br
+    div(class="center")
+        button(onclick="signinGoogle()" name="btn_login" class="col s12 l12 btn btn-large waves effect" style="background-color:#009933") Sign in with Google!
+
+        div(class="section")
+        div(class="section")
+          a(class="center" href="/users/register/") Don't have an account? Sign Up!
+
+
+  div(class="section")
+  div(class="section")
+  div(class="section")
+  div(class="page-footer" style="height:60px; background-color:white;")
+    h4(style="color:#dadada;") &nbsp; tutr
+
+  script.
+    var auth0 = new Auth0({
+        domain:      '#{env.AUTH0_DOMAIN}',
+        clientID:    '#{env.AUTH0_CLIENT_ID}',
+        callbackURL: '#{env.AUTH0_CALLBACK_URL}',
+      });
+
+    function signinGoogle() {
+      auth0.signin({
+        connection: 'google-oauth2',
+      });
+    }
+
+    function signinDb() {
+      auth0.signin({
+        connection: 'Username-Password-Authentication',
+        username: document.getElementById('email_address').value,
+        password: document.getElementById('password').value,
+      });
+    }
+

@@ -1,0 +1,32 @@
+div.modal(id="account-modal")
+    div.modal-content(id="account")
+        div.row
+            div(class="col s12")
+                h5 Request a Tutor
+
+        ul.collection
+            each course in user.courses
+                a(class="collection-item eng") #{course}
+
+        include ../forms/request
+
+    div.modal-content(id="tutors")
+        h5 Tutors in your area
+        ul.collection
+            each tutor in tutors
+                a(class="collection-item avatar" onclick="tutorClick()")
+                    span.title #{tutor.first_name + ' ' + tutor.last_name }
+                    p $#{tutor.price}/hr
+                    h5.secondary-content #{tutor.rating}
+
+    div(id="request" class="modal-content center-align")
+        div(class="preloader-wrapper big active")
+            div(class="spinner-layer spinner-green-only")
+                div(class="circle-clipper left")
+                    div.circle
+                div.gap-patch
+                    div.circle
+                div(class="circle-clipper right")
+                    div.circle
+        p(id="loading-message")
+

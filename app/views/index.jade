@@ -1,0 +1,92 @@
+extends layout
+
+block content
+
+  div(id="anything" class="navbar-fixed")
+    nav
+      div(class="nav-wrapper white z-depth-1")
+        a(id="logo" href="#" class="brand-logo left")
+          img(id="logo" src="img/tutrlogo.png")
+        ul(id="nav" class="left")
+          li()
+            a(id="tutr") &nbsp;&nbsp;&nbsp;&nbsp;tutr
+
+        ul(id="nav" class="right")
+          li
+            a(id="signup" href="#") SIGN UP
+          a(href="Auth/login" id="login" class="waves-effect waves-light btn green z-depth-1") LOG IN
+
+  main(id="main")
+    div(id="video")
+      div(id="video-text")
+        h1(id="headerdesk") tutr
+        h1(id="headerdesk2") On-Demand Tutoring, 24-7
+        a(href="##" id="watchvideo" class="waves-effect waves-light btn-large green z-depth-1") WATCH THE VIDEO
+        i(id="playbutton" class="fa fa-play-circle" aria-hidden="true")
+
+    a(href="##" id="jump" class="btn-floating btn-large waves-effect waves-light")
+      i(class="fa fa-angle-down" style="font-size:30px")
+
+    div(id="searchdesktop")
+      h1(id="joinin" class="center") JOIN IN
+      h5(class="center") start by searching for your school below
+
+      div(class="section")
+        form(id="search1")
+          div(id="search2" class="input-field")
+            input(id="search3" type="search" required)
+            label()
+              i(id="search4" class="material-icons") search
+            i(class="material-icons") close
+
+    div(id="searchmobile")
+      h3(id="taglinemobile1" class="center") On-Demand Tutoring, 24/7
+      h5(id="taglinemobile2" class="center") search for your school and join in
+
+      div(id="spacemobile" class="section")
+        form(id="search1")
+          div(id="search2" class="input-field")
+            input(id="search3" type="search" required)
+            label()
+              i(id="search4" class="material-icons") search
+            i(class="material-icons") close
+
+  div(id="panels")
+    div(id="row1" class="row")
+      div(id="pic" class="col s12 l6 center")
+        img(src="img/moon.png" style="")
+
+      div(class="col s12 l6")
+        div(class="left")
+          h2(id="text") On your terms <br /> On your time
+          h5(id="text") Whether you're a night owl, an earlybird,<br/> or somewhere in between, you can use tutr to get help whenever you need it, wherever you need it, on any device.
+
+    div(id="row2" class="row")
+      div(id="pic" class="col s12 l6 center")
+        img(src="img/cloud.png" style="")
+
+      div(class="col s12 l6")
+        div(class="left")
+          h2(id="text") Personalized help <br/> Just for you
+          h5(id="text") tutr pairs you with the best and brightest students from your school, who have taken the courses you're in<br/> with the professors you have.
+
+    div(id="row3" class="row")
+      div(id="pic" class="col s12 l6 center")
+        img(src="img/security.png" style="")
+
+      div(class="col s12 l6")
+        div(class="left")
+          h2(id="text") Safe and Secure
+          h5(id="text") Safety is our number one priority<br/> tutr requires a current .edu email address and all payments are completely cashless and secured by stripe
+          
+    div(id="row4" class="row")
+      div(class="col s12 l12")
+        h1(id="text" class="center") Start learning and start earning with tutr
+        div(class="center")
+          a(href="##" id="loginbottom" class="waves-effect waves-light btn-large green z-depth-1") SIGN UP
+    
+    div(id="rowz" class="row")
+
+  div(class="page-footer")
+    h4(id="foot") &nbsp;tutr &nbsp; 
+  
