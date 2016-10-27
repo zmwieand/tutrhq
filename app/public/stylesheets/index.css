@@ -17,16 +17,16 @@ body {
 }
 
 #video {
-    height: 55%;
+    height: 90%;
     background-color: black;
     z-index: -1;
     margin-top: -2.5%;
 }
 
 #logo {
-    width: 50px;
+    width: 55px;
     margin-left: 1%;
-    margin-top: .5%;
+    margin-top: .25%;
 }
 
 #tutr {
@@ -62,7 +62,6 @@ body {
     padding-left: 40%;
     color: white;
     font-weight: 300;
-    "
 
 }
 
@@ -159,6 +158,8 @@ body {
     width: auto;
 }
 
+
+
 #row4 {
     background-color: #58B8E8;
     padding-bottom: 5%;
@@ -197,9 +198,9 @@ body {
 
 @media screen and (max-width: 768px) {
     #logo {
-        width: 33%;
+        width: 50px;
         padding-top: .65%;
-        margin-left: -1%;
+        margin-left: 0%;
     }
     #tutr {
         color: black;
@@ -207,11 +208,19 @@ body {
         padding-left: 22%;
     }
     #headerdesk {
-        display: none;
+        color: white;
+        padding-top: 200px;
+        padding-left: 40%;
+        font-weight: 300;
+        margin-bottom: -30px;
     }
+
     #headerdesk2 {
-        display: none;
+        padding-left: 40%;
+        color: white;
+        font-weight: 300;
     }
+
     #watchvideo {
         display: none;
     }
@@ -219,7 +228,7 @@ body {
 
 @media screen and (max-width: 480px) {
     #logo {
-        width: 33%;
+        width: 45px;
         padding-top: .65%;
         margin-left: 0%;
     }
@@ -248,12 +257,14 @@ body {
     #watchvideo {
         display: none;
     }
+
     #playbutton {
         visibility: visible;
         color: white;
         font-size: 40px;
         z-index: -1;
         padding-top: 33%;
+        padding-bottom: 15%;
         padding-left: 45%;
     }
     #jump {
@@ -267,7 +278,7 @@ body {
         z-index: 0;
         background-color: white;
         height: 60%;
-        margin-top: -100%;
+        margin-top: -120%;
         padding-top: 15%;
     }
     #taglinemobile1 {
