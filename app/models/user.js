@@ -14,6 +14,7 @@ var userSchema = new Schema({
   rating: Number,
   major: String,
   hourly_rate: Number,
+  is_active: Boolean,
   transactions: []
 });
 

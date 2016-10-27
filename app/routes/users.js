@@ -115,7 +115,11 @@ router.post('/register', function(req, res, next) {
 router.get('/tutor_online', ensureLoggedIn, function(req, res, next) {
     User.findByEmail(req.user._json.email, function (err, user) {
         if (user && user.role == "tutor") {
-               res.redirect('/users');
+            user.is_active = true;
+            user.save(function(err) {
+			    if (err) throw err;
+	    	});
+            res.redirect('/users');
         } else {
             res.render('error', {
                 message: "You shouldn't be here. Please fuck off."
@@ -127,7 +131,12 @@ router.get('/tutor_online', ensureLoggedIn, function(req, res, next) {
 router.get('/tutor_offline', ensureLoggedIn, function(req, res, next) {
     User.findByEmail(req.user._json.email, function (err, user) {
         if (user && user.role == "tutor") {
-               res.redirect('/users');
+            console.log('tutor offline');
+            user.is_active = false;
+            user.save(function(err) {
+			    if (err) throw err;
+	    	});
+            res.redirect('/users');
         } else {
             res.render('error', {
                 message: "You shouldn't be here. Please fuck off."
