@@ -196,6 +196,7 @@ body {
     color: #dadada;
 }
 
+
 @media screen and (max-width: 768px) {
     #logo {
         width: 50px;
@@ -314,4 +315,38 @@ body {
     #panels {
         margin-top: 5%;
     }
+
+    #pic {
+      height: 240px;
+    }
+
+    #text {
+      font-weight: 200;
+    }
+
+    #login{
+      display: none;
+    }
+
+    #signup {
+      display: none;
+    }
+
+    #loginbottom {
+      display: none;
+    }
+
+    #download {
+        position: fixed;
+        z-index: 100;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        background-color: white;
+        padding-top: 4%;
+        padding-bottom: 4%;
+        margin-bottom: 0%;
+        color: #1976d2;
+    }
+
 }
