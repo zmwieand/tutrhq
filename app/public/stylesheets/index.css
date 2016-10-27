@@ -261,10 +261,10 @@ body {
     #playbutton {
         visibility: visible;
         color: white;
-        font-size: 40px;
+        font-size: 50px;
         z-index: -1;
-        padding-top: 33%;
-        padding-bottom: 15%;
+        padding-top: 29%;
+        padding-bottom: 25%;
         padding-left: 45%;
     }
     #jump {
