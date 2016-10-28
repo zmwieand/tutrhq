@@ -1,10 +1,53 @@
 $(document).ready(function(){
+  function createTutorCard(name, price, rating, pic) {
+    a = $('<a></a>');
+    a.addClass('collection-item avatar');
+
+    img = $("<img>");
+    img.addClass('circle');
+    img.attr("src", pic);
+
+    s = $('<span></span>');
+    s.addClass('title');
+    s.text(name);
+
+    p = $('<p></p>');
+    p.text('$' + price +'/hr');
+
+    h5 = $('<h5></h5>');
+    h5.addClass('secondary-content');
+    h5.text(rating);
+
+    a.append(img);
+    a.append(s);
+    a.append(p);
+    a.append(h5);
+
+    return a;
+  }
+
   $("#tutors").hide();
   $("#request").hide();
   $(".eng").click(function() {
     $("#account").hide();
     $("#request").show();
     $("#loading-message").text("Finding Tutor's in your area ...");
+    // make an ajax request to match/request_tutor
+    $.ajax({
+      url: "http://localhost:3000/match/request_tutor",
+      type: 'GET',
+      success: function(res) {
+          for (var i in res) {
+              var tutor = res[i];
+              $('#area-tutors').append(createTutorCard(
+                  tutor["first_name"]+tutor["last_name"],
+                  tutor['price'],
+                  tutor['rating'],
+                  tutor['pic']
+              ));
+          }
+      }
+    });
     setTimeout(function() {
       $("#request").hide();
       $("#tutors").show();

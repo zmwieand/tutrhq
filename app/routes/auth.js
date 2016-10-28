@@ -14,6 +14,7 @@ router.get('/login', function(req, res){
 
 router.get('/logout', function(req, res){
   req.logout();
+  // TODO: set a tutors is_active to false
   res.redirect('/');
 });
 

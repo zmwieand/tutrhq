@@ -6,12 +6,18 @@ router.get('/', function(req, res, next) {
     res.send('here');
 });
 
+var tutors = {"tutors": [
+        {"first_name": "Jian",
+         "last_name": "Yang",
+         "price": 15,
+         "rating": 4.9,
+         "pic": "https://lh3.googleusercontent.com/-XdUIqdMkCWA/AAAAAAAAAAI/AAAAAAAAAAA/4252rscbv5M/photo.jpg"
+        }
+    ]};
+
 router.get('/request_tutor', function(req, res, next) {
-    var course = req.body['course'];
-    // find the active tutors available for this course
-    
-    // return the tutors as JSON {image, name, rating, hourly}
-    res.send('requesting');
+    // var course = req.body['course'];
+    res.send(tutors["tutors"]);
 });
 
 router.post('/select_tutor', function(req, res, next) {

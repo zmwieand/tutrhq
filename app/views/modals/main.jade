@@ -12,12 +12,7 @@ div.modal(id="account-modal")
 
     div.modal-content(id="tutors")
         h5 Tutors in your area
-        ul.collection
-            each tutor in tutors
-                a(class="collection-item avatar" onclick="tutorClick()")
-                    span.title #{tutor.first_name + ' ' + tutor.last_name }
-                    p $#{tutor.price}/hr
-                    h5.secondary-content #{tutor.rating}
+        ul.collection(id="area-tutors")
 
     div(id="request" class="modal-content center-align")
         div(class="preloader-wrapper big active")
@@ -29,4 +24,5 @@ div.modal(id="account-modal")
                 div(class="circle-clipper right")
                     div.circle
         p(id="loading-message")
+
 
