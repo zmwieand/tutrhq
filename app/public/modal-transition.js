@@ -32,7 +32,7 @@ $(document).ready(function(){
     $("#account").hide();
     $("#request").show();
     $("#loading-message").text("Finding Tutor's in your area ...");
-    // make an ajax request to match/request_tutor
+    
     $.ajax({
       url: "http://localhost:3000/match/request_tutor",
       type: 'GET',
@@ -47,13 +47,12 @@ $(document).ready(function(){
                   tutor['pic']
               ));
           }
+
+          // render the tutors
+          $('#request').hide();
+          $("#tutors").show();
       }
     });
-    setTimeout(function() {
-      $("#request").hide();
-      $("#tutors").show();
-      Materialize.showStaggeredList('#staggered-test');
-    }, 3000);
   });
 
   var new_course = '<div class="row">' +
