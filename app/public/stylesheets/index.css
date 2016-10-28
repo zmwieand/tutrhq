@@ -20,7 +20,6 @@ body {
     height: 90%;
     background-color: black;
     z-index: -1;
-    margin-top: -2.5%;
 }
 
 #logo {
@@ -52,10 +51,11 @@ body {
 
 #headerdesk {
     color: white;
-    padding-top: 200px;
+    margin-top: 0%;
+    padding-top:15%;
     padding-left: 40%;
     font-weight: 300;
-    margin-bottom: -30px;
+    margin-bottom: -2%;
 }
 
 #headerdesk2 {
@@ -196,6 +196,19 @@ body {
     color: #dadada;
 }
 
+#download {
+    position: fixed;
+    z-index: 100;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: transparent;;
+    padding-top: 4%;
+    padding-bottom: 4%;
+    margin-bottom: 0%;
+    color: transparent;
+}
+
 
 @media screen and (max-width: 768px) {
     #logo {
@@ -208,12 +221,14 @@ body {
         font-size: 35px;
         padding-left: 22%;
     }
+
     #headerdesk {
         color: white;
-        padding-top: 200px;
+        margin-top: 0%;
+        padding-top:15%;
         padding-left: 40%;
         font-weight: 300;
-        margin-bottom: -30px;
+        margin-bottom: -2%;
     }
 
     #headerdesk2 {
