@@ -26,6 +26,14 @@ userSchema.statics.findByEmail = function(email_address, cb) {
   });
 };
 
+userSchema.statics.findActive = function(course, cb) {
+  this.find({is_active: true}, function(err, user){
+    if (err) return cb(err);
+    if (user) return cb(null, user);
+    return cb();   
+  });
+};
+
 var User = mongoose.model('User', userSchema);
 
 module.exports = User;

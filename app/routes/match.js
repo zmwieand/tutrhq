@@ -1,6 +1,7 @@
 var express = require('express');
 var passport = require('passport')
 var router = express.Router();
+var User = require('../models/user')
 
 router.get('/', function(req, res, next) {
     res.send('here');
@@ -12,12 +13,33 @@ var tutors = {"tutors": [
          "price": 15,
          "rating": 4.9,
          "pic": "https://lh3.googleusercontent.com/-XdUIqdMkCWA/AAAAAAAAAAI/AAAAAAAAAAA/4252rscbv5M/photo.jpg"
+        },
+
+        {"first_name": "Something",
+         "last_name": "Else",
+         "price": 20,
+         "rating": 1.2,
+         "pic": "https://lh3.googleusercontent.com/-XdUIqdMkCWA/AAAAAAAAAAI/AAAAAAAAAAA/4252rscbv5M/photo.jpg"
         }
     ]};
 
 router.get('/request_tutor', function(req, res, next) {
     // var course = req.body['course'];
-    res.send(tutors["tutors"]);
+    retVal = [];
+    User.findActive('', function (err, users) {
+        if (users) {
+            for (var i in users) {
+                user = {};
+                user['first_name'] = users[i]['first_name'];
+                user['last_name'] = users[i]['last_name'];
+                user['price'] = users[i]['hourly_rate'];
+                user['rating'] = users[i]['rating'];
+                user['pic'] = users[i]['pic'];
+                retVal.push(user);
+            }
+            res.send(retVal);
+        }
+    });
 });
 
 router.post('/select_tutor', function(req, res, next) {

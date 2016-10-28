@@ -37,10 +37,11 @@ $(document).ready(function(){
       url: "http://localhost:3000/match/request_tutor",
       type: 'GET',
       success: function(res) {
+          console.log(res);
           for (var i in res) {
               var tutor = res[i];
               $('#area-tutors').append(createTutorCard(
-                  tutor["first_name"]+tutor["last_name"],
+                  tutor["first_name"]+ ' ' + tutor["last_name"],
                   tutor['price'],
                   tutor['rating'],
                   tutor['pic']
