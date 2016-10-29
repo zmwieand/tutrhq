@@ -37,7 +37,11 @@ $(document).ready(function(){
       url: "http://localhost:3000/match/request_tutor",
       type: 'GET',
       success: function(res) {
-          console.log(res);
+          if (res.length == 0) {
+              $("#area-tutors").append("<p class='center-align'>" + 
+                  "<i>Sorry, there are no tutors in your area at this time" + 
+                  "<br>Please try again later</i>.</p>");
+          }
           for (var i in res) {
               var tutor = res[i];
               $('#area-tutors').append(createTutorCard(
