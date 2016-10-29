@@ -1,35 +1,55 @@
+extends ../layout
+
 block content
 
-  div(class="navbar-fixed")
-    nav
-      div(class="nav-wrapper white z-depth-1")
-        a(id="logo" href="/" class="brand-logo left"): img(src="/img/tutrlogo.png" style="height: 45px; margin-top: 7px; margin-left:10px;")
-        ul(id="nav-mobile" class="left" style="padding-left: 30px;")
-          li: a(id="text" style="color:black; font-size:40px;") &ensp; tutr
-
-
-  div(class="section")
-
-  div(class="container z-depth-2" style="width:450px; height:470px;")
-    div(class="section")
-    div(class="center")
-      img(src="/img/tutrlogo.png" style="height: 100px; top-margin: 4px;")
-
-    div(class="section")
-    br
-    div(class="center")
-        button(onclick="signinGoogle()" name="btn_login" class="col s12 l12 btn btn-large waves effect" style="background-color:#009933") Sign in with Google!
-
-        div(class="section")
-        div(class="section")
-          a(class="center" href="/users/register/") Don't have an account? Sign Up!
-
-
-  div(class="section")
-  div(class="section")
-  div(class="section")
-  div(class="page-footer" style="height:60px; background-color:white;")
-    h4(style="color:#dadada;") &nbsp; tutr
+  //- div(id="anything" class="navbar-fixed")
+  //-   nav
+  //-     div(class="nav-wrapper white z-depth-1")
+  //-       a(id="logo" href="#" class="brand-logo left")
+  //-         img(id="logo" src="../img/tutrlogo.png")
+  //-       ul(id="nav" class="left")
+  //-         li()
+  //-           a(id="tutr") &nbsp;&nbsp;&nbsp;&nbsp;tutr
+  
+  main(id="main" style="background-color: white")
+    
+    div(id="desktop" class="center" style="padding-top:0.5%;")
+      img(class="center-align" src="../img/tutrlogo.png" style="height:45px; margin-bottom: 0%;")
+      hr(style="width:30%; color:#009980")
+      //-img(class="center-align" src="../img/tutrlogo.png" style="height:100px; margin-bottom: 0%;")
+      h4(style="font-weight:300;") On-Demand Tutoring, 24-7 <br/> at your college
+      //- h3(style="color:#990066; font-weight:200") Help is just a tap away
+      p(style="font-style: italic; font-size:13px;") to get started please
+      br
+      button(onclick="signinGoogle()" name="btn_login" class="btn-large waves effect center" style="background-color:#009933; margin-top:-2%; width:30%;") Log in with google
+      br
+      br
+      hr(style="width: 30%; color:#009980")
+      p Don't have an account? 
+        a(href="") Sign up!
+        
+  div(class="page-footer")
+    h4(id="foot") &nbsp;tutr &nbsp; 
+          
+            
+        //- br
+        //- h5(style="padding-left:45%; color: #575757;") help
+        
+      
+            
+  //-   div(class="center")
+  //-       button(onclick="signinGoogle()" name="btn_login" class="col s12 l12 btn btn-large waves effect" style="background-color:#009933") Sign in with Google!
+  //- 
+  //-       div(class="section")
+  //-       div(class="section")
+  //-         a(class="center" href="/users/register/") Don't have an account? Sign Up!
+  //- 
+  //- 
+  //- //- div(class="section")
+  //- //- div(class="section")
+  //- //- div(class="section")
+  //- //- div(class="page-footer" style="height:60px; background-color:white;")
+  //- //-   h4(style="color:#dadada;") &nbsp; tutr
 
   script.
     var auth0 = new Auth0({
@@ -51,4 +71,3 @@ block content
         password: document.getElementById('password').value,
       });
     }
-
