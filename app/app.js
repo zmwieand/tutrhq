@@ -8,7 +8,7 @@ var session = require('express-session');
 var dotenv = require('dotenv');
 var passport = require('passport');
 var Auth0Strategy = require('passport-auth0');
-connections = {};
+connections = [];
 // Initializing the db through mlab instance
 var mongoose = require('mongoose');
 mongoose.connect('mongodb://tutr:tutrhq1738@ds053176.mlab.com:53176/tutrhq');
@@ -48,8 +48,8 @@ passport.deserializeUser(function(user, done) {
 var app = express();
 
 //Sockets Initailization
-var server = require('http').Server(app);
-var io = require('socket.io')(server);
+server = require('http').Server(app);
+io = require('socket.io')(server);
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -72,6 +72,10 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(express.static(path.join(__dirname, 'public')));
+
+// app.get('/favicon.ico', function(req, res) {
+//   res.send(200);
+// });
 
 // accessing routes
 app.use('/', routes);

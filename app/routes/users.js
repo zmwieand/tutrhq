@@ -4,21 +4,23 @@ var ensureLoggedIn = require('connect-ensure-login').ensureLoggedIn();
 var router = express.Router();
 var User = require('../models/user');
 
-
 router.get('/', ensureLoggedIn, function(req, res, next) {
 
     User.findByEmail(req.user._json.email, function(err, user) {
-      res.io.on('connection', function(socket){
-        socket.on('set_socket', function (email) {
-          console.log(email + " connected and stored in sockets structure.");
-          connections[email] = socket;
-        });
-        socket.on('send notification', function(email) {
-          console.log(connections[email].id);
-          socket.broadcast.to(connections[email].id).emit('notification', ["message"]);
-        });
+        res.io.on('connection', function(socket){
+            socket.on('set_socket', function (email) {
+              console.log(email + " connected and stored in sockets structure.");
+              if (!connections[email]) {
+                connections[email] = socket;
+              }
+            });
+            socket.on('send notification', function(email) {
+              console.log(connections[email].id);
+              console.log(connections);
+              socket.broadcast.to(connections[email].id).emit('notification', ["message"]);
+            });
 
-      });
+        });
         var out = req.user._json;
         if (user) {
             res.render('map', {
