@@ -1,6 +1,6 @@
 socket.on('notification', function(email, status, data) {
   if (status)
-    $('.notify').click();
+    $('.notify').click({email:"hey"});
   Push.create("Update from tutr!", {
     body: email + data,
     icon: '/img/tutrlogo.png',
