@@ -1,8 +1,10 @@
 $(document).ready(function(){
-  function createTutorCard(name, price, rating, pic) {
+  function createTutorCard(name, price, rating, pic, email) {
     a = $('<a></a>');
     a.addClass('collection-item avatar');
-
+    a.on('click', function(event){
+      notify(email);
+    });
     img = $("<img>");
     img.addClass('circle');
     img.attr("src", pic);
@@ -26,20 +28,25 @@ $(document).ready(function(){
     return a;
   }
 
+  function notify(email) {
+    socket.emit('send notification', email);
+    console.log("sending a notification to: " + email);
+  }
+
   $("#tutors").hide();
   $("#request").hide();
   $(".eng").click(function() {
     $("#account").hide();
     $("#request").show();
     $("#loading-message").text("Finding Tutor's in your area ...");
-    
+
     $.ajax({
       url: "http://localhost:3000/match/request_tutor",
       type: 'GET',
       success: function(res) {
           if (res.length == 0) {
-              $("#area-tutors").append("<p class='center-align'>" + 
-                  "<i>Sorry, there are no tutors in your area at this time" + 
+              $("#area-tutors").append("<p class='center-align'>" +
+                  "<i>Sorry, there are no tutors in your area at this time" +
                   "<br>Please try again later</i>.</p>");
           }
           for (var i in res) {
@@ -48,7 +55,8 @@ $(document).ready(function(){
                   tutor["first_name"]+ ' ' + tutor["last_name"],
                   tutor['price'],
                   tutor['rating'],
-                  tutor['pic']
+                  tutor['pic'],
+                  tutor['email_address']
               ));
           }
 
@@ -75,12 +83,12 @@ $(document).ready(function(){
                             '</a>' +
                         '</div>' +
                    '</div>'
-  
+
   $('#add_course_button').click(function(e) {
     e.preventDefault();
     $('.wrapper').append(new_course);
     x += 1;
-  }); 
+  });
 
   $('.wrapper').on('click', '.remove_course_button', function(e){
     e.preventDefault();
@@ -110,7 +118,7 @@ $(document).ready(function(){
 
   // notification buttons
   $('.fixed-action-btn').hide();
-  
+
   $('#accept-btn').click(function(){
     $.ajax({
       url: "http://localhost:3000/match/accept",
@@ -146,7 +154,7 @@ $(document).ready(function(){
   function timer() {
     t = setTimeout(add, 1000);
   }
-  
+
   // timer buttons
   $('#start-btn').click(function() {
     $.ajax({
@@ -162,7 +170,7 @@ $(document).ready(function(){
     $('#cancel-btn').attr('disabled', true);
     $('#start-btn').attr('disabled', true);
   });
-  
+
   $('#stop-btn').attr('disabled', true);
 
   $('#stop-btn').click(function() {

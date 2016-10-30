@@ -7,24 +7,7 @@ router.get('/', function(req, res, next) {
     res.send('here');
 });
 
-var tutors = {"tutors": [
-        {"first_name": "Jian",
-         "last_name": "Yang",
-         "price": 15,
-         "rating": 4.9,
-         "pic": "https://lh3.googleusercontent.com/-XdUIqdMkCWA/AAAAAAAAAAI/AAAAAAAAAAA/4252rscbv5M/photo.jpg"
-        },
-
-        {"first_name": "Something",
-         "last_name": "Else",
-         "price": 20,
-         "rating": 1.2,
-         "pic": "https://lh3.googleusercontent.com/-XdUIqdMkCWA/AAAAAAAAAAI/AAAAAAAAAAA/4252rscbv5M/photo.jpg"
-        }
-    ]};
-
 router.get('/request_tutor', function(req, res, next) {
-    // var course = req.body['course'];
     retVal = [];
     User.findActive('', function (err, users) {
         if (users) {
@@ -35,6 +18,7 @@ router.get('/request_tutor', function(req, res, next) {
                 user['price'] = users[i]['hourly_rate'];
                 user['rating'] = users[i]['rating'];
                 user['pic'] = users[i]['pic'];
+                user['email_address'] = users[i]['email_address'];
                 retVal.push(user);
             }
             res.send(retVal);

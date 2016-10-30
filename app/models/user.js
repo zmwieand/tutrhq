@@ -8,6 +8,8 @@ var userSchema = new Schema({
   nickname: String,
   email_address: { type: String, required: true, unique: true },
   contact: String,
+  longitude: Number,
+  latitude: Number,
   courses: [],
   pic: String,
   role: String,
@@ -30,7 +32,7 @@ userSchema.statics.findActive = function(course, cb) {
   this.find({is_active: true}, function(err, user){
     if (err) return cb(err);
     if (user) return cb(null, user);
-    return cb();   
+    return cb();
   });
 };
 
