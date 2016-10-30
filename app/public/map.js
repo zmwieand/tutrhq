@@ -6,23 +6,28 @@ var myLatLng = {
 
 function initMap() {
 
-    var mapDiv = document.getElementById('map');
-    map = new google.maps.Map(mapDiv, {
-        center: myLatLng,
-        zoom: 17
-    });
+  var mapDiv = document.getElementById('map');
+  map = new google.maps.Map(mapDiv, {
+    center: myLatLng,
+    zoom: 17
+  });
 
-    var marker = new google.maps.Marker({
-        position: myLatLng,
-        map: map,
-        title: 'Hello World!'
-    });
+  var marker = new google.maps.Marker({
+    position: myLatLng,
+    map: map,
+    title: 'Hello World!'
+  });
 
-    marker.addListener('click', function() {
-        $("#account-modal").openModal(function() {
-            console.log("HERE")
-        });
+  marker.addListener('click', function() {
+    $("#account-modal").openModal({
+        complete: function () {
+            $('#tutors').hide();
+            $('#account').show();
+            $('#area-tutors').empty();
+        }
     });
+  });
+
 }
 
 function findCenter(lat1, long1, lat2, long2) {
