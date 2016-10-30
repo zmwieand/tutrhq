@@ -9,15 +9,17 @@ router.get('/', ensureLoggedIn, function(req, res, next) {
     User.findByEmail(req.user._json.email, function(err, user) {
         res.io.on('connection', function(socket){
             socket.on('set_socket', function (email) {
-              console.log(email + " connected and stored in sockets structure.");
-              if (!connections[email]) {
                 connections[email] = socket;
-              }
             });
-            socket.on('send notification', function(email) {
-              console.log(connections[email].id);
-              console.log(connections);
-              socket.broadcast.to(connections[email].id).emit('notification', ["message"]);
+            socket.on('disconnect', function(){
+              console.log('someone got disconnected.');
+            });
+            socket.on('send notification', function(email, sender) {
+              if (connections[email] && connections[email].connected) {
+                socket.broadcast.to(connections[email].id).emit('notification', sender, true, " needs help. Please help him?");
+              } else {
+                socket.emit('notification', email, false, " is not available.");
+              }
             });
 
         });
