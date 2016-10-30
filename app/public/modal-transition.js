@@ -1,10 +1,10 @@
 localhost = '128.205.39.190'
 $(document).ready(function(){
-  function createTutorCard(name, price, rating, pic, email, sender) {
+  function createTutorCard(name, price, rating, pic, email, sender, link) {
     a = $('<a></a>');
     a.addClass('collection-item avatar');
     a.on('click', function(event){
-      notify(email, sender);
+      notify(email, sender, link);
     });
     img = $("<img>");
     img.addClass('circle');
@@ -29,8 +29,8 @@ $(document).ready(function(){
     return a;
   }
 
-  function notify(email, sender) {
-    socket.emit('send notification', email, sender);
+  function notify(email, sender, link) {
+    socket.emit('send notification', email, sender, link);
     console.log("sending a notification to: " + email);
   }
 
@@ -58,7 +58,8 @@ $(document).ready(function(){
                   tutor['rating'],
                   tutor['pic'],
                   tutor['email_address'],
-                  tutor['sender']
+                  tutor['sender'],
+                  tutor['sender_pic']
               ));
           }
           // render the tutors

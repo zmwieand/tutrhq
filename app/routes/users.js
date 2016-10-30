@@ -14,9 +14,9 @@ router.get('/', ensureLoggedIn, function(req, res, next) {
             socket.on('disconnect', function(){
               console.log('someone got disconnected.');
             });
-            socket.on('send notification', function(email, sender) {
+            socket.on('send notification', function(email, sender, link) {
               if (connections[email] && connections[email].connected) {
-                socket.broadcast.to(connections[email].id).emit('notification', sender, true, " needs help. Please help him?");
+                socket.broadcast.to(connections[email].id).emit('notification', sender, true, " needs help. Please help him?", link);
               } else {
                 socket.emit('notification', email, false, " is not available.");
               }

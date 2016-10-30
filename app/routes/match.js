@@ -21,6 +21,7 @@ router.get('/request_tutor', ensureLoggedIn, function(req, res, next) {
                 user['rating'] = users[i]['rating'];
                 user['pic'] = users[i]['pic'];
                 user['email_address'] = users[i]['email_address'];
+                user['sender_pic'] = req.user._json.picture;
                 retVal.push(user);
             }
             res.send(retVal);
