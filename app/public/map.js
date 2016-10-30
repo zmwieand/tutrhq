@@ -16,7 +16,13 @@ function initMap() {
   });
 
   marker.addListener('click', function() {
-    $("#account-modal").openModal(function() {console.log("HERE")});
+    $("#account-modal").openModal({
+        complete: function () {
+            $('#tutors').hide();
+            $('#account').show();
+            $('#area-tutors').empty();
+        }
+    });
   });
 }
 
