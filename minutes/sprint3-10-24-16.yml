@@ -1,0 +1,15 @@
+date: October 24th, 2016
+meeting_type: Group
+attendance: [tmweppne, wesleycs, daviddob,brijeshr]
+absent: [NONE]
+excused_absences: [zmwieand->at an interview in virginia for lockheed martin]
+task_progress: [
+  {ubit: <tmweppne>, progress:},
+  {ubit: <wesleycs>, progress:fixed the front end so its fully reactive},
+  {ubit: <zmwieand>, progress:updated tutr frontend, timer, and other stuff},
+  {ubit: <daviddob>, progress:brought the app to android and IOS, and secured our site with SSL},
+  {ubit: <brijeshr>, progress:}
+  ]
+issues: [NONE]
+Notes:  |NONE
+	|

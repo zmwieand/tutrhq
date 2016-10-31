@@ -1,0 +1,17 @@
+date: October 17th, 2016
+meeting_type: Group
+attendance: [tmweppne, wesleycs, zmwieand, daviddob,brijeshr]
+absent: [NONE]
+excused_absences: [NONE]
+task_progress: [
+  {ubit: <tmweppne>, progress: worked on frontend},
+  {ubit: <wesleycs>, progress: front end},
+  {ubit: <zmwieand>, progress: helping wes with front},
+  {ubit: <daviddob>, progress: ruled out ionic},
+  {ubit: <brijeshr>, progress: 403 page},
+  ]
+issues: [NONE]
+Notes:  |NONE
+	|zach & wes fixing 404's
+  |using cordova not Ionic
+  |dave working on mobile
