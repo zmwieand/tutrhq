@@ -130,6 +130,20 @@ body {
     height: 100%;
 }
 
+@supports (overflow:-webkit-marquee) and (justify-content:inherit) {
+   {
+    }
+
+    #panels {
+      margin-top: 50%;
+    }
+
+    #row1 {
+      margin-top: 50%;
+    }
+
+}
+
 #panels {
     margin-top: -10%;
 }
@@ -210,6 +224,7 @@ body {
 }
 
 
+
 @media screen and (max-width: 768px) {
     #logo {
         width: 50px;
@@ -240,6 +255,7 @@ body {
     #watchvideo {
         display: none;
     }
+
 }
 
 @media screen and (max-width: 480px) {
@@ -363,5 +379,6 @@ body {
         margin-bottom: 0%;
         color: #1976d2;
     }
+
 
 }

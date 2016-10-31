@@ -18,13 +18,9 @@ body {
 
 
 @media screen and (max-width: 768px) {
-  #desktop{
-    display: none;
-  }
+  
 }
 
 @media screen and (max-width: 480px) {
-  #desktop{
-    display: none;
-    }
+
 }

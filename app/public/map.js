@@ -9,7 +9,10 @@ function initMap() {
   var mapDiv = document.getElementById('map');
   map = new google.maps.Map(mapDiv, {
     center: myLatLng,
-    zoom: 17
+    zoom: 17,
+    streetViewControl: false,
+    mapTypeControl: false,
+    zoomControl: false
   });
 
   var marker = new google.maps.Marker({

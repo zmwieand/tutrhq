@@ -1,4 +1,3 @@
-localhost = '128.205.39.190'
 $(document).ready(function(){
   function createTutorCard(name, price, rating, pic, email, sender, link) {
     a = $('<a></a>');
@@ -42,7 +41,7 @@ $(document).ready(function(){
     $("#loading-message").text("Finding Tutor's in your area ...");
 
     $.ajax({
-      url: "https://"+localhost+":3000/match/request_tutor",
+      url: "http://localhost:3000/match/request_tutor",
       type: 'GET',
       success: function(res) {
           if (res.length == 0) {
@@ -101,7 +100,7 @@ $(document).ready(function(){
   $('#tutor-switch').on('click', function(){
     if ($(this).is(":checked")) {
         $.ajax({
-            url: "https://"+localhost+":3000/users/tutor_online",
+            url: "http://localhost:3000/users/tutor_online",
             type: 'GET',
             success: function(res) {
                 Materialize.toast("You are now an available Tutor!", 5000)
@@ -109,7 +108,7 @@ $(document).ready(function(){
         });
     } else {
         $.ajax({
-            url: "https://"+localhost+":3000/users/tutor_offline",
+            url: "http://localhost:3000/users/tutor_offline",
             type: 'GET',
             success: function(res) {
                 Materialize.toast("You are now offline", 5000)
@@ -123,7 +122,7 @@ $(document).ready(function(){
 
   $('#accept-btn').click(function(){
     $.ajax({
-      url: "https://"+localhost+":3000/match/accept",
+      url: "http://localhost:3000/match/accept",
       type: 'GET',
       success: function(res) {
       }
@@ -160,7 +159,7 @@ $(document).ready(function(){
   // timer buttons
   $('#start-btn').click(function() {
     $.ajax({
-      url: "https://"+localhost+":3000/match/start",
+      url: "http://localhost:3000/match/start",
       type: 'GET',
       success: function(res) {
           Materialize.toast("Session Started", 5000)
@@ -177,7 +176,7 @@ $(document).ready(function(){
 
   $('#stop-btn').click(function() {
     $.ajax({
-      url: "https://"+localhost+":3000/match/stop",
+      url: "http://localhost:3000/match/stop",
       type: 'GET',
       success: function(res) {
           Materialize.toast("Session over", 5000)
