@@ -1,0 +1,18 @@
+date: October 10th, 2016
+meeting_type: Group
+attendance: [tmweppne, wesleycs, zmwieand, daviddob,brijeshr]
+absent: [NONE]
+excused_absences: [NONE]
+task_progress: [
+  {ubit: <tmweppne>, progress: css fixes},
+  {ubit: <wesleycs>, progress: front page},
+  {ubit: <zmwieand>, progress: video and creating endpoint for backend},
+  {ubit: <daviddob>, progress: completed Auth0},
+  {ubit: <brijeshr>, progress: Database integration},
+  ]
+issues: [NONE]
+Notes:  |NONE
+	|email professor and ask if student can be tutr <accept> <decline>
+	|dave&brijesh&tim -> ionic
+	|zach->tutr ui
+	|wes->index.html

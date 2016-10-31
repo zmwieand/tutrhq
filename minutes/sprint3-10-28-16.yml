@@ -1,0 +1,15 @@
+date: October 10th, 2016
+meeting_type: Group
+attendance: [tmweppne, wesleycs, zmwieand, daviddob,brijeshr]
+absent: [NONE]
+excused_absences: [NONE]
+task_progress: [
+  {ubit: <tmweppne>, progress: did more work on the school list database},
+  {ubit: <wesleycs>, progress: finished desktop login, updated splashpage for mobile, started work on "tutorial" login},
+  {ubit: <zmwieand>, progress: tuter active and inactive completed, currently working on retrieving active tuters for specified course},
+  {ubit: <daviddob>, progress: SSL implemented, working on improving page speed},
+  {ubit: <brijeshr>, progress: tuter side of database stuff, and sessions},
+  ]
+issues: [NONE]
+Notes:  |NONE
+	|
