@@ -1,0 +1,53 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="com.tutrhq.mobile" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <feature name="Whitelist">
+        <param name="android-package" value="org.apache.cordova.whitelist.WhitelistPlugin" />
+        <param name="onload" value="true" />
+    </feature>
+    <feature name="Notification">
+        <param name="android-package" value="org.apache.cordova.dialogs.Notification" />
+    </feature>
+    <feature name="NetworkStatus">
+        <param name="android-package" value="org.apache.cordova.networkinformation.NetworkManager" />
+    </feature>
+    <feature name="Geolocation">
+        <param name="android-package" value="org.apache.cordova.geolocation.Geolocation" />
+    </feature>
+    <feature name="SplashScreen">
+        <param name="android-package" value="org.apache.cordova.splashscreen.SplashScreen" />
+        <param name="onload" value="true" />
+    </feature>
+    <name>tutrhq</name>
+    <icon src="www/img/logo.png" />
+    <splash src="www/img/Default@2x~universal~anyany.png" />
+    <description>
+        TutrHq Mobile Application FrontEnd.
+    </description>
+    <author email="tutrhq@gmail.com" href="http://tutrhq.com">
+        TutrHq Support Team
+    </author>
+    <content src="index.html" />
+    <access origin="*" />
+    <allow-navigation href="http://*.tutrhq.com/*" />
+    <allow-navigation href="https://*.tutrhq.com/*" />
+    <allow-navigation href="http://*.buffalo.edu/*" />
+    <allow-navigation href="https://*.buffalo.edu/*" />
+    <allow-navigation href="http://*.auth0.com/*" />
+    <allow-navigation href="https://*.auth0.com/*" />
+    <allow-navigation href="http://*.google.com/*" />
+    <allow-navigation href="https://*.google.com/*" />
+    <allow-intent href="http://*/*" />
+    <allow-intent href="https://*/*" />
+    <allow-intent href="tel:*" />
+    <allow-intent href="sms:*" />
+    <allow-intent href="mailto:*" />
+    <allow-intent href="geo:*" />
+    <allow-intent href="market:*" />
+    <preference name="loglevel" value="DEBUG" />
+    <preference name="AutoHideSplashScreen" value="true" />
+    <preference name="SplashScreenDelay" value="5000" />
+    <preference name="FadeSplashScreenDuration" value="750" />
+    <preference name="ShowSplashScreenSpinner" value="false" />
+    <preference name="SplashMaintainAspectRatio" value="true" />
+    <preference name="SplashShowOnlyFirstTime" value="true" />
+</widget>

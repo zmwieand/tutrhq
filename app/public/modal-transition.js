@@ -1,15 +1,71 @@
 $(document).ready(function(){
+  function createTutorCard(name, price, rating, pic, email, sender, link) {
+    a = $('<a></a>');
+    a.addClass('collection-item avatar');
+    a.on('click', function(event){
+      notify(email, sender, link);
+    });
+    img = $("<img>");
+    img.addClass('circle');
+    img.attr("src", pic);
+
+    s = $('<span></span>');
+    s.addClass('title');
+    s.text(name);
+
+    p = $('<p></p>');
+    p.text('$' + price +'/hr');
+
+    h5 = $('<h5></h5>');
+    h5.addClass('secondary-content');
+    h5.text(rating);
+
+    a.append(img);
+    a.append(s);
+    a.append(p);
+    a.append(h5);
+
+    return a;
+  }
+
+  function notify(email, sender, link) {
+    socket.emit('send notification', email, sender, link);
+    console.log("sending a notification to: " + email);
+  }
+
   $("#tutors").hide();
   $("#request").hide();
   $(".eng").click(function() {
     $("#account").hide();
     $("#request").show();
     $("#loading-message").text("Finding Tutor's in your area ...");
-    setTimeout(function() {
-      $("#request").hide();
-      $("#tutors").show();
-      Materialize.showStaggeredList('#staggered-test');
-    }, 3000);
+
+    $.ajax({
+      url: "http://localhost:3000/match/request_tutor",
+      type: 'GET',
+      success: function(res) {
+          if (res.length == 0) {
+              $("#area-tutors").append("<p class='center-align'>" +
+                  "<i>Sorry, there are no tutors in your area at this time" +
+                  "<br>Please try again later</i>.</p>");
+          }
+          for (var i in res) {
+              var tutor = res[i];
+              $('#area-tutors').append(createTutorCard(
+                  tutor["first_name"]+ ' ' + tutor["last_name"],
+                  tutor['price'],
+                  tutor['rating'],
+                  tutor['pic'],
+                  tutor['email_address'],
+                  tutor['sender'],
+                  tutor['sender_pic']
+              ));
+          }
+          // render the tutors
+          $('#request').hide();
+          $("#tutors").show();
+      }
+    });
   });
 
   var new_course = '<div class="row">' +
@@ -28,12 +84,12 @@ $(document).ready(function(){
                             '</a>' +
                         '</div>' +
                    '</div>'
-  
+
   $('#add_course_button').click(function(e) {
     e.preventDefault();
     $('.wrapper').append(new_course);
     x += 1;
-  }); 
+  });
 
   $('.wrapper').on('click', '.remove_course_button', function(e){
     e.preventDefault();
@@ -63,7 +119,7 @@ $(document).ready(function(){
 
   // notification buttons
   $('.fixed-action-btn').hide();
-  
+
   $('#accept-btn').click(function(){
     $.ajax({
       url: "http://localhost:3000/match/accept",
@@ -99,7 +155,7 @@ $(document).ready(function(){
   function timer() {
     t = setTimeout(add, 1000);
   }
-  
+
   // timer buttons
   $('#start-btn').click(function() {
     $.ajax({
@@ -115,7 +171,7 @@ $(document).ready(function(){
     $('#cancel-btn').attr('disabled', true);
     $('#start-btn').attr('disabled', true);
   });
-  
+
   $('#stop-btn').attr('disabled', true);
 
   $('#stop-btn').click(function() {

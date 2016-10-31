@@ -8,8 +8,8 @@ var session = require('express-session');
 var dotenv = require('dotenv');
 var passport = require('passport');
 var Auth0Strategy = require('passport-auth0');
-
-// db stuff
+connections = [];
+// Initializing the db through mlab instance
 var mongoose = require('mongoose');
 mongoose.connect('mongodb://tutr:tutrhq1738@ds053176.mlab.com:53176/tutrhq');
 
@@ -47,11 +47,19 @@ passport.deserializeUser(function(user, done) {
 
 var app = express();
 
+//Sockets Initailization
+server = require('http').Server(app);
+io = require('socket.io')(server);
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
 // uncomment after placing your favicon in /public
+app.use(function(req, res, next){
+  res.io = io;
+  next();
+});
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -64,6 +72,10 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(express.static(path.join(__dirname, 'public')));
+
+// app.get('/favicon.ico', function(req, res) {
+//   res.send(200);
+// });
 
 // accessing routes
 app.use('/', routes);
@@ -102,4 +114,4 @@ app.use(function(err, req, res, next) {
   });
 });
 
-module.exports = app;
+module.exports = {app: app, server: server};

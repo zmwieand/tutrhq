@@ -12,7 +12,10 @@ block content
                 if user.role == 'tutor'
                     div.switch
                         label
-                            input(type="checkbox" id="tutor-switch")
+                            if user.is_active
+                                input(type="checkbox" id="tutor-switch" checked)
+                            else
+                                input(type="checkbox" id="tutor-switch")
                             span.lever
 
         li
@@ -59,7 +62,6 @@ block content
     include fragments/nav
 
     div(id="map", class="grey", style="width: 100%; height: 600px;")
-    a(href="#notification-modal" class="modal-trigger btn blue") Notify
     
     if user.role == 'tutor'
         div(class="fixed-action-btn" style="bottom: 45px; right: 24px;")
@@ -83,4 +85,6 @@ block content
 
     script(type="text/javascript", src="map.js")
     script(async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC0qiL1nz_rW0vB-AlBjqQw6RbyS_N0wwI&callback=initMap")
-    
+    script.
+        socket.emit('set_socket', '#{user.email_address}');
+    script(type="text/javascript", src="notify.js")

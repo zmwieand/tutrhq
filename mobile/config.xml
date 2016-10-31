@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="com.tutrhq.mobile" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+	<name>tutrhq</name>
+	<icon src="www/img/logo.png"/>
+	<splash src="www/img/Default@2x~universal~anyany.png"/>
+	<preference name="AutoHideSplashScreen" value="true"/>
+	<preference name="SplashScreenDelay" value="5000"/>	
+	<preference name="FadeSplashScreenDuration" value="750"/>
+	<preference name="ShowSplashScreenSpinner" value="false"/>
+	<preference name="SplashMaintainAspectRatio" value="true"/>
+	<preference name="SplashShowOnlyFirstTime" value="true"/>
+	<description>
+        TutrHq Mobile Application FrontEnd.
+    </description>
+    <author email="tutrhq@gmail.com" href="http://tutrhq.com">
+        TutrHq Support Team
+    </author>
+    <content src="index.html" />
+    <plugin name="cordova-plugin-whitelist" spec="1"/>
+    <access origin="*" />
+	<allow-navigation href="http://*.tutrhq.com/*"/>
+	<allow-navigation href="https://*.tutrhq.com/*"/>
+	<allow-navigation href="http://*.buffalo.edu/*"/>
+	<allow-navigation href="https://*.buffalo.edu/*"/>
+	<allow-navigation href="http://*.auth0.com/*"/>
+	<allow-navigation href="https://*.auth0.com/*"/>	
+	<allow-navigation href="http://*.google.com/*"/>
+	<allow-navigation href="https://*.google.com/*"/>
+
+	<allow-intent href="http://*/*"/>
+    <allow-intent href="https://*/*"/>
+    <allow-intent href="tel:*"/>
+    <allow-intent href="sms:*"/>
+    <allow-intent href="mailto:*"/>
+    <allow-intent href="geo:*"/>
+    <platform name="android">
+        <allow-intent href="market:*"/>
+    </platform>
+    <platform name="ios">
+        <allow-intent href="itms:*"/>
+        <allow-intent href="itms-apps:*"/>
+    </platform>
+</widget>

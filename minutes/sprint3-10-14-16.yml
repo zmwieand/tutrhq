@@ -1,0 +1,18 @@
+date: October 14th, 2016
+meeting_type: Group
+attendance: [tmweppne, wesleycs, zmwieand, daviddob,brijeshr]
+absent: [NONE]
+excused_absences: [NONE]
+task_progress: [
+  {ubit: <tmweppne>, progress: working on frontend implementation and css},
+  {ubit: <wesleycs>, progress: working on index and login pages },
+  {ubit: <zmwieand>, progress: working on tutr frontend modals},
+  {ubit: <daviddob>, progress: looking into ionic implementation but running into roadblocks},
+  {ubit: <brijeshr>, progress: creating new error pages for 503/404/etc},
+  ]
+issues: [NONE]
+Notes:  |NONE
+  |
+  |Dave-Ionic is too abstract and does not allow access to the lower level calls needed
+  |to build a web wrapper. Will look at scraping away the ionic layer into the middleware
+  |underneath it to get lower level calls.
