@@ -1,0 +1,15 @@
+date: October 22nd, 2016
+meeting_type: Group
+attendance: [tmweppne, wesleycs, daviddob, brijeshr, zmwieand]
+absent: [NONE]
+excused_absences: [NONE]
+task_progress: [
+  {ubit: <tmweppne>, progress:working on school list for index},
+  {ubit: <wesleycs>, progress:working on making front end fully responsive and fixing css},
+  {ubit: <zmwieand>, progress:working on tutr frontend support},
+  {ubit: <daviddob>, progress:built basic android wrapper for tutrhqmobile},
+  {ubit: <brijeshr>, progress:worked on backend database calls and schema for tutr side}
+  ]
+issues: [NONE]
+Notes:  |NONE
+	|
