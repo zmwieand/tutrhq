@@ -1,0 +1,16 @@
+date: October 31st, 2016
+meeting_type: TA
+attendance: [tmweppne, wesleycs, zmwieand, daviddob,brijeshr]
+absent: [NONE]
+excused_absences: [NONE]
+task_progress: [
+  {ubit: <tmweppne>, progress: school search, payment},
+  {ubit: <wesleycs>, progress: school search, payment},
+  {ubit: <zmwieand> (dr. sheldon cooper), progress: added in dismissle function for modal, front end for rendering tutors from database, worked at google},
+  {ubit: <daviddob>, progress: sever side code, },
+  {ubit: <brijeshr>, progress: socket communication },
+  ]
+issues: [NONE]
+Notes:  |NONE
+	|zach & brijesh are finishing up session stuff
+  |
