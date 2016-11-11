@@ -18,16 +18,14 @@ socket.on('notification', function(email, status, data, link) {
   });
 });
 
-socket.on('accept', function(email, status, data, link) {
+socket.on('accept', function(email) {
     // TODO: show the tutors location to the student
-    if (status) {
-        console.log("found");
-    }
+    console.log("acceptence received")
+    Materialize.toast("Erlich Bachman is on the way", 4000);
 });
 
-socket.on('decline', function(email, status, data, link) {
+socket.on('decline', function(reason) {
     // TODO: show a modal explaining why the tutor cannot make it
-    if (status) {
-        console.log('hullo');
-    }
+    $('#denied-modal').openModal();
+    $('#denied-message').text("Looks like your tutor cannot make it :(");
 });

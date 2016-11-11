@@ -15,6 +15,8 @@ router.get('/', ensureLoggedIn, function(req, res, next) {
               console.log('someone got disconnected.');
             });
             socket.on('send notification', function(email, sender, link) {
+              console.log(email);
+              console.log(sender);
               if (connections[email] && connections[email].connected) {
                 socket.broadcast.to(connections[email].id).emit('notification', sender, true, " needs help. Please help him?", link);
               } else {
@@ -22,6 +24,17 @@ router.get('/', ensureLoggedIn, function(req, res, next) {
               }
             });
 
+            socket.on('send accept', function(email, sender){
+              console.log('email:' + email);
+              console.log('sender:' + sender);
+              socket.emit('accept', email);
+            });
+            
+            socket.on('send decline', function(email, sender){
+              console.log('email:' + email);
+              console.log('sender:' + sender);
+              socket.emit('decline', email);
+            });
         });
         var out = req.user._json;
         if (user) {

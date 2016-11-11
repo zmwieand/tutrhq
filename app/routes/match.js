@@ -41,13 +41,10 @@ router.get('/stop', function(req, res, next) {
     res.send('stop');
 });
 
-router.get('/accept', function(req, res, next){
-    res.send('accept');
-});
-
 router.post('/cancel', function(req, res, next) {
     var reason = req.body['reason'];
-    console.log("Reason: " + reason);
+    console.log(reason);
+    socket.emit("decline", reason);
     res.redirect('/users');
 });
 

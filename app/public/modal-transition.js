@@ -146,7 +146,11 @@ $(document).ready(function(){
   $('#accept-btn').on('click', function(event) {
     accept("email", "sender");
   });
-
+  
+  $('#decline-btn').on('click', function(event) {
+    decline("email", "sender");
+  });
+  
   // timer
   var seconds = 0;
   var minutes = 0;
