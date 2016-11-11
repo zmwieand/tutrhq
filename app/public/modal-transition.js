@@ -4,6 +4,9 @@ $(document).ready(function(){
     a.addClass('collection-item avatar');
     a.on('click', function(event){
       notify(email, sender, link);
+      $("#tutors").hide();
+      $("#request").show();
+      $("#loading-message").text("Contacting " + name + ' ...');
     });
     img = $("<img>");
     img.addClass('circle');
@@ -33,6 +36,16 @@ $(document).ready(function(){
     console.log("sending a notification to: " + email);
   }
 
+  function accept(email, sender) {
+    socket.emit('send accept', "tmweppne@buffalo.edu", "zmwieand@buffalo.edu");
+    console.log('accepting');
+  }
+
+  function decline(email, sender) {
+    socket.emit('send decline', email, sender);
+    console.log('decline');
+  }
+  
   $("#tutors").hide();
   $("#request").hide();
   $(".eng").click(function() {
@@ -120,14 +133,18 @@ $(document).ready(function(){
   // notification buttons
   $('.fixed-action-btn').hide();
 
-  $('#accept-btn').click(function(){
-    $.ajax({
-      url: "http://localhost:3000/match/accept",
-      type: 'GET',
-      success: function(res) {
-      }
-    });
-    $('.fixed-action-btn').show();
+  // $('#accept-btn').click(function(){
+  //   $.ajax({
+  //     url: "http://localhost:3000/match/accept",
+  //     type: 'GET',
+  //     success: function(res) {
+  //     }
+  //   });
+  //   $('.fixed-action-btn').show();
+  // });
+
+  $('#accept-btn').on('click', function(event) {
+    accept("email", "sender");
   });
 
   // timer

@@ -25,6 +25,7 @@ function initMap() {
     $("#account-modal").openModal({
         complete: function () {
             $('#tutors').hide();
+            $('#request').hide();
             $('#account').show();
             $('#area-tutors').empty();
         }
