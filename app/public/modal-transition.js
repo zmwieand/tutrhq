@@ -140,6 +140,7 @@ $(document).ready(function(){
   //});
   //
 
+  // this is a temp addition so that I can test notificatoins
   $("#notify-btn").click(function() {
     console.log("I am pressing the button");
     socket.emit('test', "tmweppne@buffalo.edu", true, "hullo", "https://lh3.googleusercontent.com/-XdUIqdMkCWA/AAAAAAAAAAI/AAAAAAAAAAA/4252rscbv5M/photo.jpg");
