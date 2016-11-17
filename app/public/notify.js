@@ -33,3 +33,13 @@ socket.on('decline', function(reason) {
     $('#denied-modal').openModal();
     $('#denied-message').text("Looks like your tutor cannot make it :(");
 });
+
+socket.on('start session', function() {
+    Materialize.toast('Your session has started', 4000);
+});
+
+socket.on('end session', function(price) {
+    $('.fixed-action-btn').hide();
+    $('#rating-modal').openModal();
+    $('#price').text("$" + price);
+})

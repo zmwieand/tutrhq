@@ -167,15 +167,8 @@ $(document).ready(function(){
 
   // timer buttons
   $('#start-btn').click(function() {
-    $.ajax({
-      url: "http://localhost:3000/match/start",
-      type: 'GET',
-      success: function(res) {
-          Materialize.toast("Session Started", 4000)
-      }
-    });
-
-    timer();
+    socket.emit('send start session');
+    
     $('#stop-btn').attr('disabled', false);
     $('#cancel-btn').attr('disabled', true);
     $('#start-btn').attr('disabled', true);
@@ -184,16 +177,8 @@ $(document).ready(function(){
   $('#stop-btn').attr('disabled', true);
 
   $('#stop-btn').click(function() {
-    $.ajax({
-      url: "http://localhost:3000/match/stop",
-      type: 'GET',
-      success: function(res) {
-          Materialize.toast("Session over", 4000)
-      }
-    });
-    clearTimeout(t);
-    $('.fixed-action-btn').hide();
-
+    socket.emit('send end session');
+    
   });
 
 });

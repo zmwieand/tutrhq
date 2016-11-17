@@ -37,14 +37,17 @@ router.get('/', ensureLoggedIn, function(req, res, next) {
               socket.emit('decline', email);
             });
 
-            socket.on('send start', function() {
+            socket.on('send start session', function() {
                 console.log('STARTING');
+                socket.emit('start session');
                 // This should just mark a timestamp in the db and flash a
                 // message to the student
             });
 
-            socket.on('send end', fucntion() {
+            socket.on('send end session', function() {
                 console.log('ENDING');
+                price = 17.38
+                socket.emit('end session', price);
                 // This should end the session and send a rating and both
                 // student and tutor with the price
             });
