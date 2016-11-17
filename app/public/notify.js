@@ -6,6 +6,15 @@ socket.on('notification', function(email, status, data, link) {
     $('#subject').text("Assignment 3");
     $('#image').attr('src', link);
 
+    $("#accept-btn").on('click', function(event) {
+        console.log("accepting");
+        socket.emit('send accept', email);
+    });
+
+    $("#decline-btn").on('click', function(event) {
+        console.log('declining');
+        socket.emit('send decline', email);
+    });
   }
   Push.create("Update from tutr!", {
     body: email + data,

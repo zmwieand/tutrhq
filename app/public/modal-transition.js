@@ -131,12 +131,18 @@ $(document).ready(function(){
   // notification buttons
   $('.fixed-action-btn').hide();
 
-  $('#accept-btn').on('click', function(event) {
-    accept("email", "sender");
-  });
+  // $('#accept-btn').on('click', function(event) {
+  //   accept("email", "sender");
+  // });
   
-  $('#decline-btn').on('click', function(event) {
-    decline("email", "sender");
+  //$('#decline-btn').on('click', function(event) {
+  //  decline("email", "sender");
+  //});
+  //
+
+  $("#notify-btn").click(function() {
+    console.log("I am pressing the button");
+    socket.emit('test', "tmweppne@buffalo.edu", true, "hullo", "https://lh3.googleusercontent.com/-XdUIqdMkCWA/AAAAAAAAAAI/AAAAAAAAAAA/4252rscbv5M/photo.jpg");
   });
   
   // timer buttons

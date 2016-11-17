@@ -17,7 +17,13 @@ var userSchema = new Schema({
   major: String,
   hourly_rate: Number,
   is_active: Boolean,
-  transactions: []
+  transactions: [],
+  session : {
+      email: String,
+      state: String,
+      session_start: Number,
+      session_end: Number,
+  }
 });
 
 userSchema.statics.findByEmail = function(email_address, cb) {

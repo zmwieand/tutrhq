@@ -62,7 +62,7 @@ block content
     include fragments/nav
 
     div(id="map", class="grey", style="width: 100%; height: 600px;")
-    a(class="btn blue modal-trigger" href="#notification-modal") Notify
+    a(class="btn blue" id="notify-btn") Notify
     
     if user.role == 'tutor'
         div(class="fixed-action-btn" style="bottom: 45px; right: 24px;")
@@ -90,3 +90,4 @@ block content
     script.
         socket.emit('set_socket', '#{user.email_address}');
     script(type="text/javascript", src="notify.js")
+
