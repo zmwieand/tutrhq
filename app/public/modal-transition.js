@@ -38,12 +38,10 @@ $(document).ready(function(){
 
   function accept(email, sender) {
     socket.emit('send accept', "tmweppne@buffalo.edu", "zmwieand@buffalo.edu");
-    console.log('accepting');
   }
 
   function decline(email, sender) {
     socket.emit('send decline', email, sender);
-    console.log('decline');
   }
   
   $("#tutors").hide();
@@ -133,16 +131,6 @@ $(document).ready(function(){
   // notification buttons
   $('.fixed-action-btn').hide();
 
-  // $('#accept-btn').click(function(){
-  //   $.ajax({
-  //     url: "http://localhost:3000/match/accept",
-  //     type: 'GET',
-  //     success: function(res) {
-  //     }
-  //   });
-  //   $('.fixed-action-btn').show();
-  // });
-
   $('#accept-btn').on('click', function(event) {
     accept("email", "sender");
   });
@@ -183,7 +171,7 @@ $(document).ready(function(){
       url: "http://localhost:3000/match/start",
       type: 'GET',
       success: function(res) {
-          Materialize.toast("Session Started", 5000)
+          Materialize.toast("Session Started", 4000)
       }
     });
 
@@ -200,7 +188,7 @@ $(document).ready(function(){
       url: "http://localhost:3000/match/stop",
       type: 'GET',
       success: function(res) {
-          Materialize.toast("Session over", 5000)
+          Materialize.toast("Session over", 4000)
       }
     });
     clearTimeout(t);

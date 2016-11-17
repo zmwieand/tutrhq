@@ -27,13 +27,26 @@ router.get('/', ensureLoggedIn, function(req, res, next) {
             socket.on('send accept', function(email, sender){
               console.log('email:' + email);
               console.log('sender:' + sender);
-              socket.emit('accept', email);
+              socket.emit('student accept', email);
+              socket.emit('tutor accept');
             });
             
             socket.on('send decline', function(email, sender){
               console.log('email:' + email);
               console.log('sender:' + sender);
               socket.emit('decline', email);
+            });
+
+            socket.on('send start', function() {
+                console.log('STARTING');
+                // This should just mark a timestamp in the db and flash a
+                // message to the student
+            });
+
+            socket.on('send end', fucntion() {
+                console.log('ENDING');
+                // This should end the session and send a rating and both
+                // student and tutor with the price
             });
         });
         var out = req.user._json;
