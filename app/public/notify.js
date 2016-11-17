@@ -29,7 +29,6 @@ socket.on('tutor accept', function() {
 });
 
 socket.on('decline', function(reason) {
-    // TODO: show a modal explaining why the tutor cannot make it
     $('#denied-modal').openModal();
     $('#denied-message').text("Looks like your tutor cannot make it :(");
 });
