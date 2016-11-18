@@ -162,4 +162,17 @@ $(document).ready(function(){
     
   });
 
+  $('#rating-btn').click(function() {
+    var rating = $('rating-input').val();
+    $.ajax({
+        url: 'http://localhost:3000/users/rate',
+        type: "POST",
+        data: {'rating': rating},
+        success: function(res) {
+            console.log("finished rating");
+            $('#rating-modal').closeModal();
+        }
+    });
+  });
+
 });

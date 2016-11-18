@@ -74,6 +74,7 @@ router.get('/', ensureLoggedIn, function(req, res, next) {
                     tutor.session.state = "start"
                     tutor.session.session_start = session_start;
                     
+                    // update the students session as well
                     User.findByEmail(tutor.session.email, function(err, student){
                       if (student) {
                         student.session.state = "start";
@@ -88,7 +89,6 @@ router.get('/', ensureLoggedIn, function(req, res, next) {
                     if (err) return err;
                   });
                   
-                  // update the students session as well
                   
                 });
 
@@ -218,11 +218,6 @@ router.get('/register', function(req, res, next) {
     res.render('register');
 });
 
-// This should probably be removed
-router.post('/register', function(req, res, next) {
-    res.send(req.body);
-});
-
 router.get('/tutor_online', ensureLoggedIn, function(req, res, next) {
     User.findByEmail(req.user._json.email, function(err, user) {
         if (user && user.role == "tutor") {
@@ -259,7 +254,15 @@ router.get('/tutor_offline', ensureLoggedIn, function(req, res, next) {
 router.post('/rate', function(req, res, next) {
     var rating = req.body['rating'];
     console.log('Rating: ' + rating);
-    res.redirect('/users');
+    var email = req.user._json.email;
+    console.log("current user: " + email);
+    User.findByEmail(email, function(err, user) {
+        if (user) {
+            var other = user.session.email;
+            console.log("other: " + other);
+            res.send('done')
+        }
+    });
 });
 
 module.exports = router;
