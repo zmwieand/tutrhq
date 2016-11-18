@@ -27,9 +27,9 @@ socket.on('notification', function(email, status, data, link) {
   });
 });
 
-socket.on('student accept', function(email) {
+socket.on('student accept', function(name) {
     // TODO: show the tutors location to the student
-    Materialize.toast("Erlich Bachman is on the way", 4000);
+    Materialize.toast(name + " is on the way", 4000);
 });
 
 socket.on('tutor accept', function() {

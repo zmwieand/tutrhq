@@ -163,7 +163,7 @@ $(document).ready(function(){
   });
 
   $('#rating-btn').click(function() {
-    var rating = $('rating-input').val();
+    var rating = $('#rating').val();
     $.ajax({
         url: 'http://localhost:3000/users/rate',
         type: "POST",

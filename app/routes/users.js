@@ -53,7 +53,7 @@ router.get('/', ensureLoggedIn, function(req, res, next) {
                 });
               });
 
-              socket.emit('student accept', email);
+              socket.emit('student accept', user.first_name + ' ' + user.last_name);
               socket.emit('tutor accept');
             });
             
