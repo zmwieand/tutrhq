@@ -260,7 +260,18 @@ router.post('/rate', function(req, res, next) {
         if (user) {
             var other = user.session.email;
             console.log("other: " + other);
-            res.send('done')
+
+            // close the current users session
+            user.session.email = "";
+            user.session.state = "none";
+            user.session.session_start = 0;
+            user.session.session_end = 0;
+            user.save(function(err) {
+              if (err) return err;
+            });
+
+            // TODO: rate the other person
+            res.send('done');
         }
     });
 });
