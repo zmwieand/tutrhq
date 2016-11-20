@@ -1,0 +1,23 @@
+doctype html
+html
+  head
+    title= title
+
+    //- link(rel='stylesheet', href="http://fonts.googleapis.com/icon?family=Material+Icons")
+    link(rel='shortcut icon', href="/img/tutrlogo.png")
+    link(rel='stylesheet', href='/stylesheets/materialize.min.css')
+    link(rel='stylesheet', href='/stylesheets/index.min.css')
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+
+  body
+    block content
+
+    script(type="text/javascript", src="https://code.jquery.com/jquery-2.1.1.min.js")
+    script(type="text/javascript", src="/materialize.min.js")
+    script(type="text/javascript", src="/modal-transition.min.js")
+    script(type="text/javascript", src="/jquery.star.rating.min.js")          
+      
+    script.
+        $('.button').sideNav();
+        $(".modal-trigger").leanModal();
+        $('.rating').addRating();

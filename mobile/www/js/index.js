@@ -36,7 +36,7 @@ var app = {
         app.receivedEvent('deviceready');
 
         // Here, we redirect to the web site.
-        var targetUrl = "http://www.tutrhq.com/";
+        var targetUrl = "http://www.tutrhq.com/Auth/login";
         var bkpLink = document.getElementById("bkpLink");
         bkpLink.setAttribute("href", targetUrl);
         bkpLink.text = targetUrl;
