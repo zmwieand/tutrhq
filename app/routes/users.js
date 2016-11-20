@@ -69,6 +69,7 @@ router.get('/', ensureLoggedIn, function(req, res, next) {
                   });
 
 
+
                 });
 
                 socket.on('send decline', function(email) {
@@ -261,7 +262,7 @@ router.get('/tutor_offline', ensureLoggedIn, function(req, res, next) {
             res.redirect('/users');
         } else {
             res.render('error', {
-                message: "You shouldn't be here. Please fuck off."
+                message: "503: Something went wrong."
             });
         }
     });

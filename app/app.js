@@ -100,7 +100,7 @@ if (app.get('env') === 'development') {
   app.use(function(err, req, res, next) {
     res.status(err.status || 500);
     res.render('error', {
-      message: "You shouldn't be here. Please fuck off."
+      message: "500: Internal Server Error."
     });
   });
 }

@@ -4,9 +4,15 @@ var myLatLng = {
     lng: -78.7882364
 };
 
+var directionsService;
+var directionsDisplay;
+
 function initMap() {
 
   var mapDiv = document.getElementById('map');
+  directionsService = new google.maps.DirectionsService;
+  directionsDisplay = new google.maps.DirectionsRenderer;
+
   map = new google.maps.Map(mapDiv, {
     center: myLatLng,
     zoom: 17,
@@ -14,12 +20,18 @@ function initMap() {
     mapTypeControl: false,
     zoomControl: false
   });
-
+  
+  directionsDisplay.setMap(map);
+  
   var marker = new google.maps.Marker({
     position: myLatLng,
     map: map,
     title: 'Hello World!'
   });
+  
+  var start = {lat: 37.77, lng: -122.447};  // Haight
+  var end = {lat: 37.768, lng: -122.511};   // Ocean Beach
+  // calculateAndDisplayRoute(start, end);
 
   marker.addListener('click', function() {
     $("#account-modal").openModal({
@@ -39,6 +51,20 @@ function findCenter(lat1, long1, lat2, long2) {
         lat: (lat1 + lat2) / 2,
         lng: (long1 + long2) / 2
     };
+}
+
+function calculateAndDisplayRoute(start, end) {
+    directionsService.route({
+        origin: start,
+        destination: end,
+        travelMode: 'WALKING'
+    }, function(response, status) {
+        if (status === 'OK') {
+            directionsDisplay.setDirections(response);
+        } else {
+            window.alert('Directions request failed due to ' + status);
+        }
+    });
 }
 
 function tutorClick() {
