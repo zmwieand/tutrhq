@@ -5,137 +5,143 @@ var router = express.Router();
 var User = require('../models/user');
 
 router.get('/', ensureLoggedIn, function(req, res, next) {
-
     User.findByEmail(req.user._json.email, function(err, user) {
-        res.io.on('connection', function(socket){
-            socket.on('set_socket', function (email) {
-                connections[email] = socket;
-            });
-
-            socket.on('disconnect', function(){
-              console.log('someone got disconnected.');
-            });
-
-            socket.on('test', function(email, status, data, link) {
-                socket.emit('notification', email, status, data, link);
-            });
-
-            socket.on('send notification', function(email, sender, link) {
-              console.log(email);
-              console.log(sender);
-              if (connections[email] && connections[email].connected) {
-                socket.broadcast.to(connections[email].id).emit('notification', sender, true, " needs help. Please help him?", link);
-              } else {
-                socket.emit('notification', email, false, " is not available.");
-              }
-            });
-
-            socket.on('send accept', function(email) {
-              console.log('email:' + email);
-
-              User.findByEmail(email, function(err, student) {
-                if (err) return err;
-                if (student) {
-                  student.session.state = "match";
-                  student.session.email = req.user._json.email;
-                }
-                student.save(function(err) {
-                  if (err) return err;
+        if (!sockets_on) {
+            res.io.on('connection', function(socket){
+                sockets_on = true;
+                socket.on('set_socket', function (email) {
+                    if (!connections[email]) {
+                        connections[email] = socket;
+                    } else {
+                        delete connections[email];
+                        connections[email] = socket;
+                    }
                 });
-              });
 
-              User.findByEmail(req.user._json.email, function(err, tutor) {
-                if (err) return err;
-                if (tutor) {
-                  tutor.session.state = "match";
-                  tutor.session.email = email;
-                }
-                tutor.save(function(err) {
-                  if (err) return err;
+                socket.on('disconnect', function(){
+                    delete connections[req.user._json.email];
+                    console.log('someone got disconnected.');
                 });
-                if (connections[email] && connections[email].connected) {
-                    socket.broadcast.to(connections[email].id).emit('student accept', tutor.first_name + ' ' + tutor.last_name);
-                    socket.emit('tutor accept');
-                } else {
-                    console.log(req.user);
-                    socket.emit('tutr_error', req.user.displayName + " is offline. sorry bruh. btw, a suh dude?");
-                }
-              });
 
+                socket.on('test', function(email, status, data, link) {
+                    socket.emit('notification', email, status, data, link);
+                });
 
-            });
-
-            socket.on('send decline', function(email) {
-              if (connections[email] && connections[email].connected) {
-                  socket.broadcast.to(connections[email].id).emit('decline');
-              } else {
-                  socket.emit('error', "error");
-              }
-            });
-
-            socket.on('send start session', function() {
-                console.log('STARTING');
-                var hours = new Date().getHours();
-                var minutes = new Date().getMinutes();
-                var session_start = hours + (minutes/60);
-
-                // update the tutors db session
-                User.findByEmail(req.user._json.email, function (err, tutor) {
-                  if (tutor) {
-                    tutor.session.state = "start"
-                    tutor.session.session_start = session_start;
-
-                    // update the students session as well
-                    User.findByEmail(tutor.session.email, function(err, student){
-                      if (student) {
-                        student.session.state = "start";
-                        student.session.session_start = session_start;
-                      }
-                      student.save(function(err) {
-                        if (err) return err;
-                      });
-                    });
+                socket.on('send notification', function(email, sender, link) {
+                  console.log(connections);
+                  if (connections[email] && connections[email].connected) {
+                    socket.broadcast.to(connections[email].id).emit('notification', sender, true, " needs help. Please help him?", link);
+                  } else {
+                    socket.emit('notification', email, false, " is not available.");
                   }
-                  tutor.save(function(err) {
+                });
+
+                socket.on('send accept', function(email) {
+                  console.log('email:' + email);
+
+                  User.findByEmail(email, function(err, student) {
                     if (err) return err;
+                    if (student) {
+                      student.session.state = "match";
+                      student.session.email = req.user._json.email;
+                    }
+                    student.save(function(err) {
+                      if (err) return err;
+                    });
+                  });
+
+                  User.findByEmail(req.user._json.email, function(err, tutor) {
+                    if (err) return err;
+                    if (tutor) {
+                      tutor.session.state = "match";
+                      tutor.session.email = email;
+                    }
+                    tutor.save(function(err) {
+                      if (err) return err;
+                    });
+                    if (connections[email] && connections[email].connected) {
+                        socket.broadcast.to(connections[email].id).emit('student accept', tutor.first_name + ' ' + tutor.last_name);
+                        socket.emit('tutor accept');
+                    } else {
+                        console.log(req.user);
+                        socket.emit('tutr_error', req.user.displayName + " is offline. sorry bruh. btw, a suh dude?");
+                    }
                   });
 
 
                 });
-                socket.emit('start session');
-            });
 
-            socket.on('send end session', function() {
-                console.log('ENDING');
-                price = 17.38
-                var hours = new Date().getHours();
-                var minutes = new Date().getMinutes();
-                session_end = hours + (minutes/60);
+                socket.on('send decline', function(email) {
+                  if (connections[email] && connections[email].connected) {
+                      socket.broadcast.to(connections[email].id).emit('decline');
+                  } else {
+                      socket.emit('error', "error");
+                  }
+                });
 
-                User.findByEmail(req.user._json.email, function (err, tutor) {
-                  if (tutor) {
-                    tutor.session.state = "end"
-                    tutor.session.session_end = session_end;
+                socket.on('send start session', function() {
+                    console.log('STARTING');
+                    var hours = new Date().getHours();
+                    var minutes = new Date().getMinutes();
+                    var session_start = hours + (minutes/60);
 
-                    User.findByEmail(tutor.session.email, function(err, student){
-                      if (student) {
-                        student.session.state = "end";
-                        student.session.session_end = session_end;
+                    // update the tutors db session
+                    User.findByEmail(req.user._json.email, function (err, tutor) {
+                      if (tutor) {
+                        tutor.session.state = "start"
+                        tutor.session.session_start = session_start;
+
+                        // update the students session as well
+                        User.findByEmail(tutor.session.email, function(err, student){
+                          if (student) {
+                            student.session.state = "start";
+                            student.session.session_start = session_start;
+                          }
+                          student.save(function(err) {
+                            if (err) return err;
+                          });
+                        });
                       }
-                      student.save(function(err) {
+                      tutor.save(function(err) {
+                        if (err) return err;
+                      });
+
+
+                    });
+                    socket.emit('start session');
+                });
+
+                socket.on('send end session', function() {
+                    console.log('ENDING');
+                    price = 17.38
+                    var hours = new Date().getHours();
+                    var minutes = new Date().getMinutes();
+                    session_end = hours + (minutes/60);
+
+                    User.findByEmail(req.user._json.email, function (err, tutor) {
+                      if (tutor) {
+                        tutor.session.state = "end"
+                        tutor.session.session_end = session_end;
+
+                        User.findByEmail(tutor.session.email, function(err, student){
+                          if (student) {
+                            student.session.state = "end";
+                            student.session.session_end = session_end;
+                          }
+                          student.save(function(err) {
+                            if (err) return err;
+                          });
+                        });
+                      }
+                      tutor.save(function(err) {
                         if (err) return err;
                       });
                     });
-                  }
-                  tutor.save(function(err) {
-                    if (err) return err;
-                  });
+
+                    socket.emit('end session', price);
                 });
-
-                socket.emit('end session', price);
             });
-        });
-
+        }
         var out = req.user._json;
         if (user) {
             res.render('map', {
@@ -286,4 +292,13 @@ router.post('/rate', function(req, res, next) {
     });
 });
 
-module.exports = router;
+//
+// module.exports =  {
+//     start: function(io) {
+//         io.on('connection', function(socket) {
+//
+//         });
+//     },
+//     router: router
+// }
+ module.exports = router;

@@ -88,5 +88,6 @@ block content
     script(type="text/javascript", src="map.js")
     script(async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC0qiL1nz_rW0vB-AlBjqQw6RbyS_N0wwI&callback=initMap")
     script.
-        socket.emit('set_socket', '#{user.email_address}');
+        if (!socket_frontend)
+            socket.emit('set_socket', '#{user.email_address}');
     script(type="text/javascript", src="notify.js")

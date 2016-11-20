@@ -20,6 +20,7 @@ var routes = require('./routes/index');
 var users = require('./routes/users');
 var auth = require('./routes/auth');
 var match = require('./routes/match')
+sockets_on = false;
 
 // This will configure Passport to use Auth0
 var strategy = new Auth0Strategy({
