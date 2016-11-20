@@ -1,0 +1,22 @@
+date: November 11th, 2016
+meeting_type: Group
+attendance: [tmweppne, wesleycs, zmwieand, daviddob,brijeshr]
+absent: [NONE]
+excused_absences: [NONE]
+task_progress: [
+  {ubit: <tmweppne>, progress: search bar
+                     working on: search bar, payment, mobile css, viral ad},
+  {ubit: <wesleycs>, progress: mobile pages
+                      working on: signup, viral ad},
+  {ubit: <zmwieand>, progress: created basic tutr student interaction
+                      working on: accept and decline interaction for tutr and student to create sessions},
+  {ubit: <daviddob>, progress: continuous integration working for authentication related tasks, still broken for sockets though
+                      working on: continuous integration and pagespeed reliability},
+  {ubit: <brijeshr>, progress: sockets
+                      working on: bugfixing and socket connectivity}
+  ]
+issues: [NONE]
+Notes:|
+      |Sockets are working but very buggy sending infinite notifications
+      |Continuous integration scripts are mostly finished however there are
+      |    issues as much is hardcoded to localhost currently
