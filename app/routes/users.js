@@ -4,12 +4,6 @@ var ensureLoggedIn = require('connect-ensure-login').ensureLoggedIn();
 var router = express.Router();
 var User = require('../models/user');
 
-function disconnect () {
-
-}
-
-
-
 router.get('/', ensureLoggedIn, function(req, res, next) {
 
     User.findByEmail(req.user._json.email, function(err, user) {
