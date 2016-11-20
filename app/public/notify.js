@@ -29,6 +29,12 @@ socket.on('notification', function(email, status, data, link) {
 
 socket.on('student accept', function(name) {
     // TODO: show the tutors location to the student
+    $('#account-modal').closeModal();
+    $('#tutors').hide();
+    $('#request').hide();
+    $('#account').show();
+    $('#area-tutors').empty();
+
     Materialize.toast(name + " is on the way", 4000);
 });
 
