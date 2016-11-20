@@ -130,15 +130,16 @@ $(document).ready(function(){
 
   // notification buttons
   $('.fixed-action-btn').hide();
-
-  // $('#accept-btn').on('click', function(event) {
-  //   accept("email", "sender");
-  // });
-  
-  //$('#decline-btn').on('click', function(event) {
-  //  decline("email", "sender");
-  //});
-  //
+  $('.fixed-action-btn').click(function() {
+    $("#timer-modal").openModal({
+        complete: function() {
+            // reset the buttons
+            $('#stop-btn').attr('disabled', true);
+            $('#cancel-btn').attr('disabled', false);
+            $('#start-btn').attr('disabled', false);
+        }
+    });
+  });
 
   // this is a temp addition so that I can test notificatoins
   $("#notify-btn").click(function() {
