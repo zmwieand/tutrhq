@@ -76,7 +76,7 @@ router.get('/', ensureLoggedIn, function(req, res, next) {
                   if (connections[email] && connections[email].connected) {
                       socket.broadcast.to(connections[email].id).emit('decline');
                   } else {
-                      socket.emit('error', "error");
+                      socket.emit('tutr_error', "error");
                   }
                 });
 
@@ -97,6 +97,12 @@ router.get('/', ensureLoggedIn, function(req, res, next) {
                           if (student) {
                             student.session.state = "start";
                             student.session.session_start = session_start;
+                            if (connections[student.email_address] && connections[student.email_address].connected) {
+                                socket.broadcast.to(connections[student.email_address].id).emit('start session');
+                                socket.emit('start session')
+                            } else {
+                                socket.emit('tutr_error', "error");
+                            }
                           }
                           student.save(function(err) {
                             if (err) return err;
@@ -109,7 +115,7 @@ router.get('/', ensureLoggedIn, function(req, res, next) {
 
 
                     });
-                    socket.emit('start session');
+
                 });
 
                 socket.on('send end session', function() {
@@ -128,6 +134,12 @@ router.get('/', ensureLoggedIn, function(req, res, next) {
                           if (student) {
                             student.session.state = "end";
                             student.session.session_end = session_end;
+                            if (connections[student.email_address] && connections[student.email_address].connected) {
+                                socket.broadcast.to(connections[student.email_address].id).emit('end session', 17.38);
+                                socket.emit('end session', 17.38)
+                            } else {
+                                socket.emit('tutr_error', "error");
+                            }
                           }
                           student.save(function(err) {
                             if (err) return err;
@@ -138,8 +150,6 @@ router.get('/', ensureLoggedIn, function(req, res, next) {
                         if (err) return err;
                       });
                     });
-
-                    socket.emit('end session', price);
                 });
             });
         }
