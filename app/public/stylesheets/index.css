@@ -395,7 +395,7 @@ body {
 
 
 /* Safari 6.1+ (9.0 is the latest version of Safari at this time) */
-@media screen and (min-color-index:0)
+/*@media screen and (min-color-index:0)
 and(-webkit-min-device-pixel-ratio:0) { @media screen and (max-width: 1920px)
 {
     #panels {
@@ -503,4 +503,4 @@ and(-webkit-min-device-pixel-ratio:0) { @media screen and (max-width: 320px)
     #panels {
       margin-top: 200%;
     }
-}}
+}}*/
