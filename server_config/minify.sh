@@ -1,5 +1,5 @@
 #!/bin/bash
-for file in `find ~/tutrhq.com/app/public/ -name "*.js" -o -name "*.css"`
+for file in `find ../app/public/ -name "*.js" -o -name "*.css"`
 do
 #echo "Compressing $file …"
     if [[ $file != *.min.* ]]
