@@ -29,18 +29,6 @@ router.get('/request_tutor', ensureLoggedIn, function(req, res, next) {
     });
 });
 
-router.post('/select_tutor', function(req, res, next) {
-    res.send('select');
-});
-
-router.get('/start', function(req, res, next) {
-    res.send('start');
-});
-
-router.get('/stop', function(req, res, next) {
-    res.send('stop');
-});
-
 router.post('/cancel', function(req, res, next) {
     var reason = req.body['reason'];
     console.log(reason);

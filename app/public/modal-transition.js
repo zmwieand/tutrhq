@@ -11,46 +11,37 @@ $(document).ready(function(){
     img = $("<img>");
     img.addClass('circle');
     img.attr("src", pic);
-
     s = $('<span></span>');
     s.addClass('title');
     s.text(name);
-
     p = $('<p></p>');
     p.text('$' + price +'/hr');
-
     h5 = $('<h5></h5>');
     h5.addClass('secondary-content');
     h5.text(rating);
-
     a.append(img);
     a.append(s);
     a.append(p);
     a.append(h5);
-
     return a;
   }
-
   function notify(email, sender, link) {
     socket.emit('send notification', email, sender, link);
     console.log("sending a notification to: " + email);
   }
-
   function accept(email, sender) {
     socket.emit('send accept', "tmweppne@buffalo.edu", "zmwieand@buffalo.edu");
   }
-
   function decline(email, sender) {
     socket.emit('send decline', email, sender);
   }
-  
+
   $("#tutors").hide();
   $("#request").hide();
   $(".eng").click(function() {
     $("#account").hide();
     $("#request").show();
     $("#loading-message").text("Finding Tutor's in your area ...");
-
     $.ajax({
       url: "http://localhost:3000/match/request_tutor",
       type: 'GET',
@@ -78,7 +69,6 @@ $(document).ready(function(){
       }
     });
   });
-
   var new_course = '<div class="row">' +
                         '<div class="col s10">' +
                             '<select class="browser-default" name="course">' +
@@ -95,19 +85,16 @@ $(document).ready(function(){
                             '</a>' +
                         '</div>' +
                    '</div>'
-
   $('#add_course_button').click(function(e) {
     e.preventDefault();
     $('.wrapper').append(new_course);
     x += 1;
   });
-
   $('.wrapper').on('click', '.remove_course_button', function(e){
     e.preventDefault();
     // This is a cheap hack
     $(this).parents('div')[1].remove();
   });
-
   $('#tutor-switch').on('click', function(){
     if ($(this).is(":checked")) {
         $.ajax({
@@ -127,7 +114,6 @@ $(document).ready(function(){
         });
     }
   });
-
   // notification buttons
   $('.fixed-action-btn').hide();
   $('.fixed-action-btn').click(function() {
@@ -140,29 +126,25 @@ $(document).ready(function(){
         }
     });
   });
-
   // this is a temp addition so that I can test notificatoins
   $("#notify-btn").click(function() {
     console.log("I am pressing the button");
     socket.emit('test', "tmweppne@buffalo.edu", true, "hullo", "https://lh3.googleusercontent.com/-XdUIqdMkCWA/AAAAAAAAAAI/AAAAAAAAAAA/4252rscbv5M/photo.jpg");
   });
-  
+
   // timer buttons
   $('#start-btn').click(function() {
     socket.emit('send start session');
-    
+
     $('#stop-btn').attr('disabled', false);
     $('#cancel-btn').attr('disabled', true);
     $('#start-btn').attr('disabled', true);
   });
-
   $('#stop-btn').attr('disabled', true);
-
   $('#stop-btn').click(function() {
     socket.emit('send end session');
-    
-  });
 
+  });
   $('#rating-btn').click(function() {
     var rating = $('#rating').val();
     $.ajax({
@@ -175,5 +157,4 @@ $(document).ready(function(){
         }
     });
   });
-
 });

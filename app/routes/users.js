@@ -4,6 +4,12 @@ var ensureLoggedIn = require('connect-ensure-login').ensureLoggedIn();
 var router = express.Router();
 var User = require('../models/user');
 
+function disconnect () {
+
+}
+
+
+
 router.get('/', ensureLoggedIn, function(req, res, next) {
 
     User.findByEmail(req.user._json.email, function(err, user) {
@@ -32,34 +38,45 @@ router.get('/', ensureLoggedIn, function(req, res, next) {
 
             socket.on('send accept', function(email) {
               console.log('email:' + email);
-              
-              User.findByEmail(email, function(err, user) {
-                if (user) {
-                  user.session.state = "match";
-                  user.session.email = req.user._json.email;
+
+              User.findByEmail(email, function(err, student) {
+                if (err) return err;
+                if (student) {
+                  student.session.state = "match";
+                  student.session.email = req.user._json.email;
                 }
-                user.save(function(err) {
-                  if (err) return err;
-                });
-              });
-              
-              User.findByEmail(req.user._json.email, function(err, user) {
-                if (user) {
-                  user.session.state = "match";
-                  user.session.email = email;
-                }
-                user.save(function(err) {
+                student.save(function(err) {
                   if (err) return err;
                 });
               });
 
-              socket.emit('student accept', user.first_name + ' ' + user.last_name);
-              socket.emit('tutor accept');
+              User.findByEmail(req.user._json.email, function(err, tutor) {
+                if (err) return err;
+                if (tutor) {
+                  tutor.session.state = "match";
+                  tutor.session.email = email;
+                }
+                tutor.save(function(err) {
+                  if (err) return err;
+                });
+                if (connections[email] && connections[email].connected) {
+                    socket.broadcast.to(connections[email].id).emit('student accept', tutor.first_name + ' ' + tutor.last_name);
+                    socket.emit('tutor accept');
+                } else {
+                    console.log(req.user);
+                    socket.emit('tutr_error', req.user.displayName + " is offline. sorry bruh. btw, a suh dude?");
+                }
+              });
+
+
             });
-            
+
             socket.on('send decline', function(email) {
-              console.log('email:' + email);
-              socket.emit('decline', email);
+              if (connections[email] && connections[email].connected) {
+                  socket.broadcast.to(connections[email].id).emit('decline');
+              } else {
+                  socket.emit('error', "error");
+              }
             });
 
             socket.on('send start session', function() {
@@ -67,13 +84,13 @@ router.get('/', ensureLoggedIn, function(req, res, next) {
                 var hours = new Date().getHours();
                 var minutes = new Date().getMinutes();
                 var session_start = hours + (minutes/60);
-                
+
                 // update the tutors db session
                 User.findByEmail(req.user._json.email, function (err, tutor) {
                   if (tutor) {
                     tutor.session.state = "start"
                     tutor.session.session_start = session_start;
-                    
+
                     // update the students session as well
                     User.findByEmail(tutor.session.email, function(err, student){
                       if (student) {
@@ -88,10 +105,9 @@ router.get('/', ensureLoggedIn, function(req, res, next) {
                   tutor.save(function(err) {
                     if (err) return err;
                   });
-                  
-                  
-                });
 
+
+                });
                 socket.emit('start session');
             });
 
@@ -101,12 +117,12 @@ router.get('/', ensureLoggedIn, function(req, res, next) {
                 var hours = new Date().getHours();
                 var minutes = new Date().getMinutes();
                 session_end = hours + (minutes/60);
-                
+
                 User.findByEmail(req.user._json.email, function (err, tutor) {
                   if (tutor) {
                     tutor.session.state = "end"
                     tutor.session.session_end = session_end;
-                    
+
                     User.findByEmail(tutor.session.email, function(err, student){
                       if (student) {
                         student.session.state = "end";
@@ -121,7 +137,7 @@ router.get('/', ensureLoggedIn, function(req, res, next) {
                     if (err) return err;
                   });
                 });
-                
+
                 socket.emit('end session', price);
             });
         });

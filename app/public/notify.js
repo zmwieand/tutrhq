@@ -32,14 +32,18 @@ socket.on('student accept', function(name) {
     Materialize.toast(name + " is on the way", 4000);
 });
 
+socket.on('tutr_error', function(message) {
+    Materialize.toast(message, 4000);
+});
+
 socket.on('tutor accept', function() {
     // TODO show student location to the student
     $('.fixed-action-btn').show();
 });
 
-socket.on('decline', function(reason) {
+socket.on('decline', function() {
     $('#denied-modal').openModal();
-    $('#denied-message').text("Looks like your tutor cannot make it :(");
+    $('#denied-message').text("Looks like your tutor cannot make it.");
 });
 
 socket.on('start session', function() {
