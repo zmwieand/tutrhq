@@ -31,7 +31,7 @@ function initMap() {
   
   var start = {lat: 37.77, lng: -122.447};  // Haight
   var end = {lat: 37.768, lng: -122.511};   // Ocean Beach
-  calculateAndDisplayRoute(start, end);
+  // calculateAndDisplayRoute(start, end);
 
   marker.addListener('click', function() {
     $("#account-modal").openModal({
@@ -59,11 +59,11 @@ function calculateAndDisplayRoute(start, end) {
         destination: end,
         travelMode: 'WALKING'
     }, function(response, status) {
-    if (status === 'OK') {
-        directionsDisplay.setDirections(response);
-    } else {
-        window.alert('Directions request failed due to ' + status);
-    }
+        if (status === 'OK') {
+            directionsDisplay.setDirections(response);
+        } else {
+            window.alert('Directions request failed due to ' + status);
+        }
     });
 }
 

@@ -38,6 +38,10 @@ socket.on('tutr_error', function(message) {
 
 socket.on('tutor accept', function() {
     // TODO show student location to the student
+    var start = {lat: 37.77, lng: -122.447};
+    var end = {lat: 37.768, lng: -122.511};
+    calculateAndDisplayRoute(start, end);
+
     $('.fixed-action-btn').show();
 });
 

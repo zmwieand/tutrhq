@@ -63,7 +63,6 @@ router.get('/', ensureLoggedIn, function(req, res, next) {
                     socket.broadcast.to(connections[email].id).emit('student accept', tutor.first_name + ' ' + tutor.last_name);
                     socket.emit('tutor accept');
                 } else {
-                    console.log(req.user);
                     socket.emit('tutr_error', req.user.displayName + " is offline. sorry bruh. btw, a suh dude?");
                 }
               });
