@@ -1,0 +1,20 @@
+date: November 14th, 2016
+meeting_type: TA
+attendance: [tmweppne, wesleycs, zmwieand, daviddob,brijeshr]
+absent: [NONE]
+excused_absences: [NONE]
+task_progress: [
+  {ubit: <tmweppne>, progress: viral add
+                     working on: search bar, payment},
+  {ubit: <wesleycs>, progress: viral add
+                      working on: signup},
+  {ubit: <zmwieand>, progress: accept and decline working
+                      working on: finish up sessions, start stop and triggering rating},
+  {ubit: <daviddob>, progress: broke server
+                      working on: fixing server and optimising},
+  {ubit: <brijeshr>, progress: sockets
+                      working on: optimizing}
+  ]
+issues: [NONE]
+Notes:|
+	|private tutoring market is worth 102 billion dollars....
