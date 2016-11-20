@@ -2,20 +2,21 @@ extends ../layout
 
 block content
   
-  main(id="main" style="background-color: white")
-    
-    div(id="desktop" class="center" style="padding-top:0.5%;")
-      img(class="center-align" src="../img/tutrlogo.png" style="height:45px; margin-bottom: 0%;")
-      hr(style="width:30%; color:#009980")
-      h4(style="font-weight:300;") On-Demand Tutoring, 24-7 <br/> at your college
-      p(style="font-style: italic; font-size:13px;") to get started please
-      br
-      button(onclick="signinGoogle()" name="btn_login" class="btn-large waves effect center" style="background-color:#009933; margin-top:-2%; width:30%;") Log in with google
-      br
-      br
-      hr(style="width: 30%; color:#009980")
-      p Don't have an account? 
-        a(href="") Sign up!
+  main(id="main" style="background-color: #d3d3d3")
+    div(class="valign-wrapper" style="width:100%; height:100%; position: absolute;") 
+        div(id="desktop" class="valign center" style="width:100%")
+          div(class="container")
+              div(class="card")
+                  div(class="card-content")
+                      img(class="center" src="../img/tutrlogo-large.png" style="height:200px; margin-bottom: 0%;")
+                      h1(class="center" style="font-weight:300;") Tutr Login
+                      br
+                      button(onclick="signinGoogle()" name="btn_login" class="btn-large waves effect center" style="background-color:#009933; ") Log in with google
+                      br
+                      br
+                      //- hr(class="center")
+                      p Don't have an account? 
+                        a(href="") Sign up!
         
   div(class="page-footer")
     h4(id="foot") &nbsp;tutr &nbsp; 

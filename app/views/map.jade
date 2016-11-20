@@ -63,10 +63,11 @@ block content
 
     div(id="map", class="grey", style="width: 100%; height: 600px;")
     
+    
     if user.role == 'tutor'
         div(class="fixed-action-btn" style="bottom: 45px; right: 24px;")
-            a(href="#timer-modal" class="btn-floating btn-large green modal-trigger")
-                i.material-icons schedule
+            a(class="btn-floating btn-large green")
+                i.material-icons play
 
     include modals/account_information
     include modals/courses
@@ -78,6 +79,7 @@ block content
     include modals/rating
     include modals/notification
     include modals/history
+    include modals/denied
 
     if user.role == 'tutor'
         include modals/timer
@@ -86,5 +88,6 @@ block content
     script(type="text/javascript", src="map.js")
     script(async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC0qiL1nz_rW0vB-AlBjqQw6RbyS_N0wwI&callback=initMap")
     script.
-        socket.emit('set_socket', '#{user.email_address}');
+        if (!socket_frontend)
+            socket.emit('set_socket', '#{user.email_address}');
     script(type="text/javascript", src="notify.js")

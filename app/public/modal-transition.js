@@ -4,33 +4,36 @@ $(document).ready(function(){
     a.addClass('collection-item avatar');
     a.on('click', function(event){
       notify(email, sender, link);
+      $("#tutors").hide();
+      $("#request").show();
+      $("#loading-message").text("Contacting " + name + ' ...');
     });
     img = $("<img>");
     img.addClass('circle');
     img.attr("src", pic);
-
     s = $('<span></span>');
     s.addClass('title');
     s.text(name);
-
     p = $('<p></p>');
     p.text('$' + price +'/hr');
-
     h5 = $('<h5></h5>');
     h5.addClass('secondary-content');
     h5.text(rating);
-
     a.append(img);
     a.append(s);
     a.append(p);
     a.append(h5);
-
     return a;
   }
-
   function notify(email, sender, link) {
     socket.emit('send notification', email, sender, link);
     console.log("sending a notification to: " + email);
+  }
+  function accept(email, sender) {
+    socket.emit('send accept', "tmweppne@buffalo.edu", "zmwieand@buffalo.edu");
+  }
+  function decline(email, sender) {
+    socket.emit('send decline', email, sender);
   }
 
   $("#tutors").hide();
@@ -39,7 +42,6 @@ $(document).ready(function(){
     $("#account").hide();
     $("#request").show();
     $("#loading-message").text("Finding Tutor's in your area ...");
-
     $.ajax({
       url: "http://localhost:3000/match/request_tutor",
       type: 'GET',
@@ -67,7 +69,6 @@ $(document).ready(function(){
       }
     });
   });
-
   var new_course = '<div class="row">' +
                         '<div class="col s10">' +
                             '<select class="browser-default" name="course">' +
@@ -84,19 +85,16 @@ $(document).ready(function(){
                             '</a>' +
                         '</div>' +
                    '</div>'
-
   $('#add_course_button').click(function(e) {
     e.preventDefault();
     $('.wrapper').append(new_course);
     x += 1;
   });
-
   $('.wrapper').on('click', '.remove_course_button', function(e){
     e.preventDefault();
     // This is a cheap hack
     $(this).parents('div')[1].remove();
   });
-
   $('#tutor-switch').on('click', function(){
     if ($(this).is(":checked")) {
         $.ajax({
@@ -116,75 +114,47 @@ $(document).ready(function(){
         });
     }
   });
-
   // notification buttons
   $('.fixed-action-btn').hide();
-
-  $('#accept-btn').click(function(){
-    $.ajax({
-      url: "http://localhost:3000/match/accept",
-      type: 'GET',
-      success: function(res) {
-      }
-    });
-    $('.fixed-action-btn').show();
-  });
-
-  // timer
-  var seconds = 0;
-  var minutes = 0;
-  var hours = 0;
-  var t;
-
-  function add() {
-    seconds++;
-    if (seconds > 60) {
-        seconds = 0;
-        minutes++;
-        if (minutes > 60) {
-            minutes = 0;
-            hours++;
+  $('.fixed-action-btn').click(function() {
+    $("#timer-modal").openModal({
+        complete: function() {
+            // reset the buttons
+            $('#stop-btn').attr('disabled', true);
+            $('#cancel-btn').attr('disabled', false);
+            $('#start-btn').attr('disabled', false);
         }
-    }
-
-    $('#tutor-timer')[0].textContent = (hours ? (hours > 9 ? hours : "0" + hours) : "00") + ":" + (minutes ? (minutes > 9 ? minutes : "0" + minutes) : "00") + ":" + (seconds > 9 ? seconds : "0" + seconds);
-
-    timer();
-  }
-
-  function timer() {
-    t = setTimeout(add, 1000);
-  }
+    });
+  });
+  // this is a temp addition so that I can test notificatoins
+  $("#notify-btn").click(function() {
+    console.log("I am pressing the button");
+    socket.emit('test', "tmweppne@buffalo.edu", true, "hullo", "https://lh3.googleusercontent.com/-XdUIqdMkCWA/AAAAAAAAAAI/AAAAAAAAAAA/4252rscbv5M/photo.jpg");
+  });
 
   // timer buttons
   $('#start-btn').click(function() {
-    $.ajax({
-      url: "http://localhost:3000/match/start",
-      type: 'GET',
-      success: function(res) {
-          Materialize.toast("Session Started", 5000)
-      }
-    });
+    socket.emit('send start session');
 
-    timer();
     $('#stop-btn').attr('disabled', false);
     $('#cancel-btn').attr('disabled', true);
     $('#start-btn').attr('disabled', true);
   });
-
   $('#stop-btn').attr('disabled', true);
-
   $('#stop-btn').click(function() {
-    $.ajax({
-      url: "http://localhost:3000/match/stop",
-      type: 'GET',
-      success: function(res) {
-          Materialize.toast("Session over", 5000)
-      }
-    });
-    clearTimeout(t);
-    $('.fixed-action-btn').hide();
+    socket.emit('send end session');
 
   });
-
+  $('#rating-btn').click(function() {
+    var rating = $('#rating').val();
+    $.ajax({
+        url: 'http://localhost:3000/users/rate',
+        type: "POST",
+        data: {'rating': rating},
+        success: function(res) {
+            console.log("finished rating");
+            $('#rating-modal').closeModal();
+        }
+    });
+  });
 });
