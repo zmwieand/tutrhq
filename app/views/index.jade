@@ -1,4 +1,4 @@
-extends layout
+extends index_layout
 
 block content
 
@@ -14,7 +14,7 @@ block content
         ul(id="nav" class="right")
           li
             a(id="signup" href="#") SIGN UP
-          a(href="Auth/login" id="login" class="waves-effect waves-light btn green z-depth-1") LOG IN
+          a(href="auth/login" id="login" class="waves-effect waves-light btn green z-depth-1") LOG IN
 
   main(id="main")
     div(id="video")
@@ -25,7 +25,7 @@ block content
         i(id="playbutton" class="fa fa-play-circle" aria-hidden="true")
 
     a(href="##" id="jump" class="btn-floating btn-large waves-effect waves-light")
-      i(class="fa fa-angle-down" style="font-size:30px")
+      i(class="material-icons") keyboard_arrow_down
 
     div(id="searchdesktop")
       h1(id="joinin" class="center") JOIN IN

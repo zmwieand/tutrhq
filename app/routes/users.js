@@ -5,24 +5,154 @@ var router = express.Router();
 var User = require('../models/user');
 
 router.get('/', ensureLoggedIn, function(req, res, next) {
-
     User.findByEmail(req.user._json.email, function(err, user) {
-        res.io.on('connection', function(socket){
-            socket.on('set_socket', function (email) {
-                connections[email] = socket;
-            });
-            socket.on('disconnect', function(){
-              console.log('someone got disconnected.');
-            });
-            socket.on('send notification', function(email, sender, link) {
-              if (connections[email] && connections[email].connected) {
-                socket.broadcast.to(connections[email].id).emit('notification', sender, true, " needs help. Please help him?", link);
-              } else {
-                socket.emit('notification', email, false, " is not available.");
-              }
-            });
+        if (!sockets_on) {
+            res.io.on('connection', function(socket){
+                sockets_on = true;
+                socket.on('set_socket', function (email) {
+                    if (!connections[email]) {
+                        connections[email] = socket;
+                    } else {
+                        delete connections[email];
+                        connections[email] = socket;
+                    }
+                });
 
-        });
+                socket.on('disconnect', function(){
+                    delete connections[req.user._json.email];
+                    console.log('someone got disconnected.');
+                });
+
+                socket.on('test', function(email, status, data, link) {
+                    socket.emit('notification', email, status, data, link);
+                });
+
+                socket.on('send notification', function(email, sender, link) {
+                  console.log(connections);
+                  if (connections[email] && connections[email].connected) {
+                    socket.broadcast.to(connections[email].id).emit('notification', sender, true, " needs help. Please help him?", link);
+                  } else {
+                    socket.emit('notification', email, false, " is not available.");
+                  }
+                });
+
+                socket.on('send accept', function(email) {
+                  console.log('email:' + email);
+
+                  User.findByEmail(email, function(err, student) {
+                    if (err) return err;
+                    if (student) {
+                      student.session.state = "match";
+                      student.session.email = req.user._json.email;
+                    }
+                    student.save(function(err) {
+                      if (err) return err;
+                    });
+                  });
+
+                  User.findByEmail(req.user._json.email, function(err, tutor) {
+                    if (err) return err;
+                    if (tutor) {
+                      tutor.session.state = "match";
+                      tutor.session.email = email;
+                    }
+                    tutor.save(function(err) {
+                      if (err) return err;
+                    });
+                    if (connections[email] && connections[email].connected) {
+                        socket.broadcast.to(connections[email].id).emit('student accept', tutor.first_name + ' ' + tutor.last_name);
+                        socket.emit('tutor accept');
+                    } else {
+                        console.log(req.user);
+                        socket.emit('tutr_error', req.user.displayName + " is offline. sorry bruh. btw, a suh dude?");
+                    }
+                  });
+
+
+
+                });
+
+                socket.on('send decline', function(email) {
+                  if (connections[email] && connections[email].connected) {
+                      socket.broadcast.to(connections[email].id).emit('decline');
+                  } else {
+                      socket.emit('tutr_error', "error");
+                  }
+                });
+
+                socket.on('send start session', function() {
+                    console.log('STARTING');
+                    var hours = new Date().getHours();
+                    var minutes = new Date().getMinutes();
+                    var session_start = hours + (minutes/60);
+
+                    // update the tutors db session
+                    User.findByEmail(req.user._json.email, function (err, tutor) {
+                      if (tutor) {
+                        tutor.session.state = "start"
+                        tutor.session.session_start = session_start;
+
+                        // update the students session as well
+                        User.findByEmail(tutor.session.email, function(err, student){
+                          if (student) {
+                            student.session.state = "start";
+                            student.session.session_start = session_start;
+                            if (connections[student.email_address] && connections[student.email_address].connected) {
+                                socket.broadcast.to(connections[student.email_address].id).emit('start session');
+                                socket.emit('start session')
+                            } else {
+                                socket.emit('tutr_error', "error");
+                            }
+                          }
+                          student.save(function(err) {
+                            if (err) return err;
+                          });
+                        });
+                      }
+                      tutor.save(function(err) {
+                        if (err) return err;
+                      });
+
+
+                    });
+
+                });
+
+                socket.on('send end session', function() {
+                    console.log('ENDING');
+                    price = 17.38
+                    var hours = new Date().getHours();
+                    var minutes = new Date().getMinutes();
+                    session_end = hours + (minutes/60);
+
+                    User.findByEmail(req.user._json.email, function (err, tutor) {
+                      if (tutor) {
+                        tutor.session.state = "end"
+                        tutor.session.session_end = session_end;
+
+                        User.findByEmail(tutor.session.email, function(err, student){
+                          if (student) {
+                            student.session.state = "end";
+                            student.session.session_end = session_end;
+                            if (connections[student.email_address] && connections[student.email_address].connected) {
+                                socket.broadcast.to(connections[student.email_address].id).emit('end session', 17.38);
+                                socket.emit('end session', 17.38)
+                            } else {
+                                socket.emit('tutr_error', "error");
+                            }
+                          }
+                          student.save(function(err) {
+                            if (err) return err;
+                          });
+                        });
+                      }
+                      tutor.save(function(err) {
+                        if (err) return err;
+                      });
+                    });
+                });
+            });
+        }
         var out = req.user._json;
         if (user) {
             res.render('map', {
@@ -43,7 +173,13 @@ router.get('/', ensureLoggedIn, function(req, res, next) {
                 rating: 0.0,
                 major: "",
                 hourly_rate: 0.0,
-                transactions: []
+                transactions: [],
+                session: {
+                    email: "",
+                    state: "none",
+                    session_start: 0,
+                    session_end: 0
+                }
             });
             newUser.save(function(err) {
                 if (err) throw err;
@@ -109,11 +245,6 @@ router.get('/register', function(req, res, next) {
     res.render('register');
 });
 
-// This should probably be removed
-router.post('/register', function(req, res, next) {
-    res.send(req.body);
-});
-
 router.get('/tutor_online', ensureLoggedIn, function(req, res, next) {
     User.findByEmail(req.user._json.email, function(err, user) {
         if (user && user.role == "tutor") {
@@ -141,7 +272,7 @@ router.get('/tutor_offline', ensureLoggedIn, function(req, res, next) {
             res.redirect('/users');
         } else {
             res.render('error', {
-                message: "You shouldn't be here. Please fuck off."
+                message: "503: Something went wrong."
             });
         }
     });
@@ -150,7 +281,35 @@ router.get('/tutor_offline', ensureLoggedIn, function(req, res, next) {
 router.post('/rate', function(req, res, next) {
     var rating = req.body['rating'];
     console.log('Rating: ' + rating);
-    res.redirect('/users');
+    var email = req.user._json.email;
+    console.log("current user: " + email);
+    User.findByEmail(email, function(err, user) {
+        if (user) {
+            var other = user.session.email;
+            console.log("other: " + other);
+
+            // close the current users session
+            user.session.email = "";
+            user.session.state = "none";
+            user.session.session_start = 0;
+            user.session.session_end = 0;
+            user.save(function(err) {
+              if (err) return err;
+            });
+
+            // TODO: rate the other person
+            res.send('done');
+        }
+    });
 });
 
-module.exports = router;
+//
+// module.exports =  {
+//     start: function(io) {
+//         io.on('connection', function(socket) {
+//
+//         });
+//     },
+//     router: router
+// }
+ module.exports = router;

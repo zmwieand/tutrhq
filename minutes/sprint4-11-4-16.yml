@@ -1,0 +1,16 @@
+date: November 4th, 2016
+meeting_type: Group
+attendance: [tmweppne, wesleycs, zmwieand, daviddob,brijeshr]
+absent: [NONE]
+excused_absences: [NONE]
+task_progress: [
+  {ubit: <tmweppne>, progress: school search, payment},
+  {ubit: <wesleycs>, progress: school search, payment, working on mobile onboarding},
+  {ubit: <zmwieand> (dr. sheldon cooper), progress: starting work on tutr student interation menus},
+  {ubit: <daviddob>, progress: sever side code, writing scripts for continuous integration},
+  {ubit: <brijeshr>, progress: socket communication},
+  ]
+issues: [NONE]
+Notes:  |NONE
+	|Tim running into issues with search functionality database integration
+  	|Brijesh running into socket errors when creating sockets

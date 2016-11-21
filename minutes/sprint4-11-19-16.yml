@@ -1,0 +1,20 @@
+date: November 14th, 2016
+meeting_type: TA
+attendance: [tmweppne, wesleycs, zmwieand, daviddob,brijeshr]
+absent: [NONE]
+excused_absences: [NONE]
+task_progress: [
+  {ubit: <tmweppne>, progress: find your school search bar database is integrated
+                     working on: search bar, payment},
+  {ubit: <wesleycs>, progress: half finished with mobile onboarding pages
+                      working on: signup, swipe, mobile pages},
+  {ubit: <zmwieand>, progress: finished start stop and sessions, also has directions working with hardcoded lat/long
+                      working on: ui, ux optimization and session robustness},
+  {ubit: <daviddob>, progress: fixed server, got continuous integration working, wrote minification scripts, updated moble app
+                      working on: slackbot to call CI scripts},
+  {ubit: <brijeshr>, progress: finished socket debugging
+                      working on: optimizing backend integration (fixing janky stuff)}
+  ]
+issues: [NONE]
+Notes:|
+	|

@@ -1,0 +1,15 @@
+date: November 7th, 2016
+meeting_type: TA
+attendance: [tmweppne, wesleycs, zmwieand, daviddob]
+absent: [NONE]
+excused_absences: [brijeshr->interview ]
+task_progress: [
+  {ubit: <tmweppne>, progress: school search, payment},
+  {ubit: <wesleycs>, progress: school search, payment, signup page},
+  {ubit: <zmwieand>, progress: helped wesleycs},
+  {ubit: <daviddob>, progress:sudo continuous integration},
+  {ubit: <brijeshr>, progress:not here }
+  ]
+issues: [NONE]
+Notes:|
+	|WE HAVE INTERNS!
