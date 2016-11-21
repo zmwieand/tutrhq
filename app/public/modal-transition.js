@@ -1,3 +1,4 @@
+var URL = "http://localhost:3000"
 $(document).ready(function(){
   function createTutorCard(name, price, rating, pic, email, sender, link) {
     a = $('<a></a>');
@@ -43,7 +44,7 @@ $(document).ready(function(){
     $("#request").show();
     $("#loading-message").text("Finding Tutor's in your area ...");
     $.ajax({
-      url: "http://localhost:3000/match/request_tutor",
+      url: URL + "/match/request_tutor",
       type: 'GET',
       success: function(res) {
           if (res.length == 0) {
@@ -98,7 +99,7 @@ $(document).ready(function(){
   $('#tutor-switch').on('click', function(){
     if ($(this).is(":checked")) {
         $.ajax({
-            url: "http://localhost:3000/users/tutor_online",
+            url: URL + "/users/tutor_online",
             type: 'GET',
             success: function(res) {
                 Materialize.toast("You are now an available Tutor!", 5000)
@@ -106,7 +107,7 @@ $(document).ready(function(){
         });
     } else {
         $.ajax({
-            url: "http://localhost:3000/users/tutor_offline",
+            url: URL + "/users/tutor_offline",
             type: 'GET',
             success: function(res) {
                 Materialize.toast("You are now offline", 5000)
@@ -148,7 +149,7 @@ $(document).ready(function(){
   $('#rating-btn').click(function() {
     var rating = $('#rating').val();
     $.ajax({
-        url: 'http://localhost:3000/users/rate',
+        url: URL + '/users/rate',
         type: "POST",
         data: {'rating': rating},
         success: function(res) {
