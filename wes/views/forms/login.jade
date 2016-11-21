@@ -1,0 +1,42 @@
+extends ../layout
+
+block content
+  
+  main(id="main" style="background-color: white")
+    
+    div(id="desktop" class="center" style="padding-top:0.5%;")
+      img(class="center-align" src="../img/tutrlogo.png" style="height:45px; margin-bottom: 0%;")
+      hr(style="width:30%; color:#009980")
+      h4(style="font-weight:300;") On-Demand Tutoring, 24-7 <br/> at your college
+      p(style="font-style: italic; font-size:13px;") to get started please
+      br
+      button(onclick="signinGoogle()" name="btn_login" class="btn-large waves effect center" style="background-color:#009933; margin-top:-2%; width:30%;") Log in with google
+      br
+      br
+      hr(style="width: 30%; color:#009980")
+      p Don't have an account? 
+        a(href="/signup") Sign up!
+        
+  div(class="page-footer")
+    h4(id="foot") &nbsp;tutr &nbsp; 
+          
+  script.
+    var auth0 = new Auth0({
+        domain:      '#{env.AUTH0_DOMAIN}',
+        clientID:    '#{env.AUTH0_CLIENT_ID}',
+        callbackURL: '#{env.AUTH0_CALLBACK_URL}',
+      });
+
+    function signinGoogle() {
+      auth0.signin({
+        connection: 'google-oauth2',
+      });
+    }
+
+    function signinDb() {
+      auth0.signin({
+        connection: 'Username-Password-Authentication',
+        username: document.getElementById('email_address').value,
+        password: document.getElementById('password').value,
+      });
+    }

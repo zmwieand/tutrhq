@@ -1,0 +1,20 @@
+div(id="notification-modal" class="modal bottom-sheet")
+    div(class="modal-content center-align")
+        img(class="circle" style="width: 10%" id="image")
+        p(id="name") Student Name
+
+        div.row
+            div(class="col s6")
+                p(id="location") Location
+            
+            div(class="col s6")
+                p(id="subject") Subject       
+        
+        div.row
+            div(class="col s6 right-align")
+                a(id="accept-btn" class="btn-floating btn-large green modal-close")
+                    i.material-icons done
+            div(class="col s6 left-align")
+                a(href="#cancel-modal" class="btn-floating btn-large red modal-trigger modal-close")
+                    i.material-icons close
+        
