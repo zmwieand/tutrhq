@@ -20,9 +20,10 @@ AT_BOT = "<@" + BOT_ID + ">"
 def slack_commands_list(command, channel, user):
     if command == 'update the fucking server':
         print 'updating the server.'
-        SLACK_CLIENT.api_call("chat.postMessage", channel=channel, text="updating it bruh. calm the fuck down", username = BOT_NAME, icon_url=ICON_URL);
-        os.system("./test.sh")
-        SLACK_CLIENT.api_call("chat.postMessage", channel=channel, text="btw, a suh dud?", username = BOT_NAME, icon_url=ICON_URL);
+        SLACK_CLIENT.api_call("chat.postMessage", channel=channel, text="updating it bruh.", username = BOT_NAME, icon_url=ICON_URL);
+        os.system("/home/tutr/updateServer.sh")
+        SLACK_CLIENT.api_call("chat.postMessage", channel=channel, text="calm the fuck down, its done", username = BOT_NAME, icon_url=ICON_URL);
+        SLACK_CLIENT.api_call("chat.postMessage", channel=channel, text="check: https://tutrhq.com", username = BOT_NAME, icon_url=ICON_URL);
 
 def parse_slack_output(slack_rtm_output):
     """
