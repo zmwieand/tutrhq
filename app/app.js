@@ -19,7 +19,8 @@ dotenv.load();
 var routes = require('./routes/index');
 var users = require('./routes/users');
 var auth = require('./routes/auth');
-var match = require('./routes/match')
+var match = require('./routes/match');
+var signup = require('./routes/signup');
 sockets_on = false;
 
 // This will configure Passport to use Auth0
@@ -82,7 +83,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', routes);
 app.use('/users', users);
 app.use('/auth', auth);
-app.use('/match', match)
+app.use('/match', match);
+app.use('/signup', signup);
 
 
 // catch 404 and forward to error handler

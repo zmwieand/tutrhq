@@ -26,4 +26,8 @@ router.get('/logout', function(req, res){
   res.redirect('/');
 });
 
+router.get('/slider', function(req, res) {
+  res.render('slider')
+});
+
 module.exports = router;

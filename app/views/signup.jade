@@ -1,0 +1,178 @@
+extends layout
+
+block content
+
+  nav(class="hide-on-small-only" id="nav")
+    div(class="nav-wrapper black z-depth-0")
+      a(href="#" class="brand-logo center") 
+        h3(style="margin-top: 0%; padding-top: 10%;") tutr
+        
+  div(class="row hide-on-med-and-up" style="z-index: 1; position:fixed; background-color:white; width: 100%; padding-bottom: 5%; padding-left: 5%;")
+    div(class="col s12")
+      ul(class="")
+        li(class="tab col s3")
+          a(class="nav" href="#studens" style="font-size: 15px;") Students
+        li(class="tab col s3")
+          a(class="nav" href="#tuts" style="font-size: 15px;") Tutors
+        li(class="tab col s3")
+          a(class="nav" href="#FAQS" style="font-size: 15px;") FAQS
+        li(class="tab col s3")
+          a(class="nav" href="#help") Help
+  
+  div(id="side-nav") 
+    a(class="nav" href="#studens" style="font-size: 25px;") Students<br/>
+    a(class="nav" href="#tuts" style="font-size: 25px;") Tutors<br/>
+    a(class="nav" href="#FAQS" style="font-size: 25px;") FAQS<br/>
+    a(class="nav" href="#help" style="font-size: 25px; ") Help<br/>
+    
+  
+  div(id="content" padding-top: 1%;)
+    div(id="studens" class="change")
+    img(class="images" src="img/student.png")
+    h3(style="color: #42a5f5; font-weight: 200; margin-top: 5%;") Help is just a tap away <br/>
+    h5 All you need to get going is a valid gmail account
+    //- p Don't have a gmail account? Click&nbsp;
+    //-   a(href="https://accounts.google.com/SignUp?hl=en-GB" style="color: black;") here.
+    div(id="studens" class="change")
+      | Select your school and use your gmail account to log in to the tutr mobile app or tutrhq.com. 
+      | First time users should go to the menu and click 'Courses' to add their
+      | classes for the current semster. After adding your courses you can click on the
+      | map pin and select the course you need help with to notify all registered course
+      | tutors. Be sure to include a note about your location and what you need help with
+      | to ensure the best possible experience. Browse the list of tutors and choose a well
+      | reviewed tutor at a price that works for you. If the tutor accepts your request
+      | the tutor will come directly to you. Following your session you'll be prompted
+      | for payment and a simple review. If you're a student also interested in tutoring
+      | read on. Student and tutor accounts are shared. Not sure if you want to tutor?
+      | No sweat. If you change your mind at any time click Become A Tutor from the app
+      | menu to get a tutor registration code.<br/>
+      a(href="auth/login" id="login" class="waves-effect waves-light btn green z-depth-1") LOG IN
+      <br/>
+      <br/>
+      <br/>
+    
+    div(id="tuts" class="change")
+    img(class="images" src="img/money4x.png")
+    h3(style="color: #42a5f5; font-weight: 200;") Start earning with tutr<br/>
+    h5 Be your own boss. Name your own price.
+    div(id="tuts" class="change")
+      | From the app menu click 'Become a Tutor.'
+      | Upload a pdf of your current academic transcript and a list of courses you'd
+      | like to tutor for. We'll get back
+      | to you with an access code. Take that access code and enter it under 'Become
+      | A Tutor' in the app menu. It's as simple as that. After you're registered turn on the
+      | toggle at the top of the menu to recieve requests from students. As long as the
+      | toggle is on you'll receive requests even if you close out of the app. Not available?
+      | Be sure to turn the toggle off. After receiving and accepting a request you'll get
+      | walking directions to the student. If you run into trouble you can contact the
+      | student with their phone number. After meeting up be sure to click start your
+      | session. After you're done enter how long the session was. You'll automatically
+      | see the payment in your bank account. No bells. No whistles. It's as simple
+      | as that.
+      <br/>
+      
+    
+      //- a(class="waves-effect waves-light btn" href="modal" style="background-color: #009933") Upload
+          
+      //- div(id="modal" class="modal")
+      //-   div(class="modal-content")
+      //-     h4 Modal Header
+      //-     p a bunch of text
+      //- div(class="modal-footer")
+      //-   a(href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat") Agree
+      //- form(action="#")
+      //-   div(class="file-field input-field")
+      //-     div(class="btn" style="background-color:#009933")
+      //-       span File
+      //-       input(type="file" multiple)
+      //-     div(class="file-path-wrapper")
+      //-       input(class="file-path validate" type="text" placeholder="Upload your transcript")
+      //- 
+      //-   div(class="row")
+      //-     form(class="col s12")     
+      //-       div(class="row")
+      //-         div(class="input-field col s12")
+      //-           input(id="email" type="email" class="validate")
+      //-           label(for="email") Email
+      //-           
+
+      <br/>
+    
+    div(id="FAQS" class="change")
+      h3(style="color: #42a5f5; font-weight: 200;") Frequently Asked Questions
+      h5 I registered to tutor but I'm not receiving requests?
+      | If you've already received an access code and registered to tutor for a course
+      | go your menu in the app. Ensure that the toggle at the top of the menu is switched
+      | to the 'on' position. A notification will appear to let you know you are available
+      | to tutor and receive requests from students. Be sure to turn the toggle back off when
+      | you are unavailable to tutor. 
+      <br/>
+      h5 I'm clicking on my pin but I don't see any courses?
+      | If you've clicked on your pin to request help in one of your courses but don't see any 
+      | classes go to the app menu and click on 'Courses.' Make sure you click add to select
+      | and add any courses you're in for the semester and click 'Submit' to save them. After
+      | clicking submit go back and click your pin. You should now see your courses.
+      <br/>
+      h5 Is there a way to request the same tutor every time?
+      | We want to support students and tutors that are a good match. We're working on a
+      | feature that will allow students to request the same tutor when they need help. For
+      | now, we encourage students and tutors come up with common times that they can both
+      | go online in the app to find eachother and pair up. They can then always use the app
+      | to safely meet up and keep track of their sessions.
+      <br/>
+      h5 My tutor didn't put the correct session time?
+      | Before payment is sent to the tutor, the student verifies the length of the session is
+      | correct. If the student doesn't agree with the session length they can alert the tutor
+      | to update the session with the correct time. 
+      <br/>
+      h5 My student or tutor is asking me to cheat?
+      | tutr is not a tool to help students cheat. tutr is a colloborative social tool meant
+      | bring students together to have proactive learning experiences and incentivize students
+      | to do well in school. Learning and academic integrity is important to us. If you encounter
+      | users cheating, please send an email with the users name and email to tutrhq@gmail.com
+      | with subject line "Cheating." First time offenders will recieve a warning, and there will be a
+      | reward to users who expose cheaters through our "Cheater Bounty Program."
+      <br/>
+      h5 Do I need straight A's or a 4.0 to become a tutor?
+      | At tutor, we recognize that all students are not created equal. We've known wonderful<br/>
+      | teachers who couldn't take a test to save their life. If you have the confidence, knowledge
+      | and passion to help people learn, we think you deserve a shot. All you need to do is send
+      | a copy of your transcript to tutrhq@gmail.com with the subject line "Tutor" 
+      <br/>
+      h5 My tutor wasn't very helpful do I have to pay?
+      | We want everyone to have a fun and satisfactory tutoring session. We encourage everyone
+      | to accurately rate their sessions to ensure that users can make informed decisions and
+      | be happpy with their matches. If you don't feel satisfied with the pairing within the first
+      | 10 minutes of meeting up you can click cancel to opt out of the session without having to pay
+      | If you're session was longer than 10 minutes but less than satisfactory, please email tutrhq@gmail.com
+      | with the subject line "Refund" and we will see what we can do. 
+      <br/>
+      h5 How can I get the best possible tutor match?
+      | Before you send out your request for a tutor, we encourage users to fill out the "Location" and
+      | "Notes" fields with their requests. The location field will help the tutor find you if you're
+      | located in a specific building room or a location that they're unfamiliar with. We encourage all
+      | students to meet up on their school campus for the best possible experience. You can use the notes
+      | field to fill out what you need help with, what professor you have for your course, what book you're
+      | using: Anything to help give the tutor the best idea of how they can help you before they decide to
+      | accept your request.
+      <br/>
+    
+    div(id="help" class="change")
+      h3(style="color: #42a5f5; font-weight: 200;") Help<br/>
+      h5 Need help?
+      | Question? Comment? Complaint? Concern? Or just wanna say hi?
+      | Shoot us an email at tutrhq@gmail.com. We'd love to hear from you.
+      | We also love memes and giphys. Try and make us laugh.
+    
+      div(class="images" id="belushi")
+      
+    <br/>
+    <br/>
+  
+
+    
+     
+
+    
+    script(type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js")
+    script(type="text/javascript", src="signup.js")

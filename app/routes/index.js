@@ -14,7 +14,7 @@ var env = {
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Tutrhq'});
+  res.render('index', { title: 'tutrhq'});
 });
 
 /* GET form to report a problem */
