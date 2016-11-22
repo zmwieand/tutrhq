@@ -6,7 +6,7 @@
   "author": "Auth0",
   "license": "MIT",
   "scripts": {
-    "start": "../server_config/minify-mac.sh && nodemon ./bin/www"
+    "start": "../server_config/minify.sh && nodemon ./bin/www"
   },
   "dependencies": {
     "body-parser": "~1.13.2",
