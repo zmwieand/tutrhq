@@ -1,6 +1,4 @@
 //this was called schoolList in my other app
-
-
 // grab the things we need
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
@@ -9,7 +7,7 @@ var Schema = mongoose.Schema;
 var schoolSchema = new Schema({
   instnm: String,
   count: Number,
-  activeSchool: Number,
+  activeSchool: Boolean,
 
 
 });

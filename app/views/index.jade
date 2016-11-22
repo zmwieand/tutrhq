@@ -32,9 +32,9 @@ block content
       h5(class="center") start by searching for your school below
 
       div(class="section")
-        form(id="search1")
+        form(id="search1" method="post" action="/index")
           div(id="search2" class="input-field")
-            input(id="search3" type="search" required)
+            input(id="search3" type="search" name="university" required)
             label()
               i(id="search4" class="material-icons") search
             i(class="material-icons") close
@@ -78,17 +78,18 @@ block content
         div(class="left")
           h3(id="text") Safe and Secure
           h5(id="text") Safety is our number one priority tutr requires a current .edu email address and all payments are completely cashless and secured by stripe
-          
+
     div(id="row4" class="row")
       div(class="col s12 l12")
         h1(id="text" class="center") Start learning and start earning with tutr
         div(class="center")
           a(href="##" id="loginbottom" class="waves-effect waves-light btn-large green z-depth-1") SIGN UP
-    
+
     div(id="rowz" class="row")
 
   div(class="page-footer")
-    h4(id="foot") &nbsp;tutr &nbsp; 
-  
+    h4(id="foot") &nbsp;tutr &nbsp;
+
 
   a(href="" class="center" id="download") DOWNLOAD
+  script(type="text/javascript", src="https://code.jquery.com/jquery-2.1.1.min.js")

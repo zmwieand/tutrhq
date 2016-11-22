@@ -1,3 +1,5 @@
+// added this to routs/index.js in tutrhq
+
 var express = require('express');
 var router = express.Router();
 var School = require('../models/schoolList');

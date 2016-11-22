@@ -16,10 +16,11 @@ mongoose.connect('mongodb://tutr:tutrhq1738@ds053176.mlab.com:53176/tutrhq');
 dotenv.load();
 
 // initializing routes
+var schools = require('./routes/index');//<<<<<<<<<<<<<<<<added by tim
 var routes = require('./routes/index');
 var users = require('./routes/users');
 var auth = require('./routes/auth');
-var match = require('./routes/match')
+var match = require('./routes/match');
 sockets_on = false;
 
 // This will configure Passport to use Auth0
@@ -83,6 +84,7 @@ app.use('/', routes);
 app.use('/users', users);
 app.use('/auth', auth);
 app.use('/match', match)
+app.use('/school',schools)//<----------------------added by Tim..... i totally know what im doing
 
 
 // catch 404 and forward to error handler

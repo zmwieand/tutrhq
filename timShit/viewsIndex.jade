@@ -1,34 +1,18 @@
-var express = require('express');
-var router = express.Router();
-var School = require('../models/schoolList');
+extends layout
 
+block content
 
-router.post('/schools', function(req, res, next) {
-    User.findBySchool(req.body['univeristy'], function(err, school) {
-        if (school) {
-          school.count = school.count +1;
-        }
-        user.save(function(err) {
-            if (err) return err;
-        });
-        res.redirect("/users");
-    });
-});
+  main(id="main")
 
+    div(id="searchdesktop")
+      h1(id="joinin" class="center") JOIN IN
+      h5(class="center") start by searching for your school below
 
-
-// router.get('/',function(req,res,next){
-//   User.findBySchool(rew.user._json.school,function(err,user){
-//     if(user && user.available == true){
-//       //go to school available page
-//     }
-//     else{
-//       res.render(err, {
-//         message: "tutr is not at your school, to change that ....."
-//       });
-//     }
-//   });
-// });
-
-
-module.exports = router;
+      div(class="section")
+        form(id="search1" method="post" action="/index")
+          div(id="search2" class="input-field")
+            input(id="search3" type="search" name="university" required)
+            label()
+              button(name="btn_login" type="submit" class="btn-large waves effect center" style="background-color:#009933; margin-top:-2%; width:30%;") Search
+            i(class="material-icons")
+  script(type="text/javascript", src="https://code.jquery.com/jquery-2.1.1.min.js")
