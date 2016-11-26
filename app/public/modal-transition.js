@@ -115,18 +115,22 @@ $(document).ready(function(){
         });
     }
   });
+
   // notification buttons
   $('.fixed-action-btn').hide();
-  $('.fixed-action-btn').click(function() {
-    $("#timer-modal").openModal({
-        complete: function() {
-            // reset the buttons
-            $('#stop-btn').attr('disabled', true);
-            $('#cancel-btn').attr('disabled', false);
-            $('#start-btn').attr('disabled', false);
-        }
+  // FIX: This is calling start 2 times? hullo?
+  $('#start-button').click(function() {
+    socket.emit('send start session');
+    $(this).attr('id', 'stop-button');
+    $(this).removeClass('green');
+    $(this).addClass('red');
+    $('#action-icon').text('stop');
+    
+    $('#stop-button').click(function(){
+      socket.emit('send end session');
     });
   });
+
   // this is a temp addition so that I can test notificatoins
   $("#notify-btn").click(function() {
     console.log("I am pressing the button");
