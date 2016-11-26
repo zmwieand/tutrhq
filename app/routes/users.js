@@ -28,7 +28,6 @@ router.get('/', ensureLoggedIn, function(req, res, next) {
                 });
 
                 socket.on('send notification', function(email, sender, link) {
-                  console.log(connections);
                   if (connections[email] && connections[email].connected) {
                     socket.broadcast.to(connections[email].id).emit('notification', sender, true, " needs help. Please help him?", link);
                   } else {
@@ -63,7 +62,6 @@ router.get('/', ensureLoggedIn, function(req, res, next) {
                         socket.broadcast.to(connections[email].id).emit('student accept', tutor.first_name + ' ' + tutor.last_name);
                         socket.emit('tutor accept');
                     } else {
-                        console.log(req.user);
                         socket.emit('tutr_error', req.user.displayName + " is offline. sorry bruh. btw, a suh dude?");
                     }
                   });
