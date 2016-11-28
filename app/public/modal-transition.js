@@ -117,20 +117,18 @@ $(document).ready(function(){
   });
 
   // notification buttons
-  $('.fixed-action-btn').hide();
-  // FIX: This is calling start 2 times? hullo?
+  $('#start-button').hide();
+  $('#stop-button').hide();
+  
   $('#start-button').click(function() {
     socket.emit('send start session');
-    $(this).attr('id', 'stop-button');
-    $(this).removeClass('green');
-    $(this).addClass('red');
-    $('#action-icon').text('stop');
-    
-    $('#stop-button').click(function(){
-      socket.emit('send end session');
-    });
+    $('#start-button').hide();
+    $('#stop-button').show();
   });
-
+  
+  $('#stop-button').click(function(){
+    socket.emit('send end session');
+  });
   // this is a temp addition so that I can test notificatoins
   $("#notify-btn").click(function() {
     console.log("I am pressing the button");

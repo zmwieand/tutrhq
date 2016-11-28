@@ -52,7 +52,7 @@ if (!socket_frontend) {
         var start = {lat: 37.77, lng: -122.447};  // Haight
         var end = {lat: 37.768, lng: -122.511};   // Ocean Beach
         calculateAndDisplayRoute(start, end);
-        $('.fixed-action-btn').show();
+        $('#start-button').show();
     });
 
     socket.on('decline', function() {
@@ -65,7 +65,8 @@ if (!socket_frontend) {
     });
 
     socket.on('end session', function(price) {
-        $('.fixed-action-btn').hide();
+        // $('.fixed-action-btn').hide();
+        $('#stop-button').hide();
         $('#rating-modal').openModal();
         $('#price').text("$" + price);
     });
