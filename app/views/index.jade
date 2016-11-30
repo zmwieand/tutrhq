@@ -35,25 +35,17 @@ block content
     div(class="center row container hide-on-small-only")
       h2(id="searchdesktop1") JOIN IN
       h5(id="searchdesktop2") Start by searching for your school below
-    
-      div(class="section")
-        form(id="search1" method="post" action="/index")
-          div(id="search2" class="input-field")
-            input(id="search3" type="search" name="university" required)
-            label()
-              i(id="search4" class="material-icons") search
-            i(class="material-icons") close
 
     div(class="center row container hide-on-med-and-up")
       h3(id="mobilesearch1") On-Demand Tutoring, 24/7
       h5(id="mobilesearch2") Search for your school and join in
     
     nav(id="search1" class="z-depth-1")
-      form(id="search2")
+      form(id="search2" method="post" action="/submit")
         div(id="search3" class="input-field")
-          input(id="search4" type="search" required)
+          input(id="search4" type="search" name="university" required)
           label(for="search")
-            i(id="searchimage" class="material-icons") search
+            i(id="searchimage" type="submit" class="material-icons") search
             
   div(id="row1" class="row")
     div(class="col s12 l6 center")

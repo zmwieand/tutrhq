@@ -16,7 +16,7 @@ mongoose.connect('mongodb://tutr:tutrhq1738@ds053176.mlab.com:53176/tutrhq');
 dotenv.load();
 
 // initializing routes
-var schools = require('./routes/index');
+//var schools = require('./routes/schools');
 var routes = require('./routes/index');
 var users = require('./routes/users');
 var auth = require('./routes/auth');
@@ -86,7 +86,7 @@ app.use('/users', users);
 app.use('/auth', auth);
 app.use('/match', match);
 app.use('/signup', signup);
-app.use('/school',schools);
+//app.use('/school',schools);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
