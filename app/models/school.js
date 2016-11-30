@@ -7,7 +7,7 @@ var Schema = mongoose.Schema;
 var schoolSchema = new Schema({
   instnm: String,
   count: Number,
-  activeSchool: Boolean,
+  activeSchool: Number,
 
 
 });

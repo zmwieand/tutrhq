@@ -57,9 +57,23 @@ router.post('/submit', function(req, res, next) {
     School.findBySchool(school_name, function(err, school) {
         if (school) {
           school.count = school.count + 1;
+          var are_we_there = school.activeSchool;
           school.save(function(err) {
               if (err) return err;
           });
+          if(are_we_there == 0){
+            //go to non active school page
+            res.render('non_active_school', {
+              message: "fuck off"
+            });
+          }
+          else{
+            //go to active school page
+            res.render('active_school', {
+              message: "get learned"
+            });
+          }
+
         }
 
         res.redirect("/");
