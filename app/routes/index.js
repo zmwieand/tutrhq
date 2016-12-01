@@ -51,6 +51,21 @@ router.get('/callback',
 });
 //
 // search bar function
+
+
+// router.get('/submit' , function(req, res) {
+//   res.render('active_school');
+// });
+
+router.get('/submit' , function(req, res) {
+  console.log("nonactive test");
+  res.render('non_active_school');
+});
+
+
+
+
+
 router.post('/submit', function(req, res, next) {
 //    console.log("a suh");
     var school_name = req.body['university']
@@ -63,15 +78,12 @@ router.post('/submit', function(req, res, next) {
           });
           if(are_we_there == 0){
             //go to non active school page
-            res.render('non_active_school', {
-              message: "fuck off"
-            });
+            console.log("test1");
+            res.redirect('/non_active_school');
           }
           else{
             //go to active school page
-            res.render('active_school', {
-              message: "get learned"
-            });
+            res.redirect('active_school');
           }
 
         }
