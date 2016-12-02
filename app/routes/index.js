@@ -81,7 +81,7 @@ router.post('/submit', function(req, res, next) {
           }
           else{
             //go to active school page
-            return res.render('active_school');
+            return    res.render('active_school');
           }
 
         } // else {
