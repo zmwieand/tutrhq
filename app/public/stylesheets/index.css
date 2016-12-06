@@ -32,8 +32,8 @@
 }
 
 #videotitle1 {
-  padding-top:12%;
-  padding-left: 40%;
+  padding-top:20%;
+  padding-left: 55%;
   z-index: -1;
 
 
@@ -41,12 +41,12 @@
 
 #videotitle2 {
   color:white;
-  font-weight: 300;
+  font-weight:400;
 }
 
 #videotitle3 {
   color:white;
-  font-weight: 300;
+  font-weight: 400;
   margin-top: -2%;
 }
 
