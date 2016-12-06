@@ -57,10 +57,9 @@ router.get('/callback',
 //   res.render('active_school');
 // });
 
-router.get('/submit' , function(req, res) {
-  console.log("nonactive test");
-  res.render('non_active_school');
-});
+// router.get('/submit' , function(req, res, next) {
+//   res.render("non_active_school");
+// });
 
 
 
@@ -78,17 +77,16 @@ router.post('/submit', function(req, res, next) {
           });
           if(are_we_there == 0){
             //go to non active school page
-            console.log("test1");
-            res.redirect('/non_active_school');
+            return res.render('non_active_school');
           }
           else{
             //go to active school page
-            res.redirect('active_school');
+            return    res.render('active_school');
           }
 
-        }
-
+        } // else {
         res.redirect("/");
+        // }
     });
 
 });module.exports = router;

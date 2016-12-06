@@ -22,8 +22,6 @@ var users = require('./routes/users');
 var auth = require('./routes/auth');
 var match = require('./routes/match');
 var signup = require('./routes/signup');
-//var active_school = require('./routes/active_school');
-//var non_active_school = require('./routes/non_active_school');
 sockets_on = false;
 
 // This will configure Passport to use Auth0
@@ -88,8 +86,6 @@ app.use('/users', users);
 app.use('/auth', auth);
 app.use('/match', match);
 app.use('/signup', signup);
-//app.use('/active_school', active_school);
-//app.use('/non_active_school', non_active_school);
 
 //app.use('/school',schools);
 
