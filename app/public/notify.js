@@ -47,10 +47,10 @@ if (!socket_frontend) {
         Materialize.toast(message, 4000);
     });
 
-    socket.on('tutor accept', function() {
+    socket.on('tutor accept', function(start, end) {
         // TODO show student location to the student
-        var start = {lat: 37.77, lng: -122.447};  // Haight
-        var end = {lat: 37.768, lng: -122.511};   // Ocean Beach
+        // var start = {lat: 37.77, lng: -122.447};  // Haight
+        // var end = {lat: 37.768, lng: -122.511};   // Ocean Beach
         calculateAndDisplayRoute(start, end);
         $('#start-button').show();
     });

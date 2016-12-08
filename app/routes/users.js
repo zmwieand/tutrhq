@@ -39,9 +39,12 @@ router.get('/', ensureLoggedIn, function(req, res, next) {
                 socket.on('send accept', function(email) {
                   console.log('email:' + email);
 
+                  var other;
+
                   User.findByEmail(email, function(err, student) {
                     if (err) return err;
                     if (student) {
+                      other = student;
                       student.session.state = "match";
                       student.session.email = req.user._json.email;
                     }
@@ -61,7 +64,8 @@ router.get('/', ensureLoggedIn, function(req, res, next) {
                     });
                     if (connections[email] && connections[email].connected) {
                         socket.broadcast.to(connections[email].id).emit('student accept', tutor.first_name + ' ' + tutor.last_name);
-                        socket.emit('tutor accept');
+                        socket.emit('tutor accept', {lat: tutor.latitude, lng: tutor.longitude}, 
+                            {lat: other.latitude, lng: other.longitude});
                     } else {
                         console.log(req.user);
                         socket.emit('tutr_error', req.user.displayName + " is offline. sorry bruh. btw, a suh dude?");
