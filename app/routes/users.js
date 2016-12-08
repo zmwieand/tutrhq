@@ -135,8 +135,21 @@ router.get('/', ensureLoggedIn, function(req, res, next) {
                             student.session.state = "end";
                             student.session.session_end = session_end;
                             if (connections[student.email_address] && connections[student.email_address].connected) {
-                                socket.broadcast.to(connections[student.email_address].id).emit('end session', 17.38);
-                                socket.emit('end session', 17.38)
+                                session_time = session_end - tutor.session.session_start;
+                                console.log("Time: " + session_time);
+
+                                if (session_time < 0) {
+                                    session_time += 24;
+                                }
+
+                                if (session_time < .5) {
+                                    session_time = .5;
+                                }
+
+                                price = session_time * tutor.hourly_rate;
+                                console.log('Price: ' + price);
+                                socket.broadcast.to(connections[student.email_address].id).emit('end session', price);
+                                socket.emit('end session', price);
                             } else {
                                 socket.emit('tutr_error', "error");
                             }
