@@ -116,17 +116,19 @@ $(document).ready(function(){
     }
   });
   // notification buttons
-  $('.fixed-action-btn').hide();
-  $('.fixed-action-btn').click(function() {
-    $("#timer-modal").openModal({
-        complete: function() {
-            // reset the buttons
-            $('#stop-btn').attr('disabled', true);
-            $('#cancel-btn').attr('disabled', false);
-            $('#start-btn').attr('disabled', false);
-        }
-    });
+  $('#start-button').hide();
+  $('#stop-button').hide();
+  $('#start-button').click(function() {
+    $('#stop-button').show();
+    $('#start-button').hide();
+    socket.emit('send start session');
   });
+
+  $('#stop-button').click(function() {
+    $('#stop-button').hide();
+    socket.emit('send end session')
+  });
+
   // this is a temp addition so that I can test notificatoins
   $("#notify-btn").click(function() {
     console.log("I am pressing the button");

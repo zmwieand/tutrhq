@@ -66,8 +66,10 @@ block content
     
     if user.role == 'tutor'
         div(class="fixed-action-btn" style="bottom: 45px; right: 24px;")
-            a(class="btn-floating btn-large green")
+            a(id="start-button" class="btn-floating btn-large green")
                 i.material-icons play_arrow
+            a(id="stop-button" class="btn-floating btn-large red")
+                i.material-icons stop
 
     include modals/account_information
     include modals/courses
