@@ -26,6 +26,9 @@ $(document).ready(function(){
     a.append(h5);
     return a;
   }
+
+
+
   function notify(email, sender, link) {
     socket.emit('send notification', email, sender, link);
     console.log("sending a notification to: " + email);
