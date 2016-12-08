@@ -318,8 +318,11 @@ router.post('/rate', function(req, res, next) {
 
 router.get('/get_location', ensureLoggedIn, function(req, res, next) {
     console.log('location');
-    res.setHeader('Content-Type', 'application/json');
-    res.send(JSON.stringify({lat: 43.002795, lng: -78.787145}));
+    User.findByEmail(req.user._json.email, function(err, user){
+        res.setHeader('Content-Type', 'application/json');
+        res.send(JSON.stringify({lat: user.latitude, lng: user.longitude}));
+    });
+    
 });
 
 //
