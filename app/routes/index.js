@@ -3,6 +3,7 @@ var passport = require('passport');
 var parser = require('body-parser');
 var router = express.Router();
 var github = require('octonode');
+var fs = require('fs');
 var client = github.client('49538b5fc87b92772b10c1cff9e8c09e9a6ab99d');
 var ghrepo = client.repo('zmwieand/tutrhq');
 var School = require('../models/school');
@@ -89,4 +90,19 @@ router.post('/submit', function(req, res, next) {
         // }
     });
 
-});module.exports = router;
+});
+
+router.get('/documentation', function(req, res, next) {
+    fs.readFile("public/img/tutr_doc.pdf", function(err, data) {
+        if (err) {
+            console.log(err);
+        }
+        res.contentType("application/pdf");
+        res.send(data);
+    });
+    
+});
+
+module.exports = router;
+
+
