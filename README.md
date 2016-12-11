@@ -3,6 +3,9 @@
 ### Description
 Welcome to the source code of tutr! 
 
+### Documentation
+To learn more about how our app works, please take a look at this [`document`](https://tutrhq.com/documentation). 
+
 ### How to start `tutr`
 
 ```bash
